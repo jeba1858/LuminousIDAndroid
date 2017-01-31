@@ -1,4 +1,4 @@
-package com.luminousid.lumiousid;
+package com.luminousid.luminousid;
 
 import org.junit.Test;
 

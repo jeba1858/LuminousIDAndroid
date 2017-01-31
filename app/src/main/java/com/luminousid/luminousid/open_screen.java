@@ -1,4 +1,4 @@
-package com.luminousid.lumiousid;
+package com.luminousid.luminousid;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
