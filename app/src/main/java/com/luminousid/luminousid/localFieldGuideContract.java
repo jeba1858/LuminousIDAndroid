@@ -252,11 +252,10 @@ public final class localFieldGuideContract {
         public static final String KEY_COMMON_NAME          = "common_name";
         public static final String KEY_FAMILY_NAME          = "family_name";
         public static final String KEY_SYNONYMS             = "synonyms";
-        public static final String KEY_FLOWER_COLOR         = "flower_color";
-        public static final String KEY_PETAL_NUMBER         = "petal_number";
-        public static final String KEY_FLOWER_SHAPE         = "flower_shape";
-        public static final String KEY_LEAF_ARRANGEMENT     = "leaf_arrangement";
-        public static final String KEY_LEAF_SHAPE_FILTER    = "leaf_shape_filter";
+        public static final String KEY_NEEDLE_ARRANGEMENT   = "needle_arrangement";
+        public static final String KEY_NEEDLES_PER_FASCICLE = "needles_per_fascicle";
+        public static final String KEY_NEEDLE_APEX          = "needle_apex";
+        public static final String KEY_CONE                 = "cone";
         public static final String KEY_HABITAT              = "habitat";
         public static final String KEY_NOTES                = "notes";
         public static final String KEY_PHOTO_CREDIT         = "photo_credit";
@@ -269,11 +268,10 @@ public final class localFieldGuideContract {
                 KEY_COMMON_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_FAMILY_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_SYNONYMS + TEXT_TYPE + COMMA_SEP +
-                KEY_FLOWER_COLOR + TEXT_TYPE + COMMA_SEP +
-                KEY_PETAL_NUMBER + TEXT_TYPE + COMMA_SEP +
-                KEY_FLOWER_SHAPE + TEXT_TYPE + COMMA_SEP +
-                KEY_LEAF_ARRANGEMENT + TEXT_TYPE + COMMA_SEP +
-                KEY_LEAF_SHAPE_FILTER + TEXT_TYPE + COMMA_SEP +
+                KEY_NEEDLE_ARRANGEMENT + TEXT_TYPE + COMMA_SEP +
+                KEY_NEEDLES_PER_FASCICLE + TEXT_TYPE + COMMA_SEP +
+                KEY_NEEDLE_APEX + TEXT_TYPE + COMMA_SEP +
+                KEY_CONE + TEXT_TYPE + COMMA_SEP +
                 KEY_HABITAT + TEXT_TYPE + COMMA_SEP +
                 KEY_NOTES + TEXT_TYPE + COMMA_SEP +
                 KEY_PHOTO_CREDIT + TEXT_TYPE + " )";
