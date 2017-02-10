@@ -1,0 +1,43 @@
+﻿growth_form,plant_code,species_name,common_name,family_name,synonyms,stem_cross_section,leaf_blade,(P) inflorescence,(P) florets_per_spikelet,(P) awns,( C ) inflorescence,( C ) spike_color,habitat,notes,photo_credit
+graminoid,JUNBIG,Juncus biglumis,two-flowered rush,Juncaceae (Rushes),NA,"round, solid",involute,NA,NA,NA,NA,NA,moist meadow,NA,JG Smith
+graminoid,JUNCAS,Juncus castaneus,chestnut rush,Juncaceae (Rushes),NA,"round, solid","flat, involute",NA,NA,NA,NA,NA,"moist meadow, wet meadow, subalpine",NA,JG Smith
+graminoid,JUNDRU,Juncus drummondii,Drummond’s rush,Juncaceae (Rushes),NA,"round, solid",absent,NA,NA,NA,NA,NA,"moist meadow, wet meadow, talus, subalpine",NA,JG Smith
+graminoid,JUNMER,Juncus mertensianus,Merten's rush,Juncaceae (Rushes),NA,"round, solid",involute,NA,NA,NA,NA,NA,"wet meadow, subalpine",NA,JG Smith
+graminoid,JUNPAR,Juncus parryi,Parry's rush,Juncaceae (Rushes),NA,"round, solid","involute, absent",NA,NA,NA,NA,NA,"moist meadow, wet meadow, subalpine",NA,JG Smith
+graminoid,JUNTRI,Juncus triglumis,three-hulled rush,Juncaceae (Rushes),NA,"round, solid","flat, involute",NA,NA,NA,NA,NA,"moist meadow, wet meadow",NA,JG Smith
+graminoid,LUZSPI,Luzula spicata,spiked woodrush,Juncaceae (Rushes),NA,"round, solid",flat,NA,NA,NA,NA,NA,"moist meadow, snowbed, subalpine",NA,JG Smith
+graminoid,AGROSP,Agrostis sp.,bentgrass,Poaceae (grasses),NA,"round,  hollow","flat, involute",open,1,"bent, absent",NA,NA,NA,"includes Agrostis humilis, A. mertensii, and A. variabilis",
+graminoid,CALPUR,Calamagrostis purpurascens,purple reedgrass,Poaceae (grasses),NA,"round,  hollow",involute,contracted,1,"bent, twisted",NA,NA,"dry meadow, subalpine",NA,TBD
+graminoid,DANINT,Danthonia intermedia,timber oatgrass,Poaceae (grasses),NA,"round,  hollow","flat, involute",contracted,2+,"bent, twisted",NA,NA,"moist meadow, subalpine",NA,TBD
+graminoid,DESCAE,Deschampsia caespitosa,tufted hairgrass,Poaceae (grasses),NA,"round,  hollow",flat,open,2+,straight,NA,NA,"moist meadow, wet meadow, snowbed,  talus, subalpine",NA,TBD
+graminoid,ELYSCR,Elymus scribneri,spreading wheatgrass,Poaceae (grasses),Agropyron scribneri,"round,  hollow","flat, involute",contracted,2+,straight,NA,NA,"dry meadow, talus, subalpine",NA,TBD
+graminoid,FESTSP,Festuca sp.,fescue,Poaceae (grasses),NA,"round,  hollow",involute,contracted,2+,straight,NA,NA,"dry meadow, moist meadow, wet meadow, snowbed, talus, subalpine","includes Festuca brachyphylla, F. minutiflora, and F. rubra",
+graminoid,HELMOR,Helictotrichon mortonianum,Morton’s alpine oatgrass,Poaceae (grasses),NA,"round,  hollow",involute,contracted,2+,"bent, twisted",NA,NA,dry meadow,NA,TBD
+graminoid,PHLALP,Phleum alpinum,alpine timothy,Poaceae (grasses),Phleum commutatum,"round,  hollow",flat,contracted,1,straight,NA,NA,"moist meadow, subalpine",NA,TBD
+graminoid,POA_SP,Poa sp.,bluegrass,Poaceae (grasses),NA,"round,  hollow",keeled,open,2+,,NA,NA,NA,"includes Poa arctica, P. alpina, P. cusickii, P. glauca, P. reflexa",
+graminoid,TRISPI,Trisetum spicatum,spike trisetum,Poaceae (grasses),NA,"round,  hollow","flat, involute",contracted,2+,bent,NA,NA,"moist meadow, wet meadow, subalpine",NA,TBD
+graminoid,CARALB,Carex albonigra,black and white sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,black,"dry meadow, moist meadow, subalpine",NA,TBD
+graminoid,CARAQU,Carex aquatilis,water sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,black,"wet meadow, subalpine",NA,TBD
+graminoid,CARARA,Carex arapahoensis,Arapaho sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,"light, medium","dry meadow, moist meadow, subalpine",NA,TBD
+graminoid,CARCAP,Carex capillaris,hair-like sedge,Cyperaceae (Sedges),Carex boecheriana,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,light ,"moist meadow, wet meadow, subalpine",NA,TBD
+graminoid,CAREBE,Carex ebenea,ebony sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,globose head,"dark, black","moist meadow, wet meadow, talus, subalpine",NA,TBD
+graminoid,CARELY,Carex elynoides,blackroot sedge,Cyperaceae (Sedges),NA,"triangular, solid",involute,NA,NA,NA,1 distinct spike,medium ,"dry meadow, subalpine",NA,TBD
+graminoid,CARHAY,Carex haydeniana,cloud sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,globose head,dark ,"dry meadow, moist meadow, talus, subalpine",NA,TBD
+graminoid,CARHET,Carex heteroneura,Hol'sm sedge,Cyperaceae (Sedges),"Carex chalciolepis, Carex atrata ","triangular, solid",flat,NA,NA,NA,2+ distinct spikes,dark ,"snowbed, subalpine",NA,TBD
+graminoid,CARILL,Carex illota,sheep sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,dark ,"wet meadow, subalpine",NA,TBD
+graminoid,CARLAC,Carex lachenalii,two-tipped sedge,Cyperaceae (Sedges),Carex bipartita,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,medium ,"wet meadow, subalpine",NA,TBD
+graminoid,CARMIC,Carex microglochin,few-seeded bog sedge,Cyperaceae (Sedges),NA,"triangular, solid",involute,NA,NA,NA,1 distinct spike,"light,  medium ","wet meadow, subalpine",NA,TBD
+graminoid,CARMIS,Carex misandra,short-leaved sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,"medium, dark ","dry meadow, moist meadow",NA,TBD
+graminoid,CARNEL,Carex nelsonii,Nelson’s sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,black,"dry meadow, moist meadow, subalpine",NA,TBD
+graminoid,CARNIG,Carex nigricans,black alpine sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,1 distinct spike,"dark, black","wet meadow, subalpine",NA,TBD
+graminoid,CARNOV,Carex nova,black sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,black,"moist meadow, subalpine",NA,TBD
+graminoid,CARPER,Carex perglobosa,globe sedge,Cyperaceae (Sedges),NA,"triangular, solid","flat, involute",NA,NA,NA,globose head,"light,  medium ","fellfield, dry meadow, moist meadow, talus",NA,TBD
+graminoid,CARPHA,Carex phaeocephala,dunhead sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,medium ,"dry meadow, moist meadow, talus, subalpine",NA,TBD
+graminoid,CARPRA,Carex praeceptorum,early sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,medium ,"moist meadow, wet meadow, subalpine",NA,TBD
+graminoid,CARPYR,Carex pyrenaica,Pyrenees sedge,Cyperaceae (Sedges),Carex crandalii,"triangular, solid",involute,NA,NA,NA,1 distinct spike,"dark, black","snowbed, talus",NA,TBD
+graminoid,CARROS,Carex rossii,Ross’ sedge,Cyperaceae (Sedges),Carex brevipes,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,"light,  medium ","dry meadow, moist meadow, subalpine",NA,TBD
+graminoid,CARRUP,Carex rupestris ,Drummond’s sedge,Cyperaceae (Sedges),Carex drummondiana,"triangular, solid",flat,NA,NA,NA,1 distinct spike,"medium, dark","fellfield, dry meadow, subalpine",NA,TBD
+graminoid,CARSCO,Carex scopulorum ,mountain sedge,Cyperaceae (Sedges),NA,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,black,"moist meadow, wet meadow,snowbed,  subalpine",NA,TBD
+graminoid,CARSIC,Carex siccata ,dryspike sedge,Cyperaceae (Sedges),Carex foenea,"triangular, solid",flat,NA,NA,NA,2+ distinct spikes,medium,"dry meadow, moist meadow, subalpine",NA,TBD
+graminoid,CARVER,Carex vernacula,native sedge,Cyperaceae (Sedges),Carex foetida,"triangular, solid",flat,NA,NA,NA,globose head,"medium, dark","dry meadow, moist meadow, snowbed, subalpine",NA,TBD
+graminoid,KOBMYO,Kobresia myosuroides,Bellardi bog sedge,Cyperaceae (Sedges),NA,"triangular, solid",involute,NA,NA,NA,1 distinct spike,medium,"dry meadow, subalpine",NA,TBD

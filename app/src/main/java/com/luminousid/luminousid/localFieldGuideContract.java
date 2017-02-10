@@ -14,6 +14,34 @@ public final class localFieldGuideContract {
     public static final String TEXT_TYPE        = " TEXT";
     public static final String COMMA_SEP        = ",";
 
+    public static final String[] SQL_TABLE_NAME_ARRAY = {
+            "speciesName",
+            "familyName",
+            "FG_Photos",
+            "forbs",
+            "graminoids",
+            "poaceae",
+            "cyperceae",
+            "juncaceae",
+            "woody",
+            "needle",
+            "deciduous"
+    };
+
+    public static final String[] SQL_DELETE_TABLE_ARRAY = {
+            speciesName.DELETE_TABLE,
+            familyName.DELETE_TABLE,
+            FG_Photos.DELETE_TABLE,
+            forbs.DELETE_TABLE,
+            graminoids.DELETE_TABLE,
+            poaceae.DELETE_TABLE,
+            cyperceae.DELETE_TABLE,
+            juncaceae.DELETE_TABLE,
+            woody.DELETE_TABLE,
+            needle.DELETE_TABLE,
+            deciduous.DELETE_TABLE
+    };
+
     // Create all the tables in DB
     public static final String[] SQL_CREATE_TABLE_ARRAY = {
             speciesName.CREATE_TABLE,
