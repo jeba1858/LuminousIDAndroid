@@ -67,11 +67,13 @@ public final class localFieldGuideContract {
 
     public static class speciesName implements BaseColumns {
         public static final String TABLE_NAME           = "speciesName";
+        public static final String SPECIES_ID           = "speciesID";
         public static final String KEY_SPECIES_NAME     = "species_name";
         public static final String KEY_GROWTH_FORM      = "growth_form";
 
-        public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + " (" + _ID +
+        public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
                 " INTEGER PRIMARY KEY," +
+                SPECIES_ID + TEXT_TYPE + COMMA_SEP +
                 KEY_SPECIES_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_GROWTH_FORM + TEXT_TYPE + " )";
 
@@ -82,7 +84,7 @@ public final class localFieldGuideContract {
         public static final String TABLE_NAME           = "familyName";
         public static final String KEY_FAMILY_NAME      = "family_name";
 
-        public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + " (" + _ID +
+        public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
                 " INTEGER PRIMARY KEY," +
                 KEY_FAMILY_NAME + TEXT_TYPE + " )";
 
@@ -94,7 +96,7 @@ public final class localFieldGuideContract {
         public static final String KEY_PLANT_CODE       = "plant_code";
         public static final String KEY_PLANT_PHOTO      = "plant_photo";
 
-        public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + " (" + _ID +
+        public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
                 " INTEGER PRIMARY KEY," +
                 KEY_PLANT_CODE + TEXT_TYPE + COMMA_SEP +
                 KEY_PLANT_PHOTO + TEXT_TYPE + " )";
@@ -119,7 +121,7 @@ public final class localFieldGuideContract {
         public static final String KEY_NOTES                = "notes";
         public static final String KEY_PHOTO_CREDIT         = "photo_credit";
 
-        public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + " (" + _ID +
+        public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
                 " INTEGER PRIMARY KEY," +
                 KEY_SPECIES_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_GROWTH_FORM + TEXT_TYPE + COMMA_SEP +
@@ -145,7 +147,7 @@ public final class localFieldGuideContract {
         public static final String KEY_GROWTH_FORM          = "growth_form";
         public static final String KEY_FAMILY_NAME          = "family_name";
 
-        public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + " (" + _ID +
+        public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
                 " INTEGER PRIMARY KEY," +
                 KEY_SPECIES_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_GROWTH_FORM + TEXT_TYPE + COMMA_SEP +
@@ -171,7 +173,7 @@ public final class localFieldGuideContract {
         public static final String KEY_NOTES                = "notes";
         public static final String KEY_PHOTO_CREDIT         = "photo_credit";
 
-        public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + " (" + _ID +
+        public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
                 " INTEGER PRIMARY KEY," +
                 KEY_SPECIES_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_GROWTH_FORM + TEXT_TYPE + COMMA_SEP +
@@ -207,7 +209,7 @@ public final class localFieldGuideContract {
         public static final String KEY_NOTES                = "notes";
         public static final String KEY_PHOTO_CREDIT         = "photo_credit";
 
-        public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + " (" + _ID +
+        public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
                 " INTEGER PRIMARY KEY," +
                 KEY_SPECIES_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_GROWTH_FORM + TEXT_TYPE + COMMA_SEP +
@@ -240,7 +242,7 @@ public final class localFieldGuideContract {
         public static final String KEY_NOTES                = "notes";
         public static final String KEY_PHOTO_CREDIT         = "photo_credit";
 
-        public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + " (" + _ID +
+        public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
                 " INTEGER PRIMARY KEY," +
                 KEY_SPECIES_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_GROWTH_FORM + TEXT_TYPE + COMMA_SEP +
@@ -263,7 +265,7 @@ public final class localFieldGuideContract {
         public static final String KEY_GROWTH_FORM          = "growth_form";
         public static final String KEY_LEAF_TYPE            = "leaf_type";
 
-        public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + " (" + _ID +
+        public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
                 " INTEGER PRIMARY KEY," +
                 KEY_SPECIES_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_GROWTH_FORM + TEXT_TYPE + COMMA_SEP +
@@ -288,7 +290,7 @@ public final class localFieldGuideContract {
         public static final String KEY_NOTES                = "notes";
         public static final String KEY_PHOTO_CREDIT         = "photo_credit";
 
-        public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + " (" + _ID +
+        public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
                 " INTEGER PRIMARY KEY," +
                 KEY_SPECIES_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_GROWTH_FORM + TEXT_TYPE + COMMA_SEP +
@@ -323,7 +325,7 @@ public final class localFieldGuideContract {
         public static final String KEY_NOTES                = "notes";
         public static final String KEY_PHOTO_CREDIT         = "photo_credit";
 
-        public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + " (" + _ID +
+        public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
                 " INTEGER PRIMARY KEY," +
                 KEY_SPECIES_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_GROWTH_FORM + TEXT_TYPE + COMMA_SEP +

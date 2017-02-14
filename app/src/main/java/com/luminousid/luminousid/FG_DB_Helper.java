@@ -15,6 +15,7 @@ public class FG_DB_Helper extends SQLiteOpenHelper {
 
     public FG_DB_Helper(android.content.Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     public void onCreate(SQLiteDatabase db) {
