@@ -1,9 +1,12 @@
 package com.luminousid.luminousid;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +15,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,7 +40,14 @@ import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_SPECIE
 import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_SYNONYMS;
 import static com.luminousid.luminousid.localFieldGuideContract.forbs.TABLE_NAME;
 
+
 public class open_screen extends AppCompatActivity {
+
+    // Objects for Firebase login authentication
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
+    private static final String TAG = "open_screen";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +56,7 @@ public class open_screen extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,107 +65,32 @@ public class open_screen extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        */
 
-        // Create our Database Helper
-        FG_DB_Helper dbHelper = new FG_DB_Helper(getApplicationContext());
+        // Firebase authentication
+        mAuth = FirebaseAuth.getInstance();
 
-        // Gets Database. If it doesn't exist, creates a new one.
-        SQLiteDatabase fieldGuideDB = dbHelper.getWritableDatabase();
-
-        // Fill Database with given .csv files.
-        // Grabs .csv files from assets folder (main->assets)
-
-        String forbsCSVfile = "forbs_species_rawdata.csv";
-        String gramCSVfile = "grams_species_rawdata.csv";
-        String woodyCSVfile = "woody_species_rawdata.csv";
-
-        AssetManager csvmanager = dbHelper.context.getAssets();
-        InputStream forbsStream = null;
-        InputStream gramsStream = null;
-        InputStream woodyStream = null;
-
-        try {
-            forbsStream = csvmanager.open(forbsCSVfile);
-            gramsStream = csvmanager.open(gramCSVfile);
-            woodyStream = csvmanager.open(woodyCSVfile);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Start with forbs .csv file
-        BufferedReader forbsbuffer = new BufferedReader(new InputStreamReader(forbsStream));
-        String line = "";
-        fieldGuideDB.beginTransaction();
-            try {
-                while ((line = forbsbuffer.readLine()) != null) {
-                    String[] colums = line.split(",");
-                        if (colums.length != 13) {
-                            Log.d("CSVParser", "Skipping Bad CSV Row");
-                            continue;
-                        }
-                        ContentValues cv = new ContentValues();
-                        cv.put(KEY_GROWTH_FORM, colums[0].trim());
-                        cv.put(KEY_PLANT_CODE, colums[1].trim());
-                        cv.put(KEY_SPECIES_NAME, colums[2].trim());
-                        cv.put(KEY_COMMON_NAME, colums[3].trim());
-                        cv.put(KEY_FAMILY_NAME, colums[4].trim());
-                        cv.put(KEY_SYNONYMS, colums[5].trim());
-                        cv.put(KEY_FLOWER_COLOR, colums[6].trim());
-                        cv.put(KEY_PETAL_NUMBER, colums[7].trim());
-                        cv.put(KEY_FLOWER_SHAPE, colums[8].trim());
-                        cv.put(KEY_LEAF_ARRANGEMENT, colums[9].trim());
-                        cv.put(KEY_LEAF_SHAPE_FILTER, colums[10].trim());
-                        cv.put(KEY_HABITAT, colums[11].trim());
-                        cv.put(KEY_NOTES, colums[12].trim());
-                        cv.put(KEY_PHOTO_CREDIT, colums[13].trim());
-                        fieldGuideDB.insert(TABLE_NAME, null, cv);
+        // Firebase authentication code pulled from Firebase tutorial
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+        };
 
-        // Then we do Graminoids
-        BufferedReader gramsbuffer = new BufferedReader(new InputStreamReader(gramsStream));
-        try {
-            while ((line = gramsbuffer.readLine()) != null) {
-                String[] colums = line.split(",");
-                if (colums.length != 15) {
-                    Log.d("CSVParser", "Skipping Bad CSV Row");
-                    continue;
-                }
-                ContentValues cv = new ContentValues();
-                cv.put(localFieldGuideContract.graminoids.KEY_GROWTH_FORM, colums[0].trim());
-                cv.put(localFieldGuideContract.graminoids.KEY_SPECIES_NAME, colums[2].trim());
-                cv.put(localFieldGuideContract.graminoids.KEY_FAMILY_NAME, colums[4].trim());
-                fieldGuideDB.insert(localFieldGuideContract.graminoids.TABLE_NAME, null, cv);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    }
 
-        // Then we do the woody table
-        BufferedReader woodybuffer = new BufferedReader(new InputStreamReader(woodyStream));
-        try {
-            while ((line = woodybuffer.readLine()) != null) {
-                String[] colums = line.split(",");
-                if (colums.length != 15) {
-                    Log.d("CSVParser", "Skipping Bad CSV Row");
-                    continue;
-                }
-                ContentValues cv = new ContentValues();
-                cv.put(localFieldGuideContract.woody.KEY_GROWTH_FORM, colums[0].trim());
-                cv.put(localFieldGuideContract.woody.KEY_SPECIES_NAME, colums[2].trim());
-                cv.put(localFieldGuideContract.woody.KEY_LEAF_TYPE, colums[6].trim());
-                fieldGuideDB.insert(localFieldGuideContract.woody.TABLE_NAME, null, cv);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Finally done
-        fieldGuideDB.setTransactionSuccessful();
-        fieldGuideDB.endTransaction();
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
     }
 
     //
@@ -176,6 +115,29 @@ public class open_screen extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void toDBActivity(View view) {
+        Intent intent = new Intent(open_screen.this, DBTest.class);
+        startActivity(intent);
+    }
+
+    public void toLoginActivity(View view) {
+        Intent intent = new Intent(open_screen.this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void toSignUpActivity(View view) {
+        Intent intent = new Intent(open_screen.this, SignUpActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
 }

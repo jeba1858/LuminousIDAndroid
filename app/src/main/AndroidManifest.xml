@@ -26,7 +26,9 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".Home_screen"></activity>
+        <activity android:name=".Home_screen" />
+        <activity android:name=".DBTest" />
+        <activity android:name=".SignUpActivity"></activity>
     </application>
 
 </manifest>

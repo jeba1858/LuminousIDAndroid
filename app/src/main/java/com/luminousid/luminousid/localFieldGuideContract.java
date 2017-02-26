@@ -17,7 +17,6 @@ public final class localFieldGuideContract {
     public static final String[] SQL_TABLE_NAME_ARRAY = {
             "speciesName",
             "familyName",
-            "FG_Photos",
             "forbs",
             "graminoids",
             "poaceae",
@@ -25,13 +24,13 @@ public final class localFieldGuideContract {
             "juncaceae",
             "woody",
             "needle",
-            "deciduous"
+            "deciduous",
+            "FG_Photos"
     };
 
     public static final String[] SQL_DELETE_TABLE_ARRAY = {
             speciesName.DELETE_TABLE,
             familyName.DELETE_TABLE,
-            FG_Photos.DELETE_TABLE,
             forbs.DELETE_TABLE,
             graminoids.DELETE_TABLE,
             poaceae.DELETE_TABLE,
@@ -39,14 +38,14 @@ public final class localFieldGuideContract {
             juncaceae.DELETE_TABLE,
             woody.DELETE_TABLE,
             needle.DELETE_TABLE,
-            deciduous.DELETE_TABLE
+            deciduous.DELETE_TABLE,
+            FG_Photos.DELETE_TABLE
     };
 
     // Create all the tables in DB
     public static final String[] SQL_CREATE_TABLE_ARRAY = {
             speciesName.CREATE_TABLE,
             familyName.CREATE_TABLE,
-            FG_Photos.CREATE_TABLE,
             forbs.CREATE_TABLE,
             graminoids.CREATE_TABLE,
             poaceae.CREATE_TABLE,
@@ -54,7 +53,8 @@ public final class localFieldGuideContract {
             juncaceae.CREATE_TABLE,
             woody.CREATE_TABLE,
             needle.CREATE_TABLE,
-            deciduous.CREATE_TABLE
+            deciduous.CREATE_TABLE,
+            FG_Photos.CREATE_TABLE
     };
 
     // Resource IDs of all data to be loaded into DB
@@ -66,7 +66,7 @@ public final class localFieldGuideContract {
     private localFieldGuideContract() {}
 
     public static class speciesName implements BaseColumns {
-        public static final String TABLE_NAME           = "speciesName";
+        public static final String TABLE_NAME           = "Species_Name";
         public static final String SPECIES_ID           = "speciesID";
         public static final String KEY_SPECIES_NAME     = "species_name";
         public static final String KEY_GROWTH_FORM      = "growth_form";
@@ -81,7 +81,7 @@ public final class localFieldGuideContract {
     }
 
     public static class familyName implements BaseColumns {
-        public static final String TABLE_NAME           = "familyName";
+        public static final String TABLE_NAME           = "Family_Name";
         public static final String KEY_FAMILY_NAME      = "family_name";
 
         public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
@@ -282,6 +282,7 @@ public final class localFieldGuideContract {
         public static final String KEY_COMMON_NAME          = "common_name";
         public static final String KEY_FAMILY_NAME          = "family_name";
         public static final String KEY_SYNONYMS             = "synonyms";
+        public static final String KEY_LEAF_TYPE            = "leaf_type";
         public static final String KEY_NEEDLE_ARRANGEMENT   = "needle_arrangement";
         public static final String KEY_NEEDLES_PER_FASCICLE = "needles_per_fascicle";
         public static final String KEY_NEEDLE_APEX          = "needle_apex";
@@ -298,6 +299,7 @@ public final class localFieldGuideContract {
                 KEY_COMMON_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_FAMILY_NAME + TEXT_TYPE + COMMA_SEP +
                 KEY_SYNONYMS + TEXT_TYPE + COMMA_SEP +
+                KEY_LEAF_TYPE + TEXT_TYPE + COMMA_SEP +
                 KEY_NEEDLE_ARRANGEMENT + TEXT_TYPE + COMMA_SEP +
                 KEY_NEEDLES_PER_FASCICLE + TEXT_TYPE + COMMA_SEP +
                 KEY_NEEDLE_APEX + TEXT_TYPE + COMMA_SEP +
@@ -336,8 +338,8 @@ public final class localFieldGuideContract {
                 KEY_LEAF_TYPE + TEXT_TYPE + COMMA_SEP +
                 KEY_CONE + TEXT_TYPE + COMMA_SEP +
                 KEY_LEAF_MARGIN + TEXT_TYPE + COMMA_SEP +
-                KEY_LEAF_ARRANGEMENT + TEXT_TYPE + COMMA_SEP +
                 KEY_LEAF_SHAPE + TEXT_TYPE + COMMA_SEP +
+                KEY_LEAF_ARRANGEMENT + TEXT_TYPE + COMMA_SEP +
                 KEY_NOTES + TEXT_TYPE + COMMA_SEP +
                 KEY_PHOTO_CREDIT + TEXT_TYPE + " )";
 
