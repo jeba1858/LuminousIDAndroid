@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    private boolean loginSuccess = false;
+    private static boolean loginSuccess = false;
 
     private static final String TAG = "LoginActivity";
 
@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity
                 }
 
                 // Go to home screen after
-                updateUI(user);
+                //updateUI(user);
 
             }
         };
@@ -119,14 +119,18 @@ public class LoginActivity extends AppCompatActivity
                     Log.w(TAG, "signInWithEmail:failed", task.getException());
                     Toast.makeText(LoginActivity.this, "Authentication failed.",
                             Toast.LENGTH_SHORT).show();
+                    setLoginStatus(false);
+                    System.out.println("Login fail at signIn step 1: " + getLoginStatus());
                 }
                 else {
-                    loginSuccess = true;
-                    System.out.println(loginSuccess);
+                    setLoginStatus(true);
+                    System.out.println("Login success at signIn step 2: " + getLoginStatus());
                 }
 
                 if (!task.isSuccessful()) {
-                    mStatusTextView.setText("Authentication failed.");
+                    //mStatusTextView.setText("Authentication failed.");
+                    setLoginStatus(false);
+                    System.out.println("Login fail at signIn step 3: " + getLoginStatus());
                 }
             }
         });
@@ -160,27 +164,33 @@ public class LoginActivity extends AppCompatActivity
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.email_sign_in_button) {
-            signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-            Intent intent = new Intent(LoginActivity.this, Home_screen.class);
-            startActivity(intent);
+
+            try {
+                signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+            } catch (Exception e){
+                setLoginStatus(false);
+            }
+
+            if(getLoginStatus()){
+                System.out.println("On click, status is: " + getLoginStatus());
+                Intent intent = new Intent(LoginActivity.this, Home_screen.class);
+                startActivity(intent);
+            }
+            else{
+                System.out.println("On click, status is: " + getLoginStatus());
+                mEmailField.setError("Email or password incorrect.");
+                mPasswordField.setError("Email or password incorrect.");
+            }
+
         }
     }
 
-    private void updateUI(FirebaseUser user) {
-        if (user != null){
-            toHomeScreenActivity();
-        }
-        else {
-            System.out.println("No account signed in.");
-        }
+    private boolean getLoginStatus(){
+        return loginSuccess;
     }
 
-    public void toHomeScreenActivity() {
-        System.out.println("Login Status: " + loginSuccess);
-        if (loginSuccess){
-            Intent intent = new Intent(LoginActivity.this, Home_screen.class);
-            startActivity(intent);
-        }
+    private void setLoginStatus(boolean status){
+        loginSuccess = status;
     }
 
 }
