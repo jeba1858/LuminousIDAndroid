@@ -3,7 +3,6 @@ package com.luminousid.luminousid;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.AssetManager;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.support.annotation.NonNull;
@@ -24,22 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_COMMON_NAME;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_FAMILY_NAME;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_FLOWER_COLOR;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_FLOWER_SHAPE;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_GROWTH_FORM;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_HABITAT;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_LEAF_ARRANGEMENT;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_LEAF_SHAPE_FILTER;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_NOTES;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_PETAL_NUMBER;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_PHOTO_CREDIT;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_PLANT_CODE;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_SPECIES_NAME;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.KEY_SYNONYMS;
-import static com.luminousid.luminousid.localFieldGuideContract.forbs.TABLE_NAME;
-
 
 public class open_screen extends AppCompatActivity {
 
@@ -47,25 +30,14 @@ public class open_screen extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    private FirebaseAuth user = null;
+
     private static final String TAG = "open_screen";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_screen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        /*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "LoginActivity", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
+        setContentView(R.layout.activity_open__screen);
 
         // Firebase authentication
         mAuth = FirebaseAuth.getInstance();
@@ -85,12 +57,24 @@ public class open_screen extends AppCompatActivity {
             }
         };
 
+        if (user != null){
+            System.out.println("Already logged in, skipped open screen");
+            Intent intent = new Intent(open_screen.this, Home_screen.class);
+            startActivity(intent);
+        }
+
     }
 
     @Override
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
+
+        if (user != null){
+            System.out.println("Already logged in, skipped open screen.");
+            Intent intent = new Intent(open_screen.this, Home_screen.class);
+            startActivity(intent);
+        }
     }
 
     //
@@ -129,6 +113,11 @@ public class open_screen extends AppCompatActivity {
 
     public void toSignUpActivity(View view) {
         Intent intent = new Intent(open_screen.this, SignUpActivity.class);
+        startActivity(intent);
+    }
+
+    public void toHomeScreenActivity(View view) {
+        Intent intent = new Intent(open_screen.this, Home_screen.class);
         startActivity(intent);
     }
 
