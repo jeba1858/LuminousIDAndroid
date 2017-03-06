@@ -9,6 +9,101 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/lumi_homescreen_background_img"
     tools:context="com.luminousid.luminousid.Home_screen">
 
+    <Button
+        android:text="Settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/fieldGuideButton"
+        android:layout_alignStart="@+id/fieldGuideButton"
+        android:layout_marginBottom="61dp"
+        android:id="@+id/settingsButton" />
+
+    <Button
+        android:text="My Observations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/myObservationsButton"
+        android:layout_alignBaseline="@+id/fieldGuideButton"
+        android:layout_alignBottom="@+id/fieldGuideButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Field Guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fieldGuideButton"
+        android:layout_marginBottom="81dp"
+        android:layout_above="@+id/settingsButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="37dp"
+        android:layout_marginStart="37dp" />
+
+    <Button
+        android:text="Glossary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/glossaryButton"
+        android:layout_alignBaseline="@+id/settingsButton"
+        android:layout_alignBottom="@+id/settingsButton"
+        android:layout_alignLeft="@+id/myObservationsButton"
+        android:layout_alignStart="@+id/myObservationsButton"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp" />
+
+    <Button
+        android:text="About"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/aboutButton" />
+
+    <TextView
+        android:text="Logged in as:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginTxt"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/loginStatus"
+        android:layout_alignBottom="@+id/loginStatus"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="guest@nowhere.com"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginStatus"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/settingsButton"
+        android:layout_toEndOf="@+id/settingsButton"
+        android:layout_marginTop="26dp" />
+
+    <Button
+        android:text="Log Out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/logoutButton"
+        android:background="@android:color/transparent"
+        android:layout_above="@+id/loginTxt"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/lumi_logo"
+        android:id="@+id/imageView"
+        android:cropToPadding="false"
+        android:layout_above="@+id/myObservationsButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

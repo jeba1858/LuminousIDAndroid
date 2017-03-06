@@ -101,23 +101,28 @@ public class open_screen extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void toDBActivity(View view) {
+    public void gotoDBTest(View view) {
         Intent intent = new Intent(open_screen.this, DBTest.class);
         startActivity(intent);
     }
 
-    public void toLoginActivity(View view) {
+    public void gotoLogin(View view) {
         Intent intent = new Intent(open_screen.this, LoginActivity.class);
         startActivity(intent);
     }
 
-    public void toSignUpActivity(View view) {
+    public void gotoSignup(View view) {
         Intent intent = new Intent(open_screen.this, SignUpActivity.class);
         startActivity(intent);
     }
 
-    public void toHomeScreenActivity(View view) {
+    public void gotoHomeScreen(View view) {
         Intent intent = new Intent(open_screen.this, Home_screen.class);
+        startActivity(intent);
+    }
+
+    public void toAboutScreenActivity(View view) {
+        Intent intent = new Intent(open_screen.this, com.luminousid.luminousid.About.class);
         startActivity(intent);
     }
 

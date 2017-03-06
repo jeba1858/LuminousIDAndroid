@@ -29,7 +29,7 @@
         <activity android:name=".Home_screen" />
         <activity android:name=".DBTest" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name="com.luminousid.lumiousid.About"></activity>
+        <activity android:name=".About"></activity>
     </application>
 
 </manifest>

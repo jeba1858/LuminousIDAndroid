@@ -31,7 +31,7 @@
         android:layout_above="@+id/signUpButton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="44dp"
-        android:onClick="toLoginActivity" />
+        android:onClick="gotoLogin" />
 
     <Button
         android:id="@+id/signUpButton"
@@ -42,7 +42,7 @@
         android:layout_above="@+id/guestButton"
         android:layout_alignLeft="@+id/loginButton"
         android:layout_alignStart="@+id/loginButton"
-        android:onClick="toSignUpActivity" />
+        android:onClick="gotoSignup" />
 
     <Button
         android:id="@+id/guestButton"
@@ -54,5 +54,5 @@
         android:text="Continue as guest"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="toHomeScreenActivity"/>
+        android:onClick="gotoHomeScreen"/>
 </RelativeLayout>

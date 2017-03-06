@@ -103,6 +103,7 @@ public class LoginActivity extends AppCompatActivity
     // Firebase tutorial sign in code
     private void signIn(String email, String password){
         Log.d(TAG, "signIn:" + email);
+
         if (!validateForm()) {
             return;
         }
@@ -121,10 +122,14 @@ public class LoginActivity extends AppCompatActivity
                             Toast.LENGTH_SHORT).show();
                     setLoginStatus(false);
                     System.out.println("Login fail at signIn step 1: " + getLoginStatus());
+                    mEmailField.setError("Email or password incorrect!");
+                    mPasswordField.setError("Email or password incorrect!");
                 }
                 else {
                     setLoginStatus(true);
                     System.out.println("Login success at signIn step 2: " + getLoginStatus());
+                    System.out.println("Logged in as: " + mAuth.getCurrentUser().getEmail());
+                    gotoOpen();
                 }
 
                 if (!task.isSuccessful()) {
@@ -165,22 +170,7 @@ public class LoginActivity extends AppCompatActivity
         int i = v.getId();
         if (i == R.id.email_sign_in_button) {
 
-            try {
-                signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-            } catch (Exception e){
-                setLoginStatus(false);
-            }
-
-            if(getLoginStatus()){
-                System.out.println("On click, status is: " + getLoginStatus());
-                Intent intent = new Intent(LoginActivity.this, Home_screen.class);
-                startActivity(intent);
-            }
-            else{
-                System.out.println("On click, status is: " + getLoginStatus());
-                mEmailField.setError("Email or password incorrect.");
-                mPasswordField.setError("Email or password incorrect.");
-            }
+            signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
 
         }
     }
@@ -191,6 +181,11 @@ public class LoginActivity extends AppCompatActivity
 
     private void setLoginStatus(boolean status){
         loginSuccess = status;
+    }
+
+    private void gotoOpen() {
+        Intent intent = new Intent(LoginActivity.this, Home_screen.class);
+        startActivity(intent);
     }
 
 }
