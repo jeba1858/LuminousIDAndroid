@@ -99,6 +99,11 @@ public class SignUpActivity extends AppCompatActivity
                     // to handle the signed in user can be handled in the listener.
                     if (!task.isSuccessful()) {
                         Log.i("Reponse", "Failed to create user: " + task.getException().getMessage());
+                        mEmailField.setError(task.getException().getMessage());
+                    }
+                    else {
+                        System.out.println("Account created successfully.");
+                        toHomeScreenActivity();
                     }
 
                 }
@@ -144,7 +149,7 @@ public class SignUpActivity extends AppCompatActivity
             valid = false;
         }
         else if (!TextUtils.equals(password, password2)){
-            mPassword2Field.setError("Not the same.");
+            mPassword2Field.setError("Passwords aren't the same.");
             valid = false;
         }
         else {
@@ -159,18 +164,8 @@ public class SignUpActivity extends AppCompatActivity
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.createAccountButton){
+
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-            if (!validateForm()){
-                return;
-            }
-            if(FirebaseAuth.getInstance().getCurrentUser() != null){
-                Intent intent = new Intent(SignUpActivity.this, Home_screen.class);
-                startActivity(intent);
-            }
-            else{
-                System.out.println("Phone's ringin' dude.");
-                mEmailField.setError("Email is already taken!");
-            }
 
         }
     }
@@ -189,4 +184,5 @@ public class SignUpActivity extends AppCompatActivity
         Intent intent = new Intent(SignUpActivity.this, Home_screen.class);
         startActivity(intent);
     }
+
 }
