@@ -40,12 +40,6 @@ public class Home_screen extends AppCompatActivity implements View.OnClickListen
             logoutButton.setText("Log-In/Sign-up");
         }
 
-
-        //test
-        System.out.println("FetchProvidersForEmailAsync on Jimdoe: " + FirebaseAuth.getInstance().fetchProvidersForEmail("jimdoe@yahoo.com"));
-        System.out.println("FetchProvidersForEmailAsync on nonexistant: " + FirebaseAuth.getInstance().fetchProvidersForEmail("jamdoe@yahoo.com"));
-
-
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
             System.out.println("Currently signed in: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
         }

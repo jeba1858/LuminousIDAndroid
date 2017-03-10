@@ -37,6 +37,8 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/email"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
@@ -52,6 +54,8 @@
 
                 <EditText
                     android:id="@+id/password"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"

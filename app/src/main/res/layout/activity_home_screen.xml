@@ -65,35 +65,25 @@
         android:id="@+id/aboutButton" />
 
     <TextView
-        android:text="Logged in as:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/loginTxt"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/loginStatus"
-        android:layout_alignBottom="@+id/loginStatus"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
         android:text="guest@nowhere.com"
         android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/loginStatus"
+        android:textColor="@android:color/white"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/settingsButton"
-        android:layout_toEndOf="@+id/settingsButton"
-        android:layout_marginTop="26dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Log Out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/logoutButton"
+        android:textColor="@android:color/white"
         android:background="@android:color/transparent"
-        android:layout_above="@+id/loginTxt"
+        android:layout_alignBaseline="@+id/loginStatus"
+        android:layout_alignBottom="@+id/loginStatus"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -103,6 +93,7 @@
         app:srcCompat="@mipmap/lumi_logo"
         android:id="@+id/imageView"
         android:cropToPadding="false"
+        android:layout_marginBottom="12dp"
         android:layout_above="@+id/myObservationsButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
