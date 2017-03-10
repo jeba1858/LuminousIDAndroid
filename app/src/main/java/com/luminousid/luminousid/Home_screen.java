@@ -75,6 +75,7 @@ public class Home_screen extends AppCompatActivity implements View.OnClickListen
     public void gotoOpen(){
         Intent intent = new Intent(Home_screen.this, open_screen.class);
         startActivity(intent);
+        super.finish();
     }
 
     public void gotoAbout(){

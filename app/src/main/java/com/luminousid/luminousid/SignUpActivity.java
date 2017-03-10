@@ -183,6 +183,8 @@ public class SignUpActivity extends AppCompatActivity
     public void toHomeScreenActivity() {
         Intent intent = new Intent(SignUpActivity.this, Home_screen.class);
         startActivity(intent);
+        open_screen.openScreenObj.finish();
+        super.finish();
     }
 
 }

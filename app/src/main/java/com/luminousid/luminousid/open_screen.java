@@ -28,7 +28,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 
+
 public class open_screen extends AppCompatActivity {
+
+    // So we can finish this later.
+    public static open_screen openScreenObj;
 
     // Objects for Firebase login authentication
     private FirebaseAuth mAuth;
@@ -42,6 +46,9 @@ public class open_screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open__screen);
+
+        // For finishing purposes.
+        openScreenObj = this;
 
         // Firebase authentication
         mAuth = FirebaseAuth.getInstance();
@@ -61,10 +68,9 @@ public class open_screen extends AppCompatActivity {
             }
         };
 
-        if (user != null){
+        if (mAuth.getCurrentUser() != null){
             System.out.println("Already logged in, skipped open screen");
-            Intent intent = new Intent(open_screen.this, Home_screen.class);
-            startActivity(intent);
+            gotoHomeFromLoggedIn();
         }
 
     }
@@ -82,6 +88,13 @@ public class open_screen extends AppCompatActivity {
     public void gotoHomeScreen(View view) {
         Intent intent = new Intent(open_screen.this, Home_screen.class);
         startActivity(intent);
+        super.finish();
+    }
+
+    public void gotoHomeFromLoggedIn(){
+        Intent intent = new Intent(open_screen.this, Home_screen.class);
+        startActivity(intent);
+        super.finish();
     }
 
 }

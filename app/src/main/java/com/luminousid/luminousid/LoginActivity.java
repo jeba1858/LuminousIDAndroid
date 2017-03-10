@@ -56,8 +56,6 @@ public class LoginActivity extends AppCompatActivity
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    private static boolean loginSuccess = false;
-
     private static final String TAG = "LoginActivity";
 
     private TextView mStatusTextView;
@@ -120,22 +118,17 @@ public class LoginActivity extends AppCompatActivity
                     Log.w(TAG, "signInWithEmail:failed", task.getException());
                     Toast.makeText(LoginActivity.this, "Authentication failed.",
                             Toast.LENGTH_SHORT).show();
-                    setLoginStatus(false);
-                    System.out.println("Login fail at signIn step 1: " + getLoginStatus());
                     mEmailField.setError("Email or password incorrect!");
                     mPasswordField.setError("Email or password incorrect!");
                 }
                 else {
-                    setLoginStatus(true);
-                    System.out.println("Login success at signIn step 2: " + getLoginStatus());
                     System.out.println("Logged in as: " + mAuth.getCurrentUser().getEmail());
                     gotoOpen();
                 }
 
                 if (!task.isSuccessful()) {
-                    //mStatusTextView.setText("Authentication failed.");
-                    setLoginStatus(false);
-                    System.out.println("Login fail at signIn step 3: " + getLoginStatus());
+                   // mStatusTextView.setText("Authentication failed.");
+                    System.out.println("Authentication Failed on step 3.");
                 }
             }
         });
@@ -175,17 +168,11 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-    private boolean getLoginStatus(){
-        return loginSuccess;
-    }
-
-    private void setLoginStatus(boolean status){
-        loginSuccess = status;
-    }
-
     private void gotoOpen() {
         Intent intent = new Intent(LoginActivity.this, Home_screen.class);
         startActivity(intent);
+        open_screen.openScreenObj.finish();
+        super.finish();
     }
 
 }
