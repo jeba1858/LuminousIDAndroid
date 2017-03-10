@@ -1,15 +1,18 @@
 package com.luminousid.luminousid;
 
+import android.app.ActionBar;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
@@ -17,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,6 +50,17 @@ public class open_screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open__screen);
+
+        if(Build.VERSION.SDK_INT < 16){
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        else{
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+            //ActionBar actionBar = getActionBar();
+            //actionBar.hide();
+        }
 
         // For finishing purposes.
         openScreenObj = this;
