@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class open_screen extends AppCompatActivity {
@@ -45,6 +46,11 @@ public class open_screen extends AppCompatActivity {
     private FirebaseAuth user = null;
 
     private static final String TAG = "open_screen";
+
+    @Override
+    protected void attachBaseContext(Context newbase){
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newbase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

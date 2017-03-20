@@ -1,5 +1,6 @@
 package com.luminousid.luminousid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,9 +12,16 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 import static com.luminousid.luminousid.R.id.logoutButton;
 
 public class Home_screen extends AppCompatActivity implements View.OnClickListener {
+
+    @Override
+    protected void attachBaseContext(Context newbase){
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newbase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +77,10 @@ public class Home_screen extends AppCompatActivity implements View.OnClickListen
             gotoAbout();
         }
 
+        else if(i == R.id.fieldGuideButton){
+            gotoFieldGuide();
+        }
+
 
     }
 
@@ -80,6 +92,11 @@ public class Home_screen extends AppCompatActivity implements View.OnClickListen
 
     public void gotoAbout(){
         Intent intent = new Intent(Home_screen.this, About.class);
+        startActivity(intent);
+    }
+
+    public void gotoFieldGuide(){
+        Intent intent = new Intent(Home_screen.this, FieldGuide.class);
         startActivity(intent);
     }
 

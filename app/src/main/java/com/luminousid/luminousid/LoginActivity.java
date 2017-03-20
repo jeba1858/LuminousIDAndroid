@@ -3,6 +3,7 @@ package com.luminousid.luminousid;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -44,6 +45,8 @@ import com.luminousid.luminousid.R;
 
 import org.w3c.dom.Text;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -62,6 +65,11 @@ public class LoginActivity extends AppCompatActivity
     private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
+
+    @Override
+    protected void attachBaseContext(Context newbase){
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newbase));
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

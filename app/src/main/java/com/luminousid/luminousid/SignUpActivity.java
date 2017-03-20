@@ -1,5 +1,6 @@
 package com.luminousid.luminousid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +17,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 // Code inspired by Firebase startup tutorial for account creation & authentication
 
@@ -28,6 +33,10 @@ public class SignUpActivity extends AppCompatActivity
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    // Firebase database reference
+    //FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference userReference = FirebaseDatabase.getInstance().getReference();
+
     private static final String TAG = "sign_up_activity";
 
     private TextView mStatusTextView;
@@ -35,6 +44,11 @@ public class SignUpActivity extends AppCompatActivity
     private EditText mEmailField;
     private EditText mPasswordField;
     private EditText mPassword2Field;
+
+    @Override
+    protected void attachBaseContext(Context newbase){
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newbase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +68,6 @@ public class SignUpActivity extends AppCompatActivity
         findViewById(R.id.createAccountButton).setOnClickListener(this);
         //findViewById(R.id.sign_out_button).setOnClickListener(this);
         //findViewById(R.id.verify_email_button).setOnClickListener(this);
-
 
         // Firebase authentication
         mAuth = FirebaseAuth.getInstance();
@@ -77,6 +90,10 @@ public class SignUpActivity extends AppCompatActivity
                 //updateUI(user);
             }
         };
+    }
+
+    private void writeNewAccount(String userID, Boolean researcherStatus){
+        userReference.child("speciesid").child("accounts").child(userID).child("researcher").setValue(researcherStatus);
     }
 
         // Method to create new Account with input email and password.
@@ -103,6 +120,7 @@ public class SignUpActivity extends AppCompatActivity
                     }
                     else {
                         System.out.println("Account created successfully.");
+                        writeNewAccount(mAuth.getCurrentUser().getUid(), false);
                         toHomeScreenActivity();
                     }
 
