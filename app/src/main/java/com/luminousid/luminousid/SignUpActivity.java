@@ -46,6 +46,7 @@ public class SignUpActivity extends AppCompatActivity
     private EditText mPassword2Field;
     private EditText mUsernameField;
 
+    // Get Snippet Font for page. Check FontHelper class for more info.
     @Override
     protected void attachBaseContext(Context newbase){
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newbase));

@@ -22,10 +22,10 @@ public class Forbs_FieldGuide extends AppCompatActivity {
 
     // Placing Firebase data into listview
     // Taken from Stackoverflow http://stackoverflow.com/questions/41434475/how-to-list-data-from-firebase-database-in-listview
-    // Or maybe from here http://stackoverflow.com/questions/38284915/populate-listview-with-firebase-adapter
+    // And a little from here http://stackoverflow.com/questions/38284915/populate-listview-with-firebase-adapter
+    // But just check out the Firebase UI library. Good stuff.
 
-    private ArrayList<speciesName> speciesArray = new ArrayList<>();
-
+    // Get Snippet Font for page. Check FontHelper class for more info.
     @Override
     protected void attachBaseContext(Context newbase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newbase));
@@ -36,37 +36,9 @@ public class Forbs_FieldGuide extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forbs_field_guide);
 
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        // Get firebase reference for just forbs.
         DatabaseReference forbsRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/forbs");
-        // DatabaseReference forbs = mDatabase.child("speciesid").child("field_guide").child("forbs");
-        // DatabaseReference forbsRef = new FirebaseDatabase("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/forbs");
         ListView mListView = (ListView) findViewById(R.id.fieldguideListView);
-
-        /*
-        ArrayAdapter<speciesName> speciesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, speciesArray);
-        mListView.setAdapter(speciesAdapter);
-
-        forbs.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot childSnapShot : dataSnapshot.getChildren()){
-
-                    String species_name = (String) childSnapShot.child("species_name").getValue();
-                    String common_name = (String) childSnapShot.child("common_name").getValue();
-
-                    speciesName speciesnameobj = new speciesName(species_name, common_name);
-
-                    speciesArray.add(speciesnameobj);
-
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError);
-            }
-        });
-        */
 
         // Using Firebase UI library to list all the forbs plants (species name, common name)
         ListAdapter speciesUIAdapter = new FirebaseListAdapter<speciesName>(this, speciesName.class, android.R.layout.two_line_list_item, forbsRef)

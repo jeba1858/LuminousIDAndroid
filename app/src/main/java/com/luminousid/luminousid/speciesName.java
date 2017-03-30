@@ -2,6 +2,8 @@ package com.luminousid.luminousid;
 
 /**
  * Created by chase on 3/18/2017.
+ * A class to help with the Firebase UI library to populate a listview.
+ * Allows data to be stored in the way needed for the Field Guide listviews.
  */
 
 public class speciesName {

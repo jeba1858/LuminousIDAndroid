@@ -11,6 +11,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class About extends AppCompatActivity {
 
+    // Get Snippet Font for page. Check FontHelper class for more info.
     @Override
     protected void attachBaseContext(Context newbase){
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newbase));

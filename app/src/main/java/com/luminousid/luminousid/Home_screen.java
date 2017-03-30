@@ -16,6 +16,7 @@ import static com.luminousid.luminousid.R.id.logoutButton;
 
 public class Home_screen extends AppCompatActivity implements View.OnClickListener {
 
+    // Get Snippet Font for page. Check FontHelper class for more info.
     @Override
     protected void attachBaseContext(Context newbase){
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newbase));

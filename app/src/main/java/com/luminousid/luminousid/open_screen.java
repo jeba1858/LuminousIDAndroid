@@ -47,6 +47,7 @@ public class open_screen extends AppCompatActivity {
 
     private static final String TAG = "open_screen";
 
+    // Get Snippet Font for page. Check FontHelper class for more info.
     @Override
     protected void attachBaseContext(Context newbase){
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newbase));
