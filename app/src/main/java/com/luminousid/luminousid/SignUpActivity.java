@@ -44,6 +44,7 @@ public class SignUpActivity extends AppCompatActivity
     private EditText mEmailField;
     private EditText mPasswordField;
     private EditText mPassword2Field;
+    private EditText mUsernameField;
 
     @Override
     protected void attachBaseContext(Context newbase){
@@ -60,6 +61,7 @@ public class SignUpActivity extends AppCompatActivity
         //mStatusTextView = (TextView) findViewById(R.id.status);
         //mDetailTextView = (TextView) findViewById(R.id.detail);
         mEmailField = (EditText) findViewById(R.id.useremailText);
+        mUsernameField = (EditText) findViewById(R.id.usernameText);
         mPasswordField = (EditText) findViewById(R.id.userpassword1);
         mPassword2Field = (EditText) findViewById(R.id.userpassword2);
 
@@ -92,8 +94,9 @@ public class SignUpActivity extends AppCompatActivity
         };
     }
 
-    private void writeNewAccount(String userID, Boolean researcherStatus){
+    private void writeNewAccount(String userID, String username, Boolean researcherStatus){
         userReference.child("speciesid").child("accounts").child(userID).child("researcher").setValue(researcherStatus);
+        userReference.child("speciesid").child("accounts").child(userID).child("username").setValue(username);
     }
 
         // Method to create new Account with input email and password.
@@ -120,7 +123,7 @@ public class SignUpActivity extends AppCompatActivity
                     }
                     else {
                         System.out.println("Account created successfully.");
-                        writeNewAccount(mAuth.getCurrentUser().getUid(), false);
+                        writeNewAccount(mAuth.getCurrentUser().getUid(), mUsernameField.getText().toString(), false);
                         toHomeScreenActivity();
                     }
 
@@ -153,6 +156,16 @@ public class SignUpActivity extends AppCompatActivity
         }
         else {
             mEmailField.setError(null);
+        }
+
+        String username = mUsernameField.getText().toString();
+
+        if (TextUtils.isEmpty(username)) {
+            mUsernameField.setError("Required.");
+            valid = false;
+        }
+        else {
+            mUsernameField.setError(null);
         }
 
         String password = mPasswordField.getText().toString();

@@ -23,18 +23,34 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
+        android:id="@+id/usernameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/useremailText"
         android:backgroundTint="@android:color/white"
+        android:ems="10"
+        android:hint="Username"
+        android:textColorHint="@android:color/white"
+        android:inputType="text"
         android:textColor="@android:color/white"
-        android:hint="Email"
-        android:layout_marginBottom="66dp"
-        android:layout_above="@+id/userpassword1"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/useremailText"
         android:layout_alignLeft="@+id/userpassword1"
         android:layout_alignStart="@+id/userpassword1" />
+
+    <EditText
+        android:id="@+id/useremailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/userpassword1"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/userpassword1"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="@android:color/white"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -45,9 +61,10 @@
         android:backgroundTint="@android:color/white"
         android:textColor="@android:color/white"
         android:hint="Password"
-        android:layout_above="@+id/userpassword2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="74dp" />
+        android:textColorHint="@android:color/white"
+        android:layout_marginTop="78dp"
+        android:layout_alignTop="@+id/usernameText"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -58,8 +75,10 @@
         android:backgroundTint="@android:color/white"
         android:textColor="@android:color/white"
         android:hint="Re-enter Password"
-        android:layout_marginBottom="86dp"
-        android:layout_above="@+id/createAccountButton"
+        android:textColorHint="@android:color/white"
+        android:layout_below="@+id/userpassword1"
         android:layout_alignLeft="@+id/userpassword1"
-        android:layout_alignStart="@+id/userpassword1" />
+        android:layout_alignStart="@+id/userpassword1"
+        android:layout_marginTop="36dp" />
+
 </RelativeLayout>

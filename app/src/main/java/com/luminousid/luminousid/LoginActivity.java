@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity
     private EditText mEmailField;
     private EditText mPasswordField;
 
+    // Get Snippet Font for page. Check FontHelper class for more info.
     @Override
     protected void attachBaseContext(Context newbase){
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newbase));
@@ -98,10 +99,6 @@ public class LoginActivity extends AppCompatActivity
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-
-                // Go to home screen after
-                //updateUI(user);
-
             }
         };
     }
@@ -142,6 +139,8 @@ public class LoginActivity extends AppCompatActivity
         });
     }
 
+    // Make sure email, username, and passwords are entered.
+    // Also checks if passwords are the same.
     private boolean validateForm() {
         boolean valid = true;
 
@@ -176,8 +175,18 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
+    // goto functions for button presses.
+    // Will change to a different screen and take out old screen from the stack.
+
     private void gotoOpen() {
         Intent intent = new Intent(LoginActivity.this, Home_screen.class);
+        startActivity(intent);
+        open_screen.openScreenObj.finish();
+        super.finish();
+    }
+
+    public void gotoResetPassword(View view){
+        Intent intent = new Intent(LoginActivity.this, ResetPassword.class);
         startActivity(intent);
         open_screen.openScreenObj.finish();
         super.finish();
