@@ -31,7 +31,7 @@
         <activity android:name=".DBTest" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".About" />
-        <activity android:name=".FieldGuide" />
+        <activity android:name=".Forbs_FieldGuide" />
         <activity android:name=".ResetPassword"></activity>
     </application>
 

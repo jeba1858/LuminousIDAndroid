@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.w3c.dom.Text;
-
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static com.luminousid.luminousid.R.id.logoutButton;
@@ -96,7 +94,7 @@ public class Home_screen extends AppCompatActivity implements View.OnClickListen
     }
 
     public void gotoFieldGuide(){
-        Intent intent = new Intent(Home_screen.this, FieldGuide.class);
+        Intent intent = new Intent(Home_screen.this, Forbs_FieldGuide.class);
         startActivity(intent);
     }
 
