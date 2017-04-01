@@ -31,7 +31,8 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".About" />
         <activity android:name=".Forbs_FieldGuide" />
-        <activity android:name=".ResetPassword"></activity>
+        <activity android:name=".ResetPassword" />
+        <activity android:name=".plantDetailActivity"></activity>
     </application>
 
 </manifest>

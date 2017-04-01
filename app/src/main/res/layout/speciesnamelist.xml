@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TwoLineListItem xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="2dip"
     android:paddingBottom="2dip"
     android:layout_width="fill_parent"
@@ -8,12 +9,34 @@
     <TextView
         android:id="@+id/species_nameText"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/plantThumbnail"
+        android:layout_toEndOf="@+id/plantThumbnail"
+        android:textSize="30sp"
+        android:paddingTop="5sp"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/common_nameText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/species_nameText" />
+        android:layout_below="@+id/species_nameText"
+        android:layout_toRightOf="@+id/plantThumbnail"
+        android:layout_toEndOf="@+id/plantThumbnail"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="30sp"
+        android:layout_marginTop="5sp"
+        android:textColor="@android:color/white"/>
+
+    <ImageView
+        android:id="@+id/plantThumbnail"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
 
 </TwoLineListItem>
