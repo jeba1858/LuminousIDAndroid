@@ -95,7 +95,7 @@ public class Home_screen extends AppCompatActivity implements View.OnClickListen
     }
 
     public void gotoFieldGuide(){
-        Intent intent = new Intent(Home_screen.this, Forbs_FieldGuide.class);
+        Intent intent = new Intent(Home_screen.this, Intro_FieldGuide.class);
         startActivity(intent);
     }
 

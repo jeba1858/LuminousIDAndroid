@@ -32,7 +32,12 @@
         <activity android:name=".About" />
         <activity android:name=".Forbs_FieldGuide" />
         <activity android:name=".ResetPassword" />
-        <activity android:name=".plantDetailActivity"></activity>
+        <activity android:name=".plantDetailActivity" />
+        <activity android:name=".Intro_FieldGuide" />
+        <activity android:name=".Graminoids_FieldGuide" />
+        <activity android:name=".Woody_FieldGuide" />
+        <activity android:name=".Deciduous_FieldGuide" />
+        <activity android:name=".Needle_FieldGuide"></activity>
     </application>
 
 </manifest>
