@@ -24,12 +24,12 @@ import java.util.ArrayList;
  * Need to implement plant thumbnails when we have them.
  */
 
-public class plantHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class forbsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     View mView;
     Context mContext;
 
-    public plantHolder(View itemView){
+    public forbsHolder(View itemView){
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
@@ -61,6 +61,7 @@ public class plantHolder extends RecyclerView.ViewHolder implements View.OnClick
 
                 Intent intent = new Intent(mContext, plantDetailActivity.class);
                 intent.putExtra("position", itemPosition + "");
+                intent.putExtra("plantType", "forbs");
                 //intent.putExtra("plants", Parcels.wrap(species));
 
                 mContext.startActivity(intent);

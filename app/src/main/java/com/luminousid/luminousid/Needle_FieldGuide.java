@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.luminousid.luminousid.R;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -48,11 +47,11 @@ public class Needle_FieldGuide extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addItemDecoration(mDividerItemDecoration);
 
-        // Using Firebase UI library to list all the forbs plants (species name, common name)
-        FirebaseRecyclerAdapter speciesUIAdapter = new FirebaseRecyclerAdapter<speciesName, plantHolder>(speciesName.class, speciesnamelist, plantHolder.class, needleRef)
+        // Using Firebase UI library to list all the needle plants (species name, common name)
+        FirebaseRecyclerAdapter speciesUIAdapter = new FirebaseRecyclerAdapter<speciesName, needleHolder>(speciesName.class, speciesnamelist, needleHolder.class, needleRef)
         {
             @Override
-            protected void populateViewHolder(plantHolder holder, speciesName speciesnameobj, int position)
+            protected void populateViewHolder(needleHolder holder, speciesName speciesnameobj, int position)
             {
 
                 holder.bindPlant(speciesnameobj);

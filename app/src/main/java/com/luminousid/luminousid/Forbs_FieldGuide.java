@@ -1,25 +1,14 @@
 package com.luminousid.luminousid;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
-import android.view.View;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -63,10 +52,10 @@ public class Forbs_FieldGuide extends AppCompatActivity {
         mRecyclerView.addItemDecoration(mDividerItemDecoration);
 
         // Using Firebase UI library to list all the forbs plants (species name, common name)
-        FirebaseRecyclerAdapter speciesUIAdapter = new FirebaseRecyclerAdapter<speciesName, plantHolder>(speciesName.class, speciesnamelist, plantHolder.class, forbsRef)
+        FirebaseRecyclerAdapter speciesUIAdapter = new FirebaseRecyclerAdapter<speciesName, forbsHolder>(speciesName.class, speciesnamelist, forbsHolder.class, forbsRef)
         {
             @Override
-            protected void populateViewHolder(plantHolder holder, speciesName speciesnameobj, int position)
+            protected void populateViewHolder(forbsHolder holder, speciesName speciesnameobj, int position)
             {
 
                 holder.bindPlant(speciesnameobj);
