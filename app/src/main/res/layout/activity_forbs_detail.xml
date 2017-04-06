@@ -7,14 +7,163 @@
     android:background="@drawable/lumi_homescreen_background_img"
     tools:context="com.luminousid.luminousid.plantDetailActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="161dp"
-        android:text="Forbs Stuff"
-        android:textColor="@android:color/white"
-        android:textSize="60dp"/>
+        android:layout_centerVertical="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:divider="@drawable/plantdividerspace"
+            android:dividerPadding="5dp"
+            android:showDividers="middle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/addObsButton"
+                    android:layout_width="196dp"
+                    android:layout_height="wrap_content"
+                    android:text="Add Observation"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"/>
+
+                <Button
+                    android:id="@+id/mapButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Go to Plant"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/forbsPlantImage"
+                android:layout_width="match_parent"
+                android:layout_height="238dp"
+                app:srcCompat="@android:drawable/btn_star_big_on" />
+
+            <TextView
+                android:id="@+id/forbsSpeciesName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Blank Name"
+                android:textColor="@android:color/white"
+                android:textSize="40dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/forbsPlantCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Plant Code: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsCommonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Common Name: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsSynonyms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Synonyms: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsFamilyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Family Name: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsFlowerColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Flower Color: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsFlowerShape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Flower Shape: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsPetalNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Petal Number: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsGrowthForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Growth Form: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsHabitat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Habitat: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsLeafArrangement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Leaf Arrangement: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsLeafShape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Leaf Shape: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notes: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/forbsPhotoCredit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Photo Credit: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

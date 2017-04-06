@@ -33,14 +33,10 @@ public class SignUpActivity extends AppCompatActivity
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    // Firebase database reference
-    //FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference userReference = FirebaseDatabase.getInstance().getReference();
 
     private static final String TAG = "sign_up_activity";
 
-    private TextView mStatusTextView;
-    private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
     private EditText mPassword2Field;
@@ -57,20 +53,14 @@ public class SignUpActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-
         // Views
-        //mStatusTextView = (TextView) findViewById(R.id.status);
-        //mDetailTextView = (TextView) findViewById(R.id.detail);
         mEmailField = (EditText) findViewById(R.id.useremailText);
         mUsernameField = (EditText) findViewById(R.id.usernameText);
         mPasswordField = (EditText) findViewById(R.id.userpassword1);
         mPassword2Field = (EditText) findViewById(R.id.userpassword2);
 
         //Buttons
-        //findViewById(R.id.email_sign_in_button).setOnClickListener(this);
         findViewById(R.id.createAccountButton).setOnClickListener(this);
-        //findViewById(R.id.sign_out_button).setOnClickListener(this);
-        //findViewById(R.id.verify_email_button).setOnClickListener(this);
 
         // Firebase authentication
         mAuth = FirebaseAuth.getInstance();
@@ -95,7 +85,8 @@ public class SignUpActivity extends AppCompatActivity
         };
     }
 
-    private void writeNewAccount(String userID, String username, Boolean researcherStatus){
+    private void writeNewAccount(String userID, String username, int researcherStatus, String email){
+        userReference.child("speciesid").child("accounts").child(userID).child("email").setValue(email);
         userReference.child("speciesid").child("accounts").child(userID).child("researcher").setValue(researcherStatus);
         userReference.child("speciesid").child("accounts").child(userID).child("username").setValue(username);
     }
@@ -105,6 +96,8 @@ public class SignUpActivity extends AppCompatActivity
 
         private void createAccount(String email, String password){
             Log.d(TAG, "createAccount:" + email);
+
+            final String userEmail = email;
 
             if (!validateForm()) {
                 return;
@@ -124,7 +117,16 @@ public class SignUpActivity extends AppCompatActivity
                     }
                     else {
                         System.out.println("Account created successfully.");
-                        writeNewAccount(mAuth.getCurrentUser().getUid(), mUsernameField.getText().toString(), false);
+                        writeNewAccount(mAuth.getCurrentUser().getUid(), mUsernameField.getText().toString(), 0, userEmail);
+                        mAuth.getCurrentUser().sendEmailVerification();
+
+                        // Toast for email verification.
+                        Context mContext = getApplicationContext();
+                        String emailVerification = "Account created, verification email sent!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast emailVerToast = Toast.makeText(mContext, emailVerification, duration);
+                        emailVerToast.show();
+
                         toHomeScreenActivity();
                     }
 

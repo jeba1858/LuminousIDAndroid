@@ -52,10 +52,10 @@ public class Forbs_FieldGuide extends AppCompatActivity {
         mRecyclerView.addItemDecoration(mDividerItemDecoration);
 
         // Using Firebase UI library to list all the forbs plants (species name, common name)
-        FirebaseRecyclerAdapter speciesUIAdapter = new FirebaseRecyclerAdapter<speciesName, forbsHolder>(speciesName.class, speciesnamelist, forbsHolder.class, forbsRef)
+        FirebaseRecyclerAdapter speciesUIAdapter = new FirebaseRecyclerAdapter<forbsDetails, forbsHolder>(forbsDetails.class, speciesnamelist, forbsHolder.class, forbsRef)
         {
             @Override
-            protected void populateViewHolder(forbsHolder holder, speciesName speciesnameobj, int position)
+            protected void populateViewHolder(forbsHolder holder, forbsDetails speciesnameobj, int position)
             {
 
                 holder.bindPlant(speciesnameobj);
