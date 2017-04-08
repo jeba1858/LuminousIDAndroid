@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingPrefix"
     android:id="@+id/activity_sign_up"
     android:background="@drawable/lumi_homescreen_background_img"
     android:layout_width="match_parent"
@@ -18,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        fontPath="fonts/Snippet.ttf"
         android:id="@+id/createAccountButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />

@@ -10,12 +10,12 @@
     <application
         android:name=".FontHelper"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/lumi_app_logo"
         android:label="Luminous ID"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".open_screen"
+            android:name=".open_screenActivity"
             android:label="Luminous ID"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -27,17 +27,20 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".Home_screen" />
+        <activity android:name=".Home_screenActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".About" />
-        <activity android:name=".Forbs_FieldGuide" />
-        <activity android:name=".ResetPassword" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".Forbs_FieldGuideActivity" />
+        <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".plantDetailActivity" />
-        <activity android:name=".Intro_FieldGuide" />
-        <activity android:name=".Graminoids_FieldGuide" />
-        <activity android:name=".Woody_FieldGuide" />
-        <activity android:name=".Deciduous_FieldGuide" />
-        <activity android:name=".Needle_FieldGuide"></activity>
+        <activity android:name=".Intro_FieldGuideActivity" />
+        <activity android:name=".Cyperceae_FieldGuideActivity" />
+        <activity android:name=".Woody_FieldGuideActivity" />
+        <activity android:name=".Deciduous_FieldGuideActivity" />
+        <activity android:name=".Needle_FieldGuideActivity" />
+        <activity android:name=".Graminoids_FieldGuideActivity" />
+        <activity android:name=".Juncaceae_FieldGuideActivity" />
+        <activity android:name=".Poaceae_FieldGuideActivity"></activity>
     </application>
 
 </manifest>

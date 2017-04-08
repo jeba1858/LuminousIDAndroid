@@ -2,16 +2,20 @@ package com.luminousid.luminousid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -33,25 +37,30 @@ public class deciduousHolder extends RecyclerView.ViewHolder implements View.OnC
         itemView.setOnClickListener(this);
     }
 
-    public void bindPlant(speciesName species){
+    public void bindPlant(deciduousDetails species){
         ImageView plantThumbnail = (ImageView) mView.findViewById(R.id.plantThumbnail);
         TextView speciesnameText = (TextView) mView.findViewById(R.id.species_nameText);
         TextView commonnameText = (TextView) mView.findViewById(R.id.common_nameText);
 
         speciesnameText.setText(species.getSpecies_name());
         commonnameText.setText(species.getCommon_name());
+
+        // Using Glide library for image loading.
+        //String pictureFile = species.getPlant_code() + "_1.jpg";
+        //Glide.with(mContext).load(Uri.parse("file:///android_asset/plantphotos/woodys/" + pictureFile)).into(plantThumbnail);
+
         plantThumbnail.setImageResource(R.drawable.lumi_app_logo);
     }
 
     @Override
     public void onClick(View view){
-        final ArrayList<speciesName> species = new ArrayList<>();
+        final ArrayList<deciduousDetails> species = new ArrayList<>();
         DatabaseReference deciduousRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/woody/deciduous");
         deciduousRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    species.add(snapshot.getValue(speciesName.class));
+                    species.add(snapshot.getValue(deciduousDetails.class));
                 }
 
                 int itemPosition = getLayoutPosition();
@@ -59,7 +68,12 @@ public class deciduousHolder extends RecyclerView.ViewHolder implements View.OnC
                 Intent intent = new Intent(mContext, plantDetailActivity.class);
                 intent.putExtra("position", itemPosition + "");
                 intent.putExtra("plantType", "deciduous");
-                //intent.putExtra("plants", Parcels.wrap(species));
+
+                // Get plant clicked on and send to plantDetailActivity.
+                deciduousDetails deciPlant = species.get(itemPosition);
+
+                // Use Parcels class to wrap a class and send it to the detail activity.
+                intent.putExtra("plantInfo", Parcels.wrap(deciPlant));
 
                 mContext.startActivity(intent);
             }

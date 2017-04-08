@@ -2,19 +2,157 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingPrefix"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/lumi_homescreen_background_img"
+    android:background="#384452"
     tools:context="com.luminousid.luminousid.plantDetailActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="161dp"
-        android:text="Cyperceae Stuff"
-        android:textColor="@android:color/white"
-        android:textSize="60dp"/>
+        android:layout_centerVertical="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:divider="@drawable/plantdividerspace"
+            android:dividerPadding="5dp"
+            android:showDividers="middle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/addObsButton"
+                    android:layout_width="196dp"
+                    android:layout_height="wrap_content"
+                    android:text="ADD OBSERVATION"
+                    fontPath="fonts/Snippet.ttf"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"/>
+
+                <Button
+                    android:id="@+id/mapButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="FIND PLANT"
+                    fontPath="fonts/Snippet.ttf"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/cyperPlantImage"
+                android:layout_width="match_parent"
+                android:layout_height="238dp"
+                app:srcCompat="@android:drawable/btn_star_big_on" />
+
+            <TextView
+                android:id="@+id/cyperSpeciesName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Blank Name"
+                fontPath="fonts/Snippet.ttf"
+                android:textColor="@android:color/white"
+                android:textSize="40dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/cyperCommonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Common name: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/cyperSynonyms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Synonyms: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/cyperGrowthForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Growth form: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/cyperFamilyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Family name: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/cyperInflorescence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Inflorescence: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/cyperLeafBlade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Leaf blade: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/cyperSpikeColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Spike color: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/cyperStemCrossSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stem cross section: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/cyperHabitat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Habitat: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/cyperPhotoCredit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Photo Credit: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/cyperNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notes: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>

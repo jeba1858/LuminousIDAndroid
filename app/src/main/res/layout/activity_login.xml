@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingPrefix"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -67,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
+                fontPath="fonts/Snippet.ttf"
                 android:onClick="toHomeScreenActivity"/>
 
         </LinearLayout>
@@ -78,6 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Forgot your Password?"
+        fontPath="fonts/Snippet.ttf"
         android:textColor="@android:color/white"
         android:background="@android:color/transparent"
         android:onClick="gotoResetPassword"/>

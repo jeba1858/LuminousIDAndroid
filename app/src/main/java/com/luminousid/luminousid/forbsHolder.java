@@ -53,8 +53,7 @@ public class forbsHolder extends RecyclerView.ViewHolder implements View.OnClick
         speciesnameText.setText(species.getSpecies_name());
         commonnameText.setText(species.getCommon_name());
 
-        // Using Glide to load an image, and the Firebase UI Storage library to pull from Firebase Storage.
-        //Glide.with(mContext).using(new FirebaseImageLoader()).load(forbsPicRef).into(plantThumbnail);
+        // Using Glide library for image loading.
         String pictureFile = species.getPlant_code() + "_1.jpg";
         Glide.with(mContext).load(Uri.parse("file:///android_asset/plantphotos/forbs/" + pictureFile)).into(plantThumbnail);
 

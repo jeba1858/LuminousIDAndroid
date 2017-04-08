@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.luminousid.luminousid.About">
+    tools:context="com.luminousid.luminousid.AboutActivity">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -29,7 +29,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textSize="24sp"
+                android:textSize="30dp"
+                fontPath="fonts/Snippet.ttf"
+                android:gravity="center"
                 android:textColor="@android:color/black"
                 android:textStyle="normal|bold" />
 
@@ -38,9 +40,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView5"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="30dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textSize="24sp"
+                android:textSize="30dp"
+                fontPath="fonts/Snippet.ttf"
+                android:gravity="center"
                 android:textStyle="normal|bold"
                 android:textColor="@android:color/black" />
 
@@ -50,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView4"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="14sp"
+                android:textSize="20dp"
                 android:textAlignment="viewStart"
                 android:layout_gravity="start" />
 
@@ -59,16 +63,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView6"
+                android:textSize="20dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
             <TextView
-                android:text="Developers:"
+                android:text="Developers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:id="@+id/textView7"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textSize="24sp"
+                android:textSize="30dp"
+                fontPath="fonts/Snippet.ttf"
+                android:gravity="center"
                 android:textColor="@android:color/black"
                 android:textStyle="normal|bold" />
 
@@ -77,15 +84,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView8"
+                android:textSize="20dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
             <TextView
-                android:text="In Collaboration With:"
+                android:text="In Collaboration With"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView9"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textSize="24sp"
+                android:textSize="30dp"
+                fontPath="fonts/Snippet.ttf"
+                android:gravity="center"
                 android:textColor="@android:color/black"
                 android:textStyle="normal|bold"
                 android:layout_marginTop="21dp" />
@@ -96,6 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView11"
+                android:textSize="20dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
             <TextView
@@ -104,7 +115,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView12"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textSize="24sp"
+                android:textSize="30dp"
+                fontPath="fonts/Snippet.ttf"
+                android:gravity="center"
                 android:textStyle="normal|bold"
                 android:textColor="@android:color/black"
                 android:layout_marginTop="21dp" />
@@ -114,6 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView13"
+                android:textSize="20dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
 

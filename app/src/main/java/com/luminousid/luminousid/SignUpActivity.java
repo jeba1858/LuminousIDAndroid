@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View;
 import android.text.TextUtils;
@@ -19,8 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import org.w3c.dom.Text;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -215,9 +212,9 @@ public class SignUpActivity extends AppCompatActivity
     }
 
     public void toHomeScreenActivity() {
-        Intent intent = new Intent(SignUpActivity.this, Home_screen.class);
+        Intent intent = new Intent(SignUpActivity.this, Home_screenActivity.class);
         startActivity(intent);
-        open_screen.openScreenObj.finish();
+        open_screenActivity.openScreenObj.finish();
         super.finish();
     }
 

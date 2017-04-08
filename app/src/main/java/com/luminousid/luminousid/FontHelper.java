@@ -28,7 +28,7 @@ public class FontHelper extends Application {
 
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                                                .setDefaultFontPath("fonts/Snippet.ttf")
+                                                .setDefaultFontPath("fonts/calibri.ttf")
                                                 .setFontAttrId(R.attr.fontPath)
                                                 .build()
         );
