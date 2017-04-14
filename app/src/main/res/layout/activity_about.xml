@@ -24,111 +24,261 @@
             android:orientation="vertical" >
 
             <TextView
-                android:text="Species Information"
+                android:id="@+id/SpeciesInfoHead"
+                fontPath="fonts/Snippet.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView2"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textSize="30dp"
-                fontPath="fonts/Snippet.ttf"
                 android:gravity="center"
+                android:text="Species Information"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/black"
+                android:textSize="30dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:text="Education and Outreach"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView5"
-                android:layout_marginTop="30dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textSize="30dp"
+                android:id="@+id/EduandOutHead"
                 fontPath="fonts/Snippet.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:gravity="center"
-                android:textStyle="normal|bold"
-                android:textColor="@android:color/black" />
+                android:text="Education and Outreach"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@android:color/black"
+                android:textSize="30dp"
+                android:textStyle="normal|bold" />
 
             <TextView
+                android:id="@+id/EduandOutTxt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
                 android:text="The species in this app are a representative, but not exhaustive, list of species growing at the University of Colorado’s Mountain Research Station and Niwot Ridge. For more information regarding the species or their attributes, please contact Dr. Jane Smith (jane.g.smith@colorado.edu)."
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView4"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="20dp"
                 android:textAlignment="viewStart"
-                android:layout_gravity="start" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="20dp" />
 
             <TextView
-                android:text="If you’re interested in using this app as an informal learning tool with students of any age, or as part of a citizen science project, please contact Niwot Ridge LTER Education and Outreach Coordinator Dr. Alexandra Rose (alexandra.rose@colorado.edu) for supporting resources and to let us know how you’re using the app."
+                android:id="@+id/EduandOutTxt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView6"
-                android:textSize="20dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                android:text="If you’re interested in using this app as an informal learning tool with students of any age, or as part of a citizen science project, please contact Niwot Ridge LTER Education and Outreach Coordinator Dr. Alexandra Rose (alexandra.rose@colorado.edu) for supporting resources and to let us know how you’re using the app."
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="20dp" />
 
             <TextView
-                android:text="Developers"
+                android:id="@+id/DevHead"
+                fontPath="fonts/Snippet.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:id="@+id/textView7"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textSize="30dp"
-                fontPath="fonts/Snippet.ttf"
                 android:gravity="center"
+                android:text="Developers"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/black"
+                android:textSize="30dp"
                 android:textStyle="normal|bold" />
 
             <TextView
+                android:id="@+id/DevTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Ryan O’Connell \nChase Springer\nD’Vreux Fontaine\nBrian Larson\nKevin Rau\nJennifer Baumann "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView8"
-                android:textSize="20dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="20dp" />
 
             <TextView
+                android:id="@+id/CollabHead"
+                fontPath="fonts/Snippet.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:gravity="center"
                 android:text="In Collaboration With"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView9"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textSize="30dp"
-                fontPath="fonts/Snippet.ttf"
-                android:gravity="center"
                 android:textColor="@android:color/black"
-                android:textStyle="normal|bold"
-                android:layout_marginTop="21dp" />
+                android:textSize="30dp"
+                android:textStyle="normal|bold" />
 
 
             <TextView
+                android:id="@+id/CollabTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Nathalie Chardon\nJane Smith"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView11"
-                android:textSize="20dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="20dp" />
 
             <TextView
-                android:text="Support"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView12"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textSize="30dp"
+                android:id="@+id/SupportHead"
                 fontPath="fonts/Snippet.ttf"
-                android:gravity="center"
-                android:textStyle="normal|bold"
-                android:textColor="@android:color/black"
-                android:layout_marginTop="21dp" />
-
-            <TextView
-                android:text="Provided by the National Science Foundation through a Long Term Research in Environmental Biology grant to DF Doak and WF Morris and the Long Term Ecological Research program at Niwot Ridge. "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView13"
+                android:layout_marginTop="21dp"
+                android:gravity="center"
+                android:text="Support"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@android:color/black"
+                android:textSize="30dp"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/SupportTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Provided by the National Science Foundation through a Long Term Research in Environmental Biology grant to DF Doak and WF Morris and the Long Term Ecological Research program at Niwot Ridge. "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/Images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Images"
+                android:textSize="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:textColor="@android:color/black"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:layout_gravity="center"
+                fontPath="fonts/Snippet.ttf" />
+
+            <TextView
+                android:id="@+id/ImageUseHead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Image Use"
+                android:layout_marginTop="20dp"
+                android:textSize="30dp"
+                android:textColor="@android:color/black"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                fontPath="fonts/Snippet.ttf" />
+
+            <TextView
+                android:id="@+id/ImageUseTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="20dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                android:text="Images included in this website and app have been made freely available by their owners for education and research purposes. Contributors retain the full copyright for their images. Images may be used only in unmodified form for personal or educational use and are NOT available for commercial use unless permission is first obtained from the copyright holder. Any image used in a non-commercial publication, report, or as a web link, must credit the photographer or artist, as well as the name of the website hosting the image." />
+
+            <TextView
+                android:id="@+id/IllustHead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Illustration Credit"
+                android:layout_marginTop="20dp"
+                android:textSize="30dp"
+                android:textColor="@android:color/black"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                fontPath="fonts/Snippet.ttf" />
+
+            <TextView
+                android:id="@+id/IllustTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:text="All illustrations included in the Luminous ID app were created by Jane G. Smith." />
+
+            <TextView
+                android:id="@+id/PhotoCredsHead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Photo Credits"
+                android:layout_marginTop="20dp"
+                android:textSize="30dp"
+                android:textColor="@android:color/black"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                fontPath="fonts/Snippet.ttf" />
+
+            <LinearLayout
+                android:id="@+id/PhotoCredsList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Dean"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:text="Dean Wm. Taylor, CalPhotos Photo Database / http://calphotos.berkeley.edu" />
+
+                <TextView
+                    android:id="@+id/JGSmith"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:text="Jane G. Smith" />
+
+                <TextView
+                    android:id="@+id/BioPix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:text="Jens Christian Schou, Biopix / http://www.biopix.com" />
+
+                <TextView
+                    android:id="@+id/LicherSein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:text="Max Licher, SEINet data portal, Arizona - New Mexico Chapter / http://swbiodiversity.org" />
+
+                <TextView
+                    android:id="@+id/AlexanderSein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:text="Patrick J. Alexander, SEINet data portal, Arizona - New Mexico Chapter / http://swbiodiversity.org" />
+
+                <TextView
+                    android:id="@+id/MohlenbrockUSDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:text="Robert H. Mohlenbrock, hosted by the USDA-NRCS PLANTS Database / USDA NRCS. 1992. Western wetland flora: Field office guide to plant species. West Region, Sacramento." />
+
+                <TextView
+                    android:id="@+id/ShawUSDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:text="USDA-NRCS PLANTS Database / Hurd, E.G., N.L. Shaw, J. Mastrogiuseppe, L.C. Smithman, and S. Goodrich. 1998. Field guide to Intermountain sedges. General Technical Report RMS-GTR-10. USDA Forest Service, RMRS, Ogden." />
+
+                <TextView
+                    android:id="@+id/Bowman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:text="William D. Bowman" />
+
+            </LinearLayout>
 
 
         </LinearLayout>
