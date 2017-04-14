@@ -8,7 +8,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:background="@drawable/lumi_homescreen_background_img"
+    android:background="@android:color/white"
     tools:context="com.luminousid.luminousid.Juncaceae_FieldGuideActivity">
 
     <android.support.v7.widget.RecyclerView

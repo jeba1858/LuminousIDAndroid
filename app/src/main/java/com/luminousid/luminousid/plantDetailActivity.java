@@ -9,9 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import org.parceler.Parcels;
 
@@ -48,7 +45,6 @@ public class plantDetailActivity extends AppCompatActivity {
             String flower_color = changeIfNA(forbPlant.getFlower_color());
             String flower_shape = changeIfNA(forbPlant.getFlower_shape());
             String petal_number = changeIfNA(forbPlant.getPetal_number());
-            String growth_form = changeIfNA(forbPlant.getGrowth_form());
             String habitat = changeIfNA(forbPlant.getHabitat());
             String leaf_arrangement = changeIfNA(forbPlant.getLeaf_arrangement());
             String leaf_shape_filter = changeIfNA(forbPlant.getLeaf_shape_filter());
@@ -65,7 +61,6 @@ public class plantDetailActivity extends AppCompatActivity {
             TextView forbsFlowerColor = (TextView) findViewById(R.id.forbsFlowerColor);
             TextView forbsFlowerShape = (TextView) findViewById(R.id.forbsFlowerShape);
             TextView forbsPetalNumber = (TextView) findViewById(R.id.forbsPetalNumber);
-            TextView forbsGrowthForm = (TextView) findViewById(R.id.forbsGrowthForm);
             TextView forbsHabitat = (TextView) findViewById(R.id.forbsHabitat);
             TextView forbsLeafArrangement = (TextView) findViewById(R.id.forbsLeafArrangement);
             TextView forbsLeafShape = (TextView) findViewById(R.id.forbsLeafShape);
@@ -78,10 +73,9 @@ public class plantDetailActivity extends AppCompatActivity {
             Glide.with(this).load(Uri.parse("file:///android_asset/plantphotos/forbs/" + pictureFile)).into(plantPicture);
 
             forbsSpeciesName.setText(species_name);
-            forbsGrowthForm.setText("Growth Form: " + growth_form);
             forbsCommonName.setText("Common Name: " + common_name);
             forbsSynonyms.setText("Synonyms: " + synonyms);
-            forbsFamilyName.setText("Family Name: " + family_name);
+            forbsFamilyName.setText("Family: " + family_name);
             forbsFlowerColor.setText("Flower Color: " + flower_color);
             forbsFlowerShape.setText("Flower Shape: " + flower_shape);
             forbsPetalNumber.setText("Petal Number: " + petal_number);
@@ -97,14 +91,13 @@ public class plantDetailActivity extends AppCompatActivity {
             setContentView(R.layout.activity_cyperceae_detail);
 
             // Plant detail unwrapped using Parcel Library
-            cyperceaeDetails cyperPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
+            cyperaceaeDetails cyperPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
 
             String plant_code = changeIfNA(cyperPlant.getPlant_code());
             String species_name = changeIfNA(cyperPlant.getSpecies_name());
             String common_name = changeIfNA(cyperPlant.getCommon_name());
             String synonyms = changeIfNA(cyperPlant.getSynonyms());
             String family_name = changeIfNA(cyperPlant.getFamily_name());
-            String growth_form = changeIfNA(cyperPlant.getGrowth_form());
             String habitat = changeIfNA(cyperPlant.getHabitat());
             String notes = changeIfNA(cyperPlant.getNotes());
             String photo_credit = changeIfNA(cyperPlant.getPhoto_credit());
@@ -121,7 +114,6 @@ public class plantDetailActivity extends AppCompatActivity {
             TextView CommonName = (TextView) findViewById(R.id.cyperCommonName);
             TextView Synonyms = (TextView) findViewById(R.id.cyperSynonyms);
             TextView FamilyName = (TextView) findViewById(R.id.cyperFamilyName);
-            TextView GrowthForm = (TextView) findViewById(R.id.cyperGrowthForm);
             TextView Habitat = (TextView) findViewById(R.id.cyperHabitat);
             TextView Notes = (TextView) findViewById(R.id.cyperNotes);
             TextView PhotoCredit = (TextView) findViewById(R.id.cyperPhotoCredit);
@@ -137,10 +129,9 @@ public class plantDetailActivity extends AppCompatActivity {
             Glide.with(this).load(Uri.parse("file:///android_asset/plantphotos/graminoids/" + pictureFile)).into(plantPicture);
 
             SpeciesName.setText(species_name);
-            GrowthForm.setText("Growth Form: " + growth_form);
             CommonName.setText("Common Name: " + common_name);
             Synonyms.setText("Synonyms: " + synonyms);
-            FamilyName.setText("Family Name: " + family_name);
+            FamilyName.setText("Family: " + family_name);
             Inflorescence.setText("Inflorescence: " + inflorescence);
             LeafBlade.setText("Leaf Blade: " + leaf_blade);
             SpikeColor.setText("Spike Color: " + spike_color);
@@ -162,7 +153,6 @@ public class plantDetailActivity extends AppCompatActivity {
             String common_name = changeIfNA(juncaPlant.getCommon_name());
             String synonyms = changeIfNA(juncaPlant.getSynonyms());
             String family_name = changeIfNA(juncaPlant.getFamily_name());
-            String growth_form = changeIfNA(juncaPlant.getGrowth_form());
             String habitat = changeIfNA(juncaPlant.getHabitat());
             String notes = changeIfNA(juncaPlant.getNotes());
             String photo_credit = changeIfNA(juncaPlant.getPhoto_credit());
@@ -177,7 +167,6 @@ public class plantDetailActivity extends AppCompatActivity {
             TextView CommonName = (TextView) findViewById(R.id.CommonName);
             TextView Synonyms = (TextView) findViewById(R.id.Synonyms);
             TextView FamilyName = (TextView) findViewById(R.id.FamilyName);
-            TextView GrowthForm = (TextView) findViewById(R.id.GrowthForm);
             TextView Habitat = (TextView) findViewById(R.id.Habitat);
             TextView Notes = (TextView) findViewById(R.id.Notes);
             TextView PhotoCredit = (TextView) findViewById(R.id.PhotoCredit);
@@ -191,10 +180,9 @@ public class plantDetailActivity extends AppCompatActivity {
             Glide.with(this).load(Uri.parse("file:///android_asset/plantphotos/graminoids/" + pictureFile)).into(plantPicture);
 
             SpeciesName.setText(species_name);
-            GrowthForm.setText("Growth Form: " + growth_form);
             CommonName.setText("Common Name: " + common_name);
             Synonyms.setText("Synonyms: " + synonyms);
-            FamilyName.setText("Family Name: " + family_name);
+            FamilyName.setText("Family: " + family_name);
             LeafBlade.setText("Leaf Blade: " + leaf_blade);
             Habitat.setText("Habitat: " + habitat);
             StemCrossSection.setText("Stem Cross Section: " + stem_cross_section);
@@ -213,7 +201,6 @@ public class plantDetailActivity extends AppCompatActivity {
             String common_name = changeIfNA(poaPlant.getCommon_name());
             String synonyms = changeIfNA(poaPlant.getSynonyms());
             String family_name = changeIfNA(poaPlant.getFamily_name());
-            String growth_form = changeIfNA(poaPlant.getGrowth_form());
             String habitat = changeIfNA(poaPlant.getHabitat());
             String notes = changeIfNA(poaPlant.getNotes());
             String photo_credit = changeIfNA(poaPlant.getPhoto_credit());
@@ -231,7 +218,6 @@ public class plantDetailActivity extends AppCompatActivity {
             TextView CommonName = (TextView) findViewById(R.id.CommonName);
             TextView Synonyms = (TextView) findViewById(R.id.Synonyms);
             TextView FamilyName = (TextView) findViewById(R.id.FamilyName);
-            TextView GrowthForm = (TextView) findViewById(R.id.GrowthForm);
             TextView Habitat = (TextView) findViewById(R.id.Habitat);
             TextView Notes = (TextView) findViewById(R.id.Notes);
             TextView PhotoCredit = (TextView) findViewById(R.id.PhotoCredit);
@@ -248,10 +234,9 @@ public class plantDetailActivity extends AppCompatActivity {
             Glide.with(this).load(Uri.parse("file:///android_asset/plantphotos/graminoids/" + pictureFile)).into(plantPicture);
 
             SpeciesName.setText(species_name);
-            GrowthForm.setText("Growth Form: " + growth_form);
             CommonName.setText("Common Name: " + common_name);
             Synonyms.setText("Synonyms: " + synonyms);
-            FamilyName.setText("Family Name: " + family_name);
+            FamilyName.setText("Family: " + family_name);
             Inflorescence.setText("Inflorescence: " + inflorescence);
             LeafBlade.setText("Leaf Blade: " + leaf_blade);
             Awns.setText("Awns: " + awns);
@@ -274,11 +259,9 @@ public class plantDetailActivity extends AppCompatActivity {
             String common_name = changeIfNA(deciPlant.getCommon_name());
             String synonyms = changeIfNA(deciPlant.getSynonyms());
             String family_name = changeIfNA(deciPlant.getFamily_name());
-            String growth_form = changeIfNA(deciPlant.getGrowth_form());
             String notes = changeIfNA(deciPlant.getNotes());
             String photo_credit = changeIfNA(deciPlant.getPhoto_credit());
 
-            String cone = changeIfNA(deciPlant.getCone());
             String leaf_arrangement = changeIfNA(deciPlant.getLeaf_arrangement());
             String leaf_margin = changeIfNA(deciPlant.getLeaf_margin());
             String leaf_shape = changeIfNA(deciPlant.getLeaf_shape());
@@ -291,11 +274,9 @@ public class plantDetailActivity extends AppCompatActivity {
             TextView CommonName = (TextView) findViewById(R.id.CommonName);
             TextView Synonyms = (TextView) findViewById(R.id.Synonyms);
             TextView FamilyName = (TextView) findViewById(R.id.FamilyName);
-            TextView GrowthForm = (TextView) findViewById(R.id.GrowthForm);
             TextView Notes = (TextView) findViewById(R.id.Notes);
             TextView PhotoCredit = (TextView) findViewById(R.id.PhotoCredit);
 
-            TextView Cone = (TextView) findViewById(R.id.Cone);
             TextView LeafArrangement = (TextView) findViewById(R.id.LeafArrangement);
             TextView LeafMargin = (TextView) findViewById(R.id.LeafMargin);
             TextView LeafShape = (TextView) findViewById(R.id.LeafShape);
@@ -307,14 +288,12 @@ public class plantDetailActivity extends AppCompatActivity {
             //Glide.with(this).load(Uri.parse("file:///android_asset/plantphotos/woodys/" + pictureFile)).into(plantPicture);
 
             SpeciesName.setText(species_name);
-            GrowthForm.setText("Growth Form: " + growth_form);
             CommonName.setText("Common Name: " + common_name);
             Synonyms.setText("Synonyms: " + synonyms);
-            FamilyName.setText("Family Name: " + family_name);
-            Cone.setText("Inflorescence: " + cone);
-            LeafArrangement.setText("Leaf Blade: " + leaf_arrangement);
-            LeafMargin.setText("Petal Number: " + leaf_margin);
-            LeafShape.setText("Stem Cross Section: " + leaf_shape);
+            FamilyName.setText("Family: " + family_name);
+            LeafArrangement.setText("Leaf Arrangement: " + leaf_arrangement);
+            LeafMargin.setText("Leaf Margin: " + leaf_margin);
+            LeafShape.setText("Leaf Shape: " + leaf_shape);
             LeafType.setText("Leaf Type: " + leaf_type);
             Notes.setText("Notes: " + notes);
             PhotoCredit.setText("Photo Credit: " + photo_credit);
@@ -332,7 +311,6 @@ public class plantDetailActivity extends AppCompatActivity {
             String common_name = changeIfNA(needlePlant.getCommon_name());
             String synonyms = changeIfNA(needlePlant.getSynonyms());
             String family_name = changeIfNA(needlePlant.getFamily_name());
-            String growth_form = changeIfNA(needlePlant.getGrowth_form());
             String notes = changeIfNA(needlePlant.getNotes());
             String photo_credit = changeIfNA(needlePlant.getPhoto_credit());
 
@@ -349,7 +327,6 @@ public class plantDetailActivity extends AppCompatActivity {
             TextView CommonName = (TextView) findViewById(R.id.CommonName);
             TextView Synonyms = (TextView) findViewById(R.id.Synonyms);
             TextView FamilyName = (TextView) findViewById(R.id.FamilyName);
-            TextView GrowthForm = (TextView) findViewById(R.id.GrowthForm);
             TextView Notes = (TextView) findViewById(R.id.Notes);
             TextView PhotoCredit = (TextView) findViewById(R.id.PhotoCredit);
 
@@ -365,10 +342,9 @@ public class plantDetailActivity extends AppCompatActivity {
             //Glide.with(this).load(Uri.parse("file:///android_asset/plantphotos/woodys/" + pictureFile)).into(plantPicture);
 
             SpeciesName.setText(species_name);
-            GrowthForm.setText("Growth Form: " + growth_form);
             CommonName.setText("Common Name: " + common_name);
             Synonyms.setText("Synonyms: " + synonyms);
-            FamilyName.setText("Family Name: " + family_name);
+            FamilyName.setText("Family: " + family_name);
             Cone.setText("Cone: " + cone);
             NeedleApex.setText("Needle Apex: " + needle_apex);
             NeedleArrangement.setText("Needle Arrangement: " + needle_arrangement);
@@ -392,7 +368,7 @@ public class plantDetailActivity extends AppCompatActivity {
 
         if (testString.equalsIgnoreCase("NA")) {
 
-            testString = "None";
+            testString = "none";
         }
 
         return testString;

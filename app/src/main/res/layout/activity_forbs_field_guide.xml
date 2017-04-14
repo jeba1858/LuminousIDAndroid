@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/lumi_homescreen_background_img"
+    android:background="@android:color/white"
     tools:context="com.luminousid.luminousid.Forbs_FieldGuideActivity">
 
     <android.support.v7.widget.RecyclerView

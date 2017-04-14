@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.luminousid.luminousid.R;
-
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class Graminoids_FieldGuideActivity extends AppCompatActivity implements View.OnClickListener {
@@ -46,7 +44,7 @@ public class Graminoids_FieldGuideActivity extends AppCompatActivity implements 
     }
 
     public void gotoCyperceae(){
-        Intent intent = new Intent(Graminoids_FieldGuideActivity.this, Cyperceae_FieldGuideActivity.class);
+        Intent intent = new Intent(Graminoids_FieldGuideActivity.this, Cyperaceae_FieldGuideActivity.class);
         startActivity(intent);
     }
 

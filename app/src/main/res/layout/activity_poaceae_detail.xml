@@ -81,20 +81,28 @@
                 android:textSize="20dp"/>
 
             <TextView
-                android:id="@+id/GrowthForm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Growth form: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp"/>
-
-            <TextView
                 android:id="@+id/FamilyName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Family name: "
                 android:textColor="@android:color/white"
                 android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/StemCrossSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stem Cross Section: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/LeafBlade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Leaf Blade: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/Awns"
@@ -117,22 +125,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Florets per Spikelet: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp"/>
-
-            <TextView
-                android:id="@+id/LeafBlade"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Leaf Blade: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp"/>
-
-            <TextView
-                android:id="@+id/StemCrossSection"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Stem Cross Section: "
                 android:textColor="@android:color/white"
                 android:textSize="20dp"/>
 

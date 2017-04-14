@@ -14,7 +14,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static com.luminousid.luminousid.R.layout.speciesnamelist;
 
-public class Cyperceae_FieldGuideActivity extends AppCompatActivity {
+public class Cyperaceae_FieldGuideActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -49,10 +49,10 @@ public class Cyperceae_FieldGuideActivity extends AppCompatActivity {
         mRecyclerView.addItemDecoration(mDividerItemDecoration);
 
         // Using Firebase UI library to list all the graminoid(cyperceae) plants (species name, common name)
-        FirebaseRecyclerAdapter speciesUIAdapter = new FirebaseRecyclerAdapter<cyperceaeDetails, cyperceaeHolder>(cyperceaeDetails.class, speciesnamelist, cyperceaeHolder.class, cyperRef)
+        FirebaseRecyclerAdapter speciesUIAdapter = new FirebaseRecyclerAdapter<cyperaceaeDetails, cyperaceaeHolder>(cyperaceaeDetails.class, speciesnamelist, cyperaceaeHolder.class, cyperRef)
         {
             @Override
-            protected void populateViewHolder(cyperceaeHolder holder, cyperceaeDetails speciesnameobj, int position)
+            protected void populateViewHolder(cyperaceaeHolder holder, cyperaceaeDetails speciesnameobj, int position)
             {
 
                 holder.bindPlant(speciesnameobj);

@@ -9,6 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -27,12 +34,15 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        // Get snapshot of Field Guide database
+        //takeFieldGuideSnapshot();
+
         // Buttons on screen
         Button logoutButton = (Button) findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(this);
 
-        findViewById(R.id.fieldGuideButton).setOnClickListener(this);
-        findViewById(R.id.myObservationsButton).setOnClickListener(this);
+        findViewById(R.id.fieldguideButton).setOnClickListener(this);
+        findViewById(R.id.observationsButton).setOnClickListener(this);
         findViewById(R.id.settingsButton).setOnClickListener(this);
         findViewById(R.id.glossaryButton).setOnClickListener(this);
         findViewById(R.id.aboutButton).setOnClickListener(this);
@@ -51,6 +61,13 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             System.out.println("Currently signed in: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
         }
 
+    }
+
+    public void onStart(){
+        super.onStart();
+
+        // Get snapshot of Field Guide database
+        takeFieldGuideSnapshot();
     }
 
     @Override
@@ -76,7 +93,7 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             gotoAbout();
         }
 
-        else if(i == R.id.fieldGuideButton){
+        else if(i == R.id.fieldguideButton){
             gotoFieldGuide();
         }
 
@@ -97,6 +114,107 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
     public void gotoFieldGuide(){
         Intent intent = new Intent(Home_screenActivity.this, Intro_FieldGuideActivity.class);
         startActivity(intent);
+    }
+
+    public void takeFieldGuideSnapshot(){
+
+        final ArrayList<forbsDetails> allforbs = new ArrayList<>();
+        final ArrayList<cyperaceaeDetails> allcyper = new ArrayList<>();
+        final ArrayList<juncaceaeDetails> alljunca = new ArrayList<>();
+        final ArrayList<poaceaeDetails> allpoa = new ArrayList<>();
+        final ArrayList<deciduousDetails> alldeci = new ArrayList<>();
+        final ArrayList<needleDetails> allneedle = new ArrayList<>();
+
+        DatabaseReference forbsRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/forbs");
+        DatabaseReference cyperRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/graminoids/cyperaceae");
+        DatabaseReference juncaRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/graminoids/juncaceae");
+        DatabaseReference poaRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/graminoids/poaceae");
+        DatabaseReference deciRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/woody/deciduous");
+        DatabaseReference needleRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/woody/needle");
+
+        forbsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    allforbs.add(snapshot.getValue(forbsDetails.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        cyperRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    allcyper.add(snapshot.getValue(cyperaceaeDetails.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        juncaRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    alljunca.add(snapshot.getValue(juncaceaeDetails.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        poaRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    allpoa.add(snapshot.getValue(poaceaeDetails.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        deciRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    alldeci.add(snapshot.getValue(deciduousDetails.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        needleRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    allneedle.add(snapshot.getValue(needleDetails.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

@@ -11,7 +11,7 @@ import org.parceler.Parcel;
  */
 
 @Parcel(Parcel.Serialization.BEAN)
-public class cyperceaeDetails {
+public class cyperaceaeDetails {
 
     private String species_name = null;
     private String common_name = null;
@@ -28,14 +28,14 @@ public class cyperceaeDetails {
     private String plant_code = null;
     private String synonyms = null;
 
-    public cyperceaeDetails(){
+    public cyperaceaeDetails(){
 
     }
 
-    public cyperceaeDetails(String species_name, String common_name, int plant_thumbnail, String family_name,
-                            String growth_form, String inflorescence, String leaf_blade,
-                            String spike_color, String stem_cross_section, String habitat, String notes,
-                            String photo_credit, String plant_code, String synonyms){
+    public cyperaceaeDetails(String species_name, String common_name, int plant_thumbnail, String family_name,
+                             String growth_form, String inflorescence, String leaf_blade,
+                             String spike_color, String stem_cross_section, String habitat, String notes,
+                             String photo_credit, String plant_code, String synonyms){
 
         this.species_name = species_name;
         this.common_name = common_name;

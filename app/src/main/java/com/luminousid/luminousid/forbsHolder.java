@@ -34,9 +34,6 @@ public class forbsHolder extends RecyclerView.ViewHolder implements View.OnClick
 
     View mView;
     Context mContext;
-    FirebaseStorage mStorage = FirebaseStorage.getInstance();
-    StorageReference mStorageRef = mStorage.getReferenceFromUrl("gs://speciesid-ca814.appspot.com/");
-    StorageReference forbsPicRef = mStorageRef.child("field_guide/flower.jpg");
 
     public forbsHolder(View itemView){
         super(itemView);

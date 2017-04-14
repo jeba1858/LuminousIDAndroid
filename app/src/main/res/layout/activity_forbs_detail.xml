@@ -81,14 +81,6 @@
                 android:textSize="20dp"/>
 
             <TextView
-                android:id="@+id/forbsGrowthForm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Growth Form: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp" />
-
-            <TextView
                 android:id="@+id/forbsFamilyName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,26 +89,10 @@
                 android:textSize="20dp"/>
 
             <TextView
-                android:id="@+id/forbsLeafShape"
+                android:id="@+id/forbsFlowerColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Leaf Shape: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/forbsLeafArrangement"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Leaf Arrangement: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/forbsPetalNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Petal Number: "
+                android:text="Flower Color: "
                 android:textColor="@android:color/white"
                 android:textSize="20dp" />
 
@@ -129,12 +105,28 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/forbsFlowerColor"
+                android:id="@+id/forbsPetalNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Flower Color: "
+                android:text="Petal Number: "
                 android:textColor="@android:color/white"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/forbsLeafArrangement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Leaf Arrangement: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/forbsLeafShape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Leaf Shape: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/forbsHabitat"

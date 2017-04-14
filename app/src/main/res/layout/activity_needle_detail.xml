@@ -81,14 +81,6 @@
                 android:textSize="20dp"/>
 
             <TextView
-                android:id="@+id/GrowthForm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Growth form: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp"/>
-
-            <TextView
                 android:id="@+id/FamilyName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,12 +89,12 @@
                 android:textSize="20dp"/>
 
             <TextView
-                android:id="@+id/NeedleApex"
+                android:id="@+id/LeafType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Needle Apex: "
+                android:text="Leaf Type: "
                 android:textColor="@android:color/white"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/NeedleArrangement"
@@ -110,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:text="Needle Arrangement: "
                 android:textColor="@android:color/white"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/NeedlePerFascile"
@@ -118,13 +110,13 @@
                 android:layout_height="wrap_content"
                 android:text="Needles per Fascile: "
                 android:textColor="@android:color/white"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/LeafType"
+                android:id="@+id/NeedleApex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Leaf Type: "
+                android:text="Needle Apex: "
                 android:textColor="@android:color/white"
                 android:textSize="20dp"/>
 

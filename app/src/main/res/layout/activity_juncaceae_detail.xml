@@ -81,14 +81,6 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/GrowthForm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Growth form: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp"/>
-
-            <TextView
                 android:id="@+id/FamilyName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,18 +89,18 @@
                 android:textSize="20dp"/>
 
             <TextView
-                android:id="@+id/LeafBlade"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Inflorescence: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp"/>
-
-            <TextView
                 android:id="@+id/StemCrossSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Leaf blade: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/LeafBlade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Inflorescence: "
                 android:textColor="@android:color/white"
                 android:textSize="20dp"/>
 

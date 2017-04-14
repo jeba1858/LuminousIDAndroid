@@ -13,58 +13,6 @@
     android:background="@drawable/lumi_homescreen_background_img"
     tools:context="com.luminousid.luminousid.Home_screenActivity">
 
-    <Button
-        android:text="Settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/fieldGuideButton"
-        android:layout_alignStart="@+id/fieldGuideButton"
-        android:layout_marginBottom="61dp"
-        android:id="@+id/settingsButton" />
-
-    <Button
-        android:text="My Observations"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/myObservationsButton"
-        android:layout_alignBaseline="@+id/fieldGuideButton"
-        android:layout_alignBottom="@+id/fieldGuideButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="Field Guide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/fieldGuideButton"
-        android:layout_marginBottom="81dp"
-        android:layout_above="@+id/settingsButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp" />
-
-    <Button
-        android:text="Glossary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/glossaryButton"
-        android:layout_alignBaseline="@+id/settingsButton"
-        android:layout_alignBottom="@+id/settingsButton"
-        android:layout_alignLeft="@+id/myObservationsButton"
-        android:layout_alignStart="@+id/myObservationsButton"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp" />
-
-    <Button
-        android:text="About"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/aboutButton" />
-
     <TextView
         android:text="guest@nowhere.com"
         android:textSize="20dp"
@@ -92,13 +40,124 @@
         android:layout_alignParentEnd="true" />
 
     <ImageView
+        android:id="@+id/lumiLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/logoutButton"
+        android:layout_marginTop="27dp"
+        android:cropToPadding="false"
+        app:srcCompat="@mipmap/lumi_logo" />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/settings"
+        android:layout_below="@+id/observationsButton"
+        android:layout_alignLeft="@+id/observationsButton"
+        android:layout_alignStart="@+id/observationsButton" />
+
+    <TextView
+        android:id="@+id/settingsText"
+        fontPath="fonts/Snippet.ttf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/lumi_logo"
-        android:id="@+id/imageView"
-        android:cropToPadding="false"
-        android:layout_marginBottom="12dp"
-        android:layout_above="@+id/myObservationsButton"
+        android:text="Settings"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:layout_below="@+id/settingsButton"
+        android:layout_alignLeft="@+id/settingsButton"
+        android:layout_alignStart="@+id/settingsButton" />
+
+    <ImageButton
+        android:id="@+id/glossaryButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/glossary"
+        android:layout_alignTop="@+id/settingsButton"
+        android:layout_alignLeft="@+id/fieldguideButton"
+        android:layout_alignStart="@+id/fieldguideButton" />
+
+    <TextView
+        android:id="@+id/glossaryText"
+        fontPath="fonts/Snippet.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/glossaryButton"
+        android:layout_alignRight="@+id/glossaryButton"
+        android:layout_below="@+id/glossaryButton"
+        android:text="Glossary"
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
+
+    <ImageButton
+        android:id="@+id/observationsButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/myobservationsnormal"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_above="@+id/fieldguideText"
+        android:layout_alignLeft="@+id/obsText"
+        android:layout_alignStart="@+id/obsText" />
+
+    <TextView
+        android:id="@+id/obsText"
+        fontPath="fonts/Snippet.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Observations"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:layout_below="@+id/observationsButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/fieldguideButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/fieldguidenormal"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/fieldguideText"
+        android:layout_alignStart="@+id/fieldguideText"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp" />
+
+    <TextView
+        android:id="@+id/fieldguideText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Field Guide"
+        android:textColor="@android:color/white"
+        fontPath="fonts/Snippet.ttf"
+        android:textSize="20dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_below="@+id/fieldguideButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:id="@+id/aboutButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/aboutnormal"
+        android:layout_below="@+id/glossaryText"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/aboutText"
+        fontPath="fonts/Snippet.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About Us"
+        android:textColor="@android:color/white"
+        android:textSize="10dp"
+        android:layout_below="@+id/aboutButton"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

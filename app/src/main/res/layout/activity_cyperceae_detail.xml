@@ -81,14 +81,6 @@
                 android:textSize="20dp"/>
 
             <TextView
-                android:id="@+id/cyperGrowthForm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Growth form: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp"/>
-
-            <TextView
                 android:id="@+id/cyperFamilyName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,12 +89,12 @@
                 android:textSize="20dp"/>
 
             <TextView
-                android:id="@+id/cyperInflorescence"
+                android:id="@+id/cyperStemCrossSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Inflorescence: "
+                android:text="Stem cross section: "
                 android:textColor="@android:color/white"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/cyperLeafBlade"
@@ -110,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:text="Leaf blade: "
                 android:textColor="@android:color/white"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/cyperSpikeColor"
@@ -118,13 +110,13 @@
                 android:layout_height="wrap_content"
                 android:text="Spike color: "
                 android:textColor="@android:color/white"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/cyperStemCrossSection"
+                android:id="@+id/cyperInflorescence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Stem cross section: "
+                android:text="Inflorescence: "
                 android:textColor="@android:color/white"
                 android:textSize="20dp"/>
 

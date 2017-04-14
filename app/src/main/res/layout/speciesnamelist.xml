@@ -14,10 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/plantThumbnail"
         android:layout_toEndOf="@+id/plantThumbnail"
-        android:textSize="30sp"
+        android:textSize="30dp"
         fontPath="fonts/Snippet.ttf"
         android:paddingTop="5sp"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:id="@+id/common_nameText"
@@ -28,10 +28,10 @@
         android:layout_toEndOf="@+id/plantThumbnail"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textSize="30sp"
+        android:textSize="20dp"
         fontPath="fonts/Snippet.ttf"
         android:layout_marginTop="5sp"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/darker_gray"/>
 
     <ImageView
         android:id="@+id/plantThumbnail"

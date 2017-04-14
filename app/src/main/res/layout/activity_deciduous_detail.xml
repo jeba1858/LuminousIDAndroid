@@ -81,20 +81,20 @@
                 android:textSize="20dp"/>
 
             <TextView
-                android:id="@+id/GrowthForm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Growth form: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp"/>
-
-            <TextView
                 android:id="@+id/FamilyName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Family name: "
                 android:textColor="@android:color/white"
                 android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/LeafType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Leaf Type: "
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/LeafArrangement"
@@ -117,22 +117,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Leaf Shape: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp"/>
-
-            <TextView
-                android:id="@+id/LeafType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Leaf Type: "
-                android:textColor="@android:color/white"
-                android:textSize="20dp"/>
-
-            <TextView
-                android:id="@+id/Cone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cone: "
                 android:textColor="@android:color/white"
                 android:textSize="20dp"/>
 
