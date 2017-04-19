@@ -15,7 +15,6 @@ public class forbsDetails {
 
     private String species_name = null;
     private String common_name = null;
-    private int plant_thumbnail = 0;
     private String family_name = null;
     private String flower_color = null;
     private String flower_shape = null;
@@ -33,14 +32,13 @@ public class forbsDetails {
 
     }
 
-    public forbsDetails(String species_name, String common_name, int plant_thumbnail, String family_name,
+    public forbsDetails(String species_name, String common_name, String family_name,
                         String flower_color, String flower_shape, String growth_form, String habitat,
                         String leaf_arrangement, String leaf_shape_filter, String notes,
                         String petal_number, String photo_credit, String plant_code, String synonyms){
 
         this.species_name = species_name;
         this.common_name = common_name;
-        this.plant_thumbnail = plant_thumbnail;
         this.family_name = family_name;
         this.flower_color = flower_color;
         this.flower_shape = flower_shape;
@@ -66,10 +64,6 @@ public class forbsDetails {
     }
 
     public void setCommon_name(String newCommon_name) { this.common_name = newCommon_name; }
-
-    public int getPlant_thumbnail() { return plant_thumbnail; }
-
-    public void setPlant_thumbnail(int newPlant_thumbnail) { this.plant_thumbnail = newPlant_thumbnail; }
 
     public String getFamily_name() { return family_name; }
 

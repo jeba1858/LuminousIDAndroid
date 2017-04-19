@@ -40,7 +40,8 @@
         <activity android:name=".Needle_FieldGuideActivity" />
         <activity android:name=".Graminoids_FieldGuideActivity" />
         <activity android:name=".Juncaceae_FieldGuideActivity" />
-        <activity android:name=".Poaceae_FieldGuideActivity"></activity>
+        <activity android:name=".Poaceae_FieldGuideActivity" />
+        <activity android:name=".PlantFilterActivity"></activity>
     </application>
 
 </manifest>

@@ -87,7 +87,7 @@ public class plantDetailActivity extends AppCompatActivity {
 
         }
 
-        else if(plantType.equalsIgnoreCase("cyperceae")){
+        else if(plantType.equalsIgnoreCase("cyperaceae")){
             setContentView(R.layout.activity_cyperceae_detail);
 
             // Plant detail unwrapped using Parcel Library
@@ -284,8 +284,8 @@ public class plantDetailActivity extends AppCompatActivity {
 
             // Set information and picture.
             // Using Glide library for image loading.
-            //String pictureFile = plant_code + "_1.jpg";
-            //Glide.with(this).load(Uri.parse("file:///android_asset/plantphotos/woodys/" + pictureFile)).into(plantPicture);
+            String pictureFile = plant_code + ".jpg";
+            Glide.with(this).load(Uri.parse("file:///android_asset/plantphotos/woody/" + pictureFile)).into(plantPicture);
 
             SpeciesName.setText(species_name);
             CommonName.setText("Common Name: " + common_name);
@@ -338,8 +338,8 @@ public class plantDetailActivity extends AppCompatActivity {
 
             // Set information and picture.
             // Using Glide library for image loading.
-            //String pictureFile = plant_code + "_1.jpg";
-            //Glide.with(this).load(Uri.parse("file:///android_asset/plantphotos/woodys/" + pictureFile)).into(plantPicture);
+            String pictureFile = plant_code + ".jpg";
+            Glide.with(this).load(Uri.parse("file:///android_asset/plantphotos/woody/" + pictureFile)).into(plantPicture);
 
             SpeciesName.setText(species_name);
             CommonName.setText("Common Name: " + common_name);
@@ -348,7 +348,7 @@ public class plantDetailActivity extends AppCompatActivity {
             Cone.setText("Cone: " + cone);
             NeedleApex.setText("Needle Apex: " + needle_apex);
             NeedleArrangement.setText("Needle Arrangement: " + needle_arrangement);
-            NeedlePerFascile.setText("Needles per Fascile: " + needle_per_fascile);
+            NeedlePerFascile.setText("Needles per Fascicle: " + needle_per_fascile);
             LeafType.setText("Leaf Type: " + leaf_type);
             Notes.setText("Notes: " + notes);
             PhotoCredit.setText("Photo Credit: " + photo_credit);
