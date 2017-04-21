@@ -52,6 +52,7 @@
         <activity android:name=".Graminoids_FieldGuideActivity" />
         <activity android:name=".Juncaceae_FieldGuideActivity" />
         <activity android:name=".Poaceae_FieldGuideActivity" />
+        <activity android:name=".PlantFilterActivity"></activity>
         <activity android:name=".AddObs">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

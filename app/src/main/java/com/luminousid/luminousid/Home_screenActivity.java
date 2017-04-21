@@ -86,7 +86,10 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_home_screen);
 
         // Get snapshot of Field Guide database
-        //takeFieldGuideSnapshot();
+        System.out.println("Attempting to take snapshot");
+        takeFieldGuideSnapshot();
+        System.out.println("Snapshot taken");
+        System.out.println("Size: " + PlantArrayManager.getInstance().getglobalForbsArray().size());
 
         // Buttons on screen
         Button logoutButton = (Button) findViewById(R.id.logoutButton);
@@ -119,7 +122,9 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         super.onStart();
 
         // Get snapshot of Field Guide database
+        System.out.println("Attempting to take snapshot");
         takeFieldGuideSnapshot();
+        System.out.println("Snapshot taken");
     }
 
     @Override
@@ -168,14 +173,8 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         startActivity(intent);
     }
 
-    public void takeFieldGuideSnapshot(){
 
-        final ArrayList<forbsDetails> allforbs = new ArrayList<>();
-        final ArrayList<cyperaceaeDetails> allcyper = new ArrayList<>();
-        final ArrayList<juncaceaeDetails> alljunca = new ArrayList<>();
-        final ArrayList<poaceaeDetails> allpoa = new ArrayList<>();
-        final ArrayList<deciduousDetails> alldeci = new ArrayList<>();
-        final ArrayList<needleDetails> allneedle = new ArrayList<>();
+    public void takeFieldGuideSnapshot(){
 
         DatabaseReference forbsRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/forbs");
         DatabaseReference cyperRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/graminoids/cyperaceae");
@@ -184,12 +183,18 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         DatabaseReference deciRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/woody/deciduous");
         DatabaseReference needleRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/woody/needle");
 
-        forbsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        forbsRef.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<forbsDetails> newForbArray = new ArrayList<forbsDetails>();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    allforbs.add(snapshot.getValue(forbsDetails.class));
+                    System.out.println("Snapshot: " + snapshot);
+                    newForbArray.add(snapshot.getValue(forbsDetails.class));
                 }
+
+                PlantArrayManager.getInstance().setglobalForbsArray(newForbArray);
             }
 
             @Override
@@ -198,12 +203,17 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-        cyperRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        cyperRef.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<cyperaceaeDetails> newCyperArray = new ArrayList<>();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    allcyper.add(snapshot.getValue(cyperaceaeDetails.class));
+                    System.out.println("Snapshot: " + snapshot);
+                    newCyperArray.add(snapshot.getValue(cyperaceaeDetails.class));
                 }
+
+                PlantArrayManager.getInstance().setGlobalCyperArray(newCyperArray);
             }
 
             @Override
@@ -212,12 +222,17 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-        juncaRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        juncaRef.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<juncaceaeDetails> newJuncaArray = new ArrayList<juncaceaeDetails>();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    alljunca.add(snapshot.getValue(juncaceaeDetails.class));
+                    System.out.println("Snapshot: " + snapshot);
+                    newJuncaArray.add(snapshot.getValue(juncaceaeDetails.class));
                 }
+
+                PlantArrayManager.getInstance().setGlobalJuncaArray(newJuncaArray);
             }
 
             @Override
@@ -226,12 +241,17 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-        poaRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        poaRef.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<poaceaeDetails> newPoaArray = new ArrayList<poaceaeDetails>();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    allpoa.add(snapshot.getValue(poaceaeDetails.class));
+                    System.out.println("Snapshot: " + snapshot);
+                    newPoaArray.add(snapshot.getValue(poaceaeDetails.class));
                 }
+
+                PlantArrayManager.getInstance().setGlobalPoaArray(newPoaArray);
             }
 
             @Override
@@ -240,12 +260,17 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-        deciRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        deciRef.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<deciduousDetails> newDeciArray = new ArrayList<deciduousDetails>();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    alldeci.add(snapshot.getValue(deciduousDetails.class));
+                    System.out.println("Snapshot: " + snapshot);
+                    newDeciArray.add(snapshot.getValue(deciduousDetails.class));
                 }
+
+                PlantArrayManager.getInstance().setGlobalDeciArray(newDeciArray);
             }
 
             @Override
@@ -254,12 +279,17 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-        needleRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        needleRef.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<needleDetails> newNeedleArray = new ArrayList<needleDetails>();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    allneedle.add(snapshot.getValue(needleDetails.class));
+                    System.out.println("Snapshot: " + snapshot);
+                    newNeedleArray.add(snapshot.getValue(needleDetails.class));
                 }
+
+                PlantArrayManager.getInstance().setGlobalNeedleArray(newNeedleArray);
             }
 
             @Override
