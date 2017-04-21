@@ -6,6 +6,17 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!--- Permission to allow app to get best location services -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- Says that the app  uses a camera and writes to external storage -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".FontHelper"
@@ -40,7 +51,25 @@
         <activity android:name=".Needle_FieldGuideActivity" />
         <activity android:name=".Graminoids_FieldGuideActivity" />
         <activity android:name=".Juncaceae_FieldGuideActivity" />
-        <activity android:name=".Poaceae_FieldGuideActivity"></activity>
+        <activity android:name=".Poaceae_FieldGuideActivity" />
+        <activity android:name=".AddObs">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ViewObs" />
+
+        <!-- add file provider for add observation -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
     </application>
 
 </manifest>

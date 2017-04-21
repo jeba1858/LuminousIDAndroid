@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,8 @@ import com.bumptech.glide.Glide;
 import org.parceler.Parcels;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
+import static com.luminousid.luminousid.R.id.addObsButton;
 
 public class plantDetailActivity extends AppCompatActivity {
 
@@ -372,5 +375,18 @@ public class plantDetailActivity extends AppCompatActivity {
         }
 
         return testString;
+    }
+    public void onClick(View v) {
+        int i = v.getId();
+
+        // Check what button user presses, go there.
+
+        if (i == addObsButton) {
+            gotoObservation();
+        }
+    }
+    public void gotoObservation(){
+        Intent intent = new Intent(plantDetailActivity.this, AddObs.class);
+        startActivity(intent);
     }
 }

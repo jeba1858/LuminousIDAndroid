@@ -1,6 +1,12 @@
 package com.luminousid.luminousid;
 
+import android.content.Intent;
+import android.view.View;
+
 import org.parceler.Parcel;
+
+import static com.luminousid.luminousid.R.id.addObsButton;
+import static com.luminousid.luminousid.R.id.logoutButton;
 
 /**
  * Created by chase on 3/18/2017.
@@ -118,4 +124,5 @@ public class forbsDetails {
     public String getSynonyms() { return synonyms; }
 
     public void setSynonyms(String synonyms) { this.synonyms = synonyms; }
+
 }

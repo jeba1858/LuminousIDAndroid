@@ -1,13 +1,35 @@
 package com.luminousid.luminousid;
 
+import android.*;
+import android.Manifest;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStates;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,9 +41,14 @@ import java.util.ArrayList;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static com.luminousid.luminousid.AddObs.ALLOW_KEY;
 import static com.luminousid.luminousid.R.id.logoutButton;
 
 public class Home_screenActivity extends AppCompatActivity implements View.OnClickListener {
+
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 100;
+    public static final String ALLOW_KEY = "ALLOWED";
+    public static final String LOCATION_PREF = "location_pref";
 
     // Get Snippet Font for page. Check FontHelper class for more info.
     @Override
@@ -31,6 +58,30 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        //Get Location Premissions
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (getFromPref(this, ALLOW_KEY)) {
+                showAlert();
+            } else if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                // Should we show an explanation?
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    showAlert();
+                } else {
+                    // No explanation needed, we can request the permission.
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                            MY_PERMISSIONS_REQUEST_LOCATION);
+                }
+            }
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
@@ -62,6 +113,7 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         }
 
     }
+
 
     public void onStart(){
         super.onStart();
@@ -216,5 +268,110 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             }
         });
     }
+
+    //More location check
+    public static void saveToPreferences(Context context, String key, Boolean allowed) {
+        SharedPreferences myPrefs = context.getSharedPreferences(LOCATION_PREF,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = myPrefs.edit();
+        prefsEditor.putBoolean(key, allowed);
+        prefsEditor.commit();
+    }
+
+    public static Boolean getFromPref(Context context, String key) {
+        SharedPreferences myPrefs = context.getSharedPreferences(LOCATION_PREF,
+                Context.MODE_PRIVATE);
+        return (myPrefs.getBoolean(key, false));
+    }
+
+    private void showAlert() {
+        AlertDialog alertDialog = new AlertDialog.Builder(Home_screenActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("App needs to access your GPS Location.");
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "DONT ALLOW",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        finish();
+                    }
+                });
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "ALLOW",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        ActivityCompat.requestPermissions(Home_screenActivity.this,
+                                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                MY_PERMISSIONS_REQUEST_LOCATION);
+                    }
+                });
+        alertDialog.show();
+    }
+
+    private void showSettingsAlert() {
+        AlertDialog alertDialog = new AlertDialog.Builder(Home_screenActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("App needs to access your GPS location.");
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "DONT ALLOW",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        //finish();
+                    }
+                });
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "SETTINGS",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        startInstalledAppDetailsActivity(Home_screenActivity.this);
+                    }
+                });
+
+        alertDialog.show();
+    }
+    public static void startInstalledAppDetailsActivity(final Activity context) {
+        if (context == null) {
+            return;
+        }
+
+        final Intent i = new Intent();
+        i.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        i.addCategory(Intent.CATEGORY_DEFAULT);
+        i.setData(Uri.parse("package:" + context.getPackageName()));
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        context.startActivity(i);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
+
 
 }

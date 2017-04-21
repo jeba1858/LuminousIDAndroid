@@ -29,12 +29,13 @@
 
                 <Button
                     android:id="@+id/addObsButton"
+                    fontPath="fonts/Snippet.ttf"
                     android:layout_width="196dp"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:onClick="onClick"
                     android:text="ADD OBSERVATION"
-                    fontPath="fonts/Snippet.ttf"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/transparent"/>
+                    android:textColor="@android:color/white" />
 
                 <Button
                     android:id="@+id/mapButton"
