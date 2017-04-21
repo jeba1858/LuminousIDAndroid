@@ -9,9 +9,9 @@
 
     <Button
         android:id="@+id/cyperButton"
-        android:layout_width="240dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="57dp"
+        android:layout_width="260sp"
+        android:layout_height="85sp"
+        android:layout_marginBottom="60sp"
         android:background="@drawable/cyperaceae_title"
         android:layout_above="@+id/juncaButton"
         android:layout_alignLeft="@+id/juncaButton"
@@ -19,20 +19,20 @@
 
     <Button
         android:id="@+id/juncaButton"
-        android:layout_width="240dp"
-        android:layout_height="75dp"
+        android:layout_width="260sp"
+        android:layout_height="85sp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:background="@drawable/juncaceae_title"/>
 
     <Button
         android:id="@+id/poaButton"
-        android:layout_width="240dp"
-        android:layout_height="75dp"
+        android:layout_width="260sp"
+        android:layout_height="85sp"
         android:layout_alignEnd="@+id/juncaButton"
         android:layout_alignRight="@+id/juncaButton"
         android:layout_below="@+id/juncaButton"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60sp"
         android:background="@drawable/poaceae_title"/>
 
 </RelativeLayout>

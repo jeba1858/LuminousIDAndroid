@@ -91,6 +91,9 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         System.out.println("Snapshot taken");
         System.out.println("Size: " + PlantArrayManager.getInstance().getglobalForbsArray().size());
 
+        // Make all the glossary entries
+        makeGlossaryEntries();
+
         // Buttons on screen
         Button logoutButton = (Button) findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(this);
@@ -154,6 +157,10 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             gotoFieldGuide();
         }
 
+        else if(i == R.id.glossaryButton){
+            gotoGlossary();
+        }
+
 
     }
 
@@ -170,6 +177,11 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
     public void gotoFieldGuide(){
         Intent intent = new Intent(Home_screenActivity.this, Intro_FieldGuideActivity.class);
+        startActivity(intent);
+    }
+
+    public void gotoGlossary(){
+        Intent intent = new Intent(Home_screenActivity.this, Glossary_IntroActivity.class);
         startActivity(intent);
     }
 
@@ -297,6 +309,84 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
             }
         });
+
+    }
+
+    public void makeGlossaryEntries() {
+        ArrayList<glossaryDetails> newGlossaryForbsArray = new ArrayList<>();
+        ArrayList<glossaryDetails> newGlossaryGraminoidsArray = new ArrayList<>();
+
+        glossaryDetails alternate = new glossaryDetails("Alternate", "alternate");
+        glossaryDetails basal = new glossaryDetails("Basal", "basal");
+        glossaryDetails campanulate = new glossaryDetails("Campanulate", "campanulate");
+        glossaryDetails composite = new glossaryDetails("Composite", "composite");
+        glossaryDetails cushion = new glossaryDetails("Cushion", "cushion");
+        glossaryDetails funnelform = new glossaryDetails("Funnelform", "funnelform");
+        glossaryDetails labiate = new glossaryDetails("Labiate", "labiate");
+        glossaryDetails oblong = new glossaryDetails("Oblong", "oblong");
+        glossaryDetails opposite = new glossaryDetails("Opposite", "opposite");
+        glossaryDetails palmate = new glossaryDetails("Palmate", "palmate");
+        glossaryDetails papilionaceous = new glossaryDetails("Papilionaceous", "papilionaceous");
+        glossaryDetails radial = new glossaryDetails("Radial", "radial");
+        glossaryDetails reflexed = new glossaryDetails("Reflexed", "reflexed");
+        glossaryDetails round = new glossaryDetails("Round", "round");
+        glossaryDetails ternate = new glossaryDetails("Ternate", "ternate");
+        glossaryDetails urceolate = new glossaryDetails("Urceolate", "urceolate");
+        glossaryDetails whorled = new glossaryDetails("Whorled", "whorled");
+
+        newGlossaryForbsArray.add(alternate);
+        newGlossaryForbsArray.add(basal);
+        newGlossaryForbsArray.add(campanulate);
+        newGlossaryForbsArray.add(composite);
+        newGlossaryForbsArray.add(cushion);
+        newGlossaryForbsArray.add(funnelform);
+        newGlossaryForbsArray.add(labiate);
+        newGlossaryForbsArray.add(oblong);
+        newGlossaryForbsArray.add(opposite);
+        newGlossaryForbsArray.add(palmate);
+        newGlossaryForbsArray.add(papilionaceous);
+        newGlossaryForbsArray.add(radial);
+        newGlossaryForbsArray.add(reflexed);
+        newGlossaryForbsArray.add(round);
+        newGlossaryForbsArray.add(ternate);
+        newGlossaryForbsArray.add(urceolate);
+        newGlossaryForbsArray.add(whorled);
+
+        PlantArrayManager.getInstance().setGlobalGlossaryForbsArray(newGlossaryForbsArray);
+
+        glossaryDetails awn = new glossaryDetails("Awn", "awn");
+        glossaryDetails awn_absent = new glossaryDetails("Awn Absent", "awn_absent");
+        glossaryDetails awn_bent = new glossaryDetails("Awn Bent", "awn_bent");
+        glossaryDetails awn_straight = new glossaryDetails("Awn Straight", "awn_straight");
+        glossaryDetails awn_twisted = new glossaryDetails("Awn Twisted", "awn_twisted");
+        glossaryDetails contracted = new glossaryDetails("Contracted", "contracted");
+        glossaryDetails flat = new glossaryDetails("Flat", "flat");
+        glossaryDetails floret = new glossaryDetails("Floret", "floret");
+        glossaryDetails involute = new glossaryDetails("Involute", "involute");
+        glossaryDetails keeled = new glossaryDetails("Keeled", "keeled");
+        glossaryDetails open = new glossaryDetails("Open", "open");
+        glossaryDetails spikelet = new glossaryDetails("Spikelet", "spikelet");
+        glossaryDetails spikes_globose = new glossaryDetails("Spikes Globose", "spikes_globose");
+        glossaryDetails spikes_one = new glossaryDetails("Spikes One", "spikes_one");
+        glossaryDetails spikes_twoormore = new glossaryDetails("Spikes Two or More", "spikes_twoormore");
+
+        newGlossaryGraminoidsArray.add(awn);
+        newGlossaryGraminoidsArray.add(awn_absent);
+        newGlossaryGraminoidsArray.add(awn_bent);
+        newGlossaryGraminoidsArray.add(awn_straight);
+        newGlossaryGraminoidsArray.add(awn_twisted);
+        newGlossaryGraminoidsArray.add(contracted);
+        newGlossaryGraminoidsArray.add(flat);
+        newGlossaryGraminoidsArray.add(floret);
+        newGlossaryGraminoidsArray.add(involute);
+        newGlossaryGraminoidsArray.add(keeled);
+        newGlossaryGraminoidsArray.add(open);
+        newGlossaryGraminoidsArray.add(spikelet);
+        newGlossaryGraminoidsArray.add(spikes_globose);
+        newGlossaryGraminoidsArray.add(spikes_one);
+        newGlossaryGraminoidsArray.add(spikes_twoormore);
+
+        PlantArrayManager.getInstance().setGlobalGlossaryGraminoidsArray(newGlossaryGraminoidsArray);
     }
 
     //More location check

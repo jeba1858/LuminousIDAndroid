@@ -20,6 +20,9 @@ public class PlantArrayManager {
     public ArrayList<needleDetails> globalNeedleArray = new ArrayList<>();
     public ArrayList<deciduousDetails> globalDeciArray = new ArrayList<>();
 
+    public ArrayList<glossaryDetails> globalGlossaryForbsArray = new ArrayList<>();
+    public ArrayList<glossaryDetails> globalGlossaryGraminoidsArray = new ArrayList<>();
+
     public static void initInstance() {
         if(instance == null){
             instance = new PlantArrayManager();
@@ -81,6 +84,22 @@ public class PlantArrayManager {
 
     public void setGlobalDeciArray(ArrayList<deciduousDetails> newDeciArray) {
         globalDeciArray = newDeciArray;
+    }
+
+    public ArrayList<glossaryDetails> getGlobalGlossaryForbsArray() {
+        return globalGlossaryForbsArray;
+    }
+
+    public void setGlobalGlossaryForbsArray(ArrayList<glossaryDetails> newGlossaryForbArray) {
+        globalGlossaryForbsArray = newGlossaryForbArray;
+    }
+
+    public ArrayList<glossaryDetails> getGlobalGlossaryGraminoidsArray() {
+        return globalGlossaryGraminoidsArray;
+    }
+
+    public void setGlobalGlossaryGraminoidsArray(ArrayList<glossaryDetails> newGlossaryGraminoidsArray) {
+        globalGlossaryGraminoidsArray = newGlossaryGraminoidsArray;
     }
 
 }
