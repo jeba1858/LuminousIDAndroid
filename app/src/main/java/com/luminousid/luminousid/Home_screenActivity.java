@@ -294,6 +294,10 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         ArrayList<glossaryDetails> newGlossaryForbsArray = new ArrayList<>();
         ArrayList<glossaryDetails> newGlossaryGraminoidsArray = new ArrayList<>();
 
+        glossaryDetails leafArrangementCategory = new glossaryDetails("Leaf Arrangements" , "");
+        glossaryDetails flowerShapeCategory = new glossaryDetails("Flower Shapes", "");
+        glossaryDetails leafShapeCategory = new glossaryDetails("Leaf Shapes", "");
+
         glossaryDetails alternate = new glossaryDetails("Alternate", "alternate");
         glossaryDetails basal = new glossaryDetails("Basal", "basal");
         glossaryDetails campanulate = new glossaryDetails("Campanulate", "campanulate");
@@ -312,53 +316,66 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         glossaryDetails urceolate = new glossaryDetails("Urceolate", "urceolate");
         glossaryDetails whorled = new glossaryDetails("Whorled", "whorled");
 
-        newGlossaryForbsArray.add(alternate);
-        newGlossaryForbsArray.add(basal);
+        newGlossaryForbsArray.add(flowerShapeCategory);
         newGlossaryForbsArray.add(campanulate);
         newGlossaryForbsArray.add(composite);
-        newGlossaryForbsArray.add(cushion);
         newGlossaryForbsArray.add(funnelform);
         newGlossaryForbsArray.add(labiate);
-        newGlossaryForbsArray.add(oblong);
-        newGlossaryForbsArray.add(opposite);
-        newGlossaryForbsArray.add(palmate);
         newGlossaryForbsArray.add(papilionaceous);
         newGlossaryForbsArray.add(radial);
         newGlossaryForbsArray.add(reflexed);
+        newGlossaryForbsArray.add(urceolate);
+
+        newGlossaryForbsArray.add(leafArrangementCategory);
+        newGlossaryForbsArray.add(alternate);
+        newGlossaryForbsArray.add(basal);
+        newGlossaryForbsArray.add(cushion);
+        newGlossaryForbsArray.add(opposite);
+        newGlossaryForbsArray.add(whorled);
+
+        newGlossaryForbsArray.add(leafShapeCategory);
+        newGlossaryForbsArray.add(oblong);
+        newGlossaryForbsArray.add(palmate);
         newGlossaryForbsArray.add(round);
         newGlossaryForbsArray.add(ternate);
-        newGlossaryForbsArray.add(urceolate);
-        newGlossaryForbsArray.add(whorled);
 
         PlantArrayManager.getInstance().setGlobalGlossaryForbsArray(newGlossaryForbsArray);
 
-        glossaryDetails awn = new glossaryDetails("Awn", "awn");
-        glossaryDetails awn_absent = new glossaryDetails("Awn Absent", "awn_absent");
-        glossaryDetails awn_bent = new glossaryDetails("Awn Bent", "awn_bent");
-        glossaryDetails awn_straight = new glossaryDetails("Awn Straight", "awn_straight");
-        glossaryDetails awn_twisted = new glossaryDetails("Awn Twisted", "awn_twisted");
+        glossaryDetails leafBladeCategory = new glossaryDetails("Leaf Blades", "awn");
+        glossaryDetails inflorescenceCategory = new glossaryDetails("Inflorescence Types", "awn");
+
+        glossaryDetails awn = new glossaryDetails("Awn Types ", "awn");
+        glossaryDetails awn_absent = new glossaryDetails("Absent", "absent");
+        glossaryDetails awn_bent = new glossaryDetails("Bent", "bent");
+        glossaryDetails awn_straight = new glossaryDetails("Straight", "straight");
+        glossaryDetails awn_twisted = new glossaryDetails("Twisted", "twisted");
         glossaryDetails contracted = new glossaryDetails("Contracted", "contracted");
         glossaryDetails flat = new glossaryDetails("Flat", "flat");
         glossaryDetails floret = new glossaryDetails("Floret", "floret");
         glossaryDetails involute = new glossaryDetails("Involute", "involute");
         glossaryDetails keeled = new glossaryDetails("Keeled", "keeled");
         glossaryDetails open = new glossaryDetails("Open", "open");
-        glossaryDetails spikelet = new glossaryDetails("Spikelet", "spikelet");
-        glossaryDetails spikes_globose = new glossaryDetails("Spikes Globose", "spikes_globose");
-        glossaryDetails spikes_one = new glossaryDetails("Spikes One", "spikes_one");
-        glossaryDetails spikes_twoormore = new glossaryDetails("Spikes Two or More", "spikes_twoormore");
+        glossaryDetails spikelet = new glossaryDetails("Spikelet Types ", "spikelet");
+        glossaryDetails spikes_globose = new glossaryDetails("Globose", "globose");
+        glossaryDetails spikes_one = new glossaryDetails("One", "one");
+        glossaryDetails spikes_twoormore = new glossaryDetails("Two or More", "twoormore");
 
         newGlossaryGraminoidsArray.add(awn);
         newGlossaryGraminoidsArray.add(awn_absent);
         newGlossaryGraminoidsArray.add(awn_bent);
         newGlossaryGraminoidsArray.add(awn_straight);
         newGlossaryGraminoidsArray.add(awn_twisted);
+
+        newGlossaryGraminoidsArray.add(inflorescenceCategory);
         newGlossaryGraminoidsArray.add(contracted);
+        newGlossaryGraminoidsArray.add(open);
+
+        newGlossaryGraminoidsArray.add(leafBladeCategory);
         newGlossaryGraminoidsArray.add(flat);
         newGlossaryGraminoidsArray.add(floret);
         newGlossaryGraminoidsArray.add(involute);
         newGlossaryGraminoidsArray.add(keeled);
-        newGlossaryGraminoidsArray.add(open);
+
         newGlossaryGraminoidsArray.add(spikelet);
         newGlossaryGraminoidsArray.add(spikes_globose);
         newGlossaryGraminoidsArray.add(spikes_one);

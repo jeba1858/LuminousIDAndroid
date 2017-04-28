@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 /**
  * Created by chase on 4/18/2017.
+ * A class to hold all of our global arrays.
+ *      Arrays: Field Guide, Glossary, User Info, User Observations
  */
 
 public class PlantArrayManager {

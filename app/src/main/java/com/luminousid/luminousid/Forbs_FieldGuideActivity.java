@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,8 +29,15 @@ import static com.luminousid.luminousid.R.id.snap;
 import static com.luminousid.luminousid.R.id.species_nameText;
 import static com.luminousid.luminousid.R.layout.speciesnamelist;
 
-// This code lists all the forbs plants in a recycler list view.
-// It will display the species name, common name, and the thumbnail image.
+/*
+* Creates a listview of all forbs from the Firebase server
+* First gets all filter choices from the Filter page, if that was the last page.
+* If the filter was chosen, we use FilterPopulate() to loop through all the entries from our global array.
+*   We add all the ones that passed the filter to a new array, and return that to populate our list.
+* Else, just populate our list view with the global array.
+* The adapter is used to get our desired appearance with image, species name, and common name.
+*   The adapter will also send us to a details page when a plant is clicked.
+*/
 
 public class Forbs_FieldGuideActivity extends AppCompatActivity implements View.OnClickListener {
 
