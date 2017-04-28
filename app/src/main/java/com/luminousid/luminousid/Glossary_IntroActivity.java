@@ -2,6 +2,7 @@ package com.luminousid.luminousid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,9 @@ public class Glossary_IntroActivity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_glossary_intro);
+
+        // Set lock to portrait mode.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         findViewById(R.id.forbsButton).setOnClickListener(this);
         findViewById(R.id.graminoidsButton).setOnClickListener(this);

@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".FontHelper"
@@ -43,8 +47,8 @@
         <activity android:name=".Poaceae_FieldGuideActivity" />
         <activity android:name=".PlantFilterActivity" />
         <activity android:name=".Glossary_IntroActivity" />
-        <activity android:name=".glossaryDetailActivity"/>
-        <activity android:name=".Glossary_ListActivity"></activity>
+        <activity android:name=".glossaryDetailActivity" />
+        <activity android:name=".Glossary_ListActivity" />
     </application>
 
 </manifest>

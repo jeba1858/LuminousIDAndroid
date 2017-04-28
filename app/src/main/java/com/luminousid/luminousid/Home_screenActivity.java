@@ -2,6 +2,7 @@ package com.luminousid.luminousid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,9 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        // Set lock to portrait mode.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         // Get snapshot of Field Guide database
         System.out.println("Attempting to take snapshot");
         takeFieldGuideSnapshot();
@@ -49,7 +53,7 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
         findViewById(R.id.fieldguideButton).setOnClickListener(this);
         findViewById(R.id.observationsButton).setOnClickListener(this);
-        findViewById(R.id.settingsButton).setOnClickListener(this);
+        findViewById(R.id.aboutButton).setOnClickListener(this);
         findViewById(R.id.glossaryButton).setOnClickListener(this);
         findViewById(R.id.aboutButton).setOnClickListener(this);
 
@@ -57,6 +61,10 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         TextView loginStatus = (TextView) findViewById(R.id.loginStatus);
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
             loginStatus.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
+            // Take snapshot of the account
+            takeAccountSnapshot();
+
         }
         else{
             loginStatus.setText("Guest");
@@ -71,11 +79,10 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
     public void onStart(){
         super.onStart();
+    }
 
-        // Get snapshot of Field Guide database
-        System.out.println("Attempting to take snapshot");
-        takeFieldGuideSnapshot();
-        System.out.println("Snapshot taken");
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -133,6 +140,35 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         startActivity(intent);
     }
 
+    public void takeAccountSnapshot() {
+        DatabaseReference accountRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/accounts");
+
+        accountRef.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                ArrayList<accountDetails> newAccountDetails = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+
+                    if(snapshot.getKey().equalsIgnoreCase(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+                        newAccountDetails.add(snapshot.getValue(accountDetails.class));
+                        System.out.println("UID Added: " + FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        System.out.println("With email: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                    }
+
+                }
+
+                PlantArrayManager.getInstance().setGlobalAccountDetails(newAccountDetails);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 
     public void takeFieldGuideSnapshot(){
 
@@ -150,7 +186,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<forbsDetails> newForbArray = new ArrayList<forbsDetails>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newForbArray.add(snapshot.getValue(forbsDetails.class));
                 }
 
@@ -169,7 +204,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<cyperaceaeDetails> newCyperArray = new ArrayList<>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newCyperArray.add(snapshot.getValue(cyperaceaeDetails.class));
                 }
 
@@ -188,7 +222,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<juncaceaeDetails> newJuncaArray = new ArrayList<juncaceaeDetails>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newJuncaArray.add(snapshot.getValue(juncaceaeDetails.class));
                 }
 
@@ -207,7 +240,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<poaceaeDetails> newPoaArray = new ArrayList<poaceaeDetails>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newPoaArray.add(snapshot.getValue(poaceaeDetails.class));
                 }
 
@@ -226,7 +258,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<deciduousDetails> newDeciArray = new ArrayList<deciduousDetails>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newDeciArray.add(snapshot.getValue(deciduousDetails.class));
                 }
 
@@ -245,7 +276,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<needleDetails> newNeedleArray = new ArrayList<needleDetails>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newNeedleArray.add(snapshot.getValue(needleDetails.class));
                 }
 

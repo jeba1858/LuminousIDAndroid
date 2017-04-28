@@ -23,6 +23,10 @@ public class PlantArrayManager {
     public ArrayList<glossaryDetails> globalGlossaryForbsArray = new ArrayList<>();
     public ArrayList<glossaryDetails> globalGlossaryGraminoidsArray = new ArrayList<>();
 
+    public ArrayList<observationDetails> globalObservationArray = new ArrayList<>();
+
+    public ArrayList<accountDetails> globalAccountDetails = new ArrayList<>();
+
     public static void initInstance() {
         if(instance == null){
             instance = new PlantArrayManager();
@@ -100,6 +104,22 @@ public class PlantArrayManager {
 
     public void setGlobalGlossaryGraminoidsArray(ArrayList<glossaryDetails> newGlossaryGraminoidsArray) {
         globalGlossaryGraminoidsArray = newGlossaryGraminoidsArray;
+    }
+
+    public ArrayList<observationDetails> getGlobalObservationArray() {
+        return globalObservationArray;
+    }
+
+    public void setGlobalObservationArray(ArrayList<observationDetails> newObservationArray) {
+        globalObservationArray = newObservationArray;
+    }
+
+    public ArrayList<accountDetails> getGlobalAccountDetails() {
+        return globalAccountDetails;
+    }
+
+    public void setGlobalAccountDetails(ArrayList<accountDetails> newAccountDetails) {
+        globalAccountDetails = newAccountDetails;
     }
 
 }

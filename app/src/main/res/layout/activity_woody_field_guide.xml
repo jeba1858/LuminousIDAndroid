@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/deciduousButton"
-        android:layout_width="260sp"
+        android:layout_width="300sp"
         android:layout_height="85sp"
         android:layout_marginTop="145dp"
         android:background="@drawable/deciduous_title"
@@ -19,10 +19,11 @@
 
     <Button
         android:id="@+id/needleButton"
-        android:layout_width="260sp"
+        android:layout_width="300sp"
         android:layout_height="85sp"
         android:background="@drawable/needle_title"
         android:layout_below="@+id/deciduousButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60sp" />
+
 </RelativeLayout>

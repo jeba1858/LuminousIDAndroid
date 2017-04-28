@@ -2,6 +2,7 @@ package com.luminousid.luminousid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,9 @@ public class glossaryDetailActivity extends AppCompatActivity {
         // This will allow the activity to display the correct layout with the correct info.
         Intent previousIntent = getIntent();
         String glossaryType = previousIntent.getStringExtra("glossaryType");
+
+        // Set lock to portrait mode.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if (glossaryType.equalsIgnoreCase("forbs")) {
             setContentView(R.layout.activity_glossary_detail);

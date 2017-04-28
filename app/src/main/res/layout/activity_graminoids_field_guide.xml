@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/cyperButton"
-        android:layout_width="260sp"
+        android:layout_width="300sp"
         android:layout_height="85sp"
         android:layout_marginBottom="60sp"
         android:background="@drawable/cyperaceae_title"
@@ -19,7 +19,7 @@
 
     <Button
         android:id="@+id/juncaButton"
-        android:layout_width="260sp"
+        android:layout_width="300sp"
         android:layout_height="85sp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
@@ -27,7 +27,7 @@
 
     <Button
         android:id="@+id/poaButton"
-        android:layout_width="260sp"
+        android:layout_width="300sp"
         android:layout_height="85sp"
         android:layout_alignEnd="@+id/juncaButton"
         android:layout_alignRight="@+id/juncaButton"
