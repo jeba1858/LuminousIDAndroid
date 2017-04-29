@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/forbsButton"
-        android:layout_width="260sp"
+        android:layout_width="300sp"
         android:layout_height="85sp"
         android:layout_marginBottom="70sp"
         android:background="@drawable/forbs_title"
@@ -19,7 +19,7 @@
 
     <Button
         android:id="@+id/graminoidsButton"
-        android:layout_width="260sp"
+        android:layout_width="300sp"
         android:layout_height="85sp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"

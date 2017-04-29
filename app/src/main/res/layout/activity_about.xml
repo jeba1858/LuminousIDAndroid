@@ -24,25 +24,13 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/SpeciesInfoHead"
-                fontPath="fonts/Snippet.ttf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Species Information"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="@android:color/black"
-                android:textSize="30dp"
-                android:textStyle="normal|bold" />
-
-            <TextView
                 android:id="@+id/EduandOutHead"
                 fontPath="fonts/Snippet.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10sp"
                 android:gravity="center"
-                android:text="Education and Outreach"
+                android:text="Goals"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/black"
                 android:textSize="30dp"
@@ -53,18 +41,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:text="The species in this app are a representative, but not exhaustive, list of species growing at the University of Colorado’s Mountain Research Station and Niwot Ridge. For more information regarding the species or their attributes, please contact Dr. Jane Smith (jane.g.smith@colorado.edu)."
+                android:text="The goals of this website and app are to a) increase citizen engagement at the Long-Term Ecological Research site on Niwot Ridge, and b) build up a geographic and photographic dataset of plant species, in order to record how species’ geographic distributions and phenology (timing of flowering) are shifting with climatic changes."
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/EduandOutTxt2"
+                android:id="@+id/DesignandDevHead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="If you’re interested in using this app as an informal learning tool with students of any age, or as part of a citizen science project, please contact Niwot Ridge LTER Education and Outreach Coordinator Dr. Alexandra Rose (alexandra.rose@colorado.edu) for supporting resources and to let us know how you’re using the app."
+                fontPath = "fonts/Snippet.ttf"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="Design and development"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@android:color/black"
+                android:textSize="30dp"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/DesignandDevTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This website and app was designed and developed during a two-year collaboration between the Computer Science Department, the Environmental Studies Program, and the Institute of Arctic and Alpine Research at the University of Colorado, Boulder. The species in the field guides are a representative, but not exhaustive, list of species growing at the University of Colorado’s Mountain Research Station and Niwot Ridge."
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                />
 
             <TextView
                 android:id="@+id/DevHead"
@@ -126,7 +128,7 @@
                 android:id="@+id/SupportTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Provided by the National Science Foundation through a Long Term Research in Environmental Biology grant to DF Doak and WF Morris and the Long Term Ecological Research program at Niwot Ridge. "
+                android:text="This project has been made possible with support from the National Science Foundation via a Long Term Research in Environmental Biology grant to DF Doak and WF Morris and the Long Term Ecological Research (LTER) program at Niwot Ridge. The United States Geological Survey provided the topographical maps."
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="20dp" />
 
@@ -199,14 +201,67 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/Dean"
+                    android:id="@+id/BioPix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="*Biopix: A. Neuman, J.C. Schou | http://calphotos.berkeley.edu"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:autoLink="web"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Bowman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="William D. Bowman"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/CalPhotos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="20dp"
                     android:layout_marginTop="10dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:text="Dean Wm. Taylor, CalPhotos Photo Database / http://calphotos.berkeley.edu" />
+                    android:autoLink="web"
+                    android:text="*CalPhotos Photo Database: B. Anacker, B. Breckling, R. T. Hawke, S. Matson, K. Morse, A. Schusteff, D. Wm. Taylor, A. Trnkoczy | http://calphotos.berkeley.edu" />
+
+                <TextView
+                    android:id="@+id/NIChardon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:text="N. I. Chardon" />
+
+                <TextView
+                    android:id="@+id/MohlenbrockUSDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="*R. H. Mohlenbrock, USDA-NRCS PLANTS Database | USDA NRCS. 1992. Western wetland flora: Field office guide to plant species. West Region, Sacramento"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/LicherSein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="*SEINet data portal, Arizona - New Mexico Chapter: P. J. Alexander, T. Ayers, B. Gratwicke, L. R. Landrum, M. Licher |http://swbiodiversity.org"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:autoLink="web"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/JGSmith"
@@ -216,47 +271,17 @@
                     android:textSize="20dp"
                     android:layout_marginTop="10dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:text="Jane G. Smith" />
+                    android:text="J. G. Smith" />
 
                 <TextView
-                    android:id="@+id/BioPix"
+                    android:id="@+id/NYBotanical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="20dp"
                     android:layout_marginTop="10dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:text="Jens Christian Schou, Biopix / http://www.biopix.com" />
-
-                <TextView
-                    android:id="@+id/LicherSein"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:text="Max Licher, SEINet data portal, Arizona - New Mexico Chapter / http://swbiodiversity.org" />
-
-                <TextView
-                    android:id="@+id/AlexanderSein"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:text="Patrick J. Alexander, SEINet data portal, Arizona - New Mexico Chapter / http://swbiodiversity.org" />
-
-                <TextView
-                    android:id="@+id/MohlenbrockUSDA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:text="Robert H. Mohlenbrock, hosted by the USDA-NRCS PLANTS Database / USDA NRCS. 1992. Western wetland flora: Field office guide to plant species. West Region, Sacramento." />
+                    android:text="The New York Botanical Garden" />
 
                 <TextView
                     android:id="@+id/ShawUSDA"
@@ -266,17 +291,7 @@
                     android:textSize="20dp"
                     android:layout_marginTop="10dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:text="USDA-NRCS PLANTS Database / Hurd, E.G., N.L. Shaw, J. Mastrogiuseppe, L.C. Smithman, and S. Goodrich. 1998. Field guide to Intermountain sedges. General Technical Report RMS-GTR-10. USDA Forest Service, RMRS, Ogden." />
-
-                <TextView
-                    android:id="@+id/Bowman"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:text="William D. Bowman" />
+                    android:text="*USDA-NRCS PLANTS Database | E.G. Hurd, N.L. Shaw, J. Mastrogiuseppe, L.C. Smithman and S. Goodrich. 1998. Field guide to Intermountain sedges. General Technical Report RMS-GTR-10. USDA Forest Service, RMRS, Ogden." />
 
             </LinearLayout>
 

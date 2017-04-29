@@ -2,10 +2,12 @@ package com.luminousid.luminousid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,9 +17,7 @@ import org.parceler.Parcels;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-import static com.luminousid.luminousid.R.id.addObsButton;
-
-public class plantDetailActivity extends AppCompatActivity {
+public class plantDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Get Calibri Font for page. Check FontHelper class for more info.
     @Override
@@ -26,8 +26,20 @@ public class plantDetailActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onClick(View v) {
+        int i = v.getId();
+
+        if(i == R.id.observationsButton) {
+            // Do nothing for now
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set lock to portrait mode.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // See what plant list you're coming from.
         // This will allow the activity to display the correct layout with the correct info.
@@ -57,7 +69,7 @@ public class plantDetailActivity extends AppCompatActivity {
             // Find all text views and the image view.
             ImageView plantPicture = (ImageView) findViewById(R.id.forbsPlantImage);
 
-            TextView forbsSpeciesName = (TextView) findViewById(R.id.forbsSpeciesName);
+            TextView forbsSpeciesName = (TextView) findViewById(R.id.SpeciesName);
             TextView forbsCommonName = (TextView) findViewById(R.id.forbsCommonName);
             TextView forbsSynonyms = (TextView) findViewById(R.id.forbsSynonyms);
             TextView forbsFamilyName = (TextView) findViewById(R.id.forbsFamilyName);
@@ -113,7 +125,7 @@ public class plantDetailActivity extends AppCompatActivity {
             // Find all text views and the image view.
             ImageView plantPicture = (ImageView) findViewById(R.id.cyperPlantImage);
 
-            TextView SpeciesName = (TextView) findViewById(R.id.cyperSpeciesName);
+            TextView SpeciesName = (TextView) findViewById(R.id.SpeciesName);
             TextView CommonName = (TextView) findViewById(R.id.cyperCommonName);
             TextView Synonyms = (TextView) findViewById(R.id.cyperSynonyms);
             TextView FamilyName = (TextView) findViewById(R.id.cyperFamilyName);
@@ -375,18 +387,5 @@ public class plantDetailActivity extends AppCompatActivity {
         }
 
         return testString;
-    }
-    public void onClick(View v) {
-        int i = v.getId();
-
-        // Check what button user presses, go there.
-
-        if (i == addObsButton) {
-            gotoObservation();
-        }
-    }
-    public void gotoObservation(){
-        Intent intent = new Intent(plantDetailActivity.this, AddObs.class);
-        startActivity(intent);
     }
 }

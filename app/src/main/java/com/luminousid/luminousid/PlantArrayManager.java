@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 /**
  * Created by chase on 4/18/2017.
+ * A class to hold all of our global arrays.
+ *      Arrays: Field Guide, Glossary, User Info, User Observations
  */
 
 public class PlantArrayManager {
@@ -22,6 +24,10 @@ public class PlantArrayManager {
 
     public ArrayList<glossaryDetails> globalGlossaryForbsArray = new ArrayList<>();
     public ArrayList<glossaryDetails> globalGlossaryGraminoidsArray = new ArrayList<>();
+
+    public ArrayList<observationDetails> globalObservationArray = new ArrayList<>();
+
+    public ArrayList<accountDetails> globalAccountDetails = new ArrayList<>();
 
     public static void initInstance() {
         if(instance == null){
@@ -100,6 +106,22 @@ public class PlantArrayManager {
 
     public void setGlobalGlossaryGraminoidsArray(ArrayList<glossaryDetails> newGlossaryGraminoidsArray) {
         globalGlossaryGraminoidsArray = newGlossaryGraminoidsArray;
+    }
+
+    public ArrayList<observationDetails> getGlobalObservationArray() {
+        return globalObservationArray;
+    }
+
+    public void setGlobalObservationArray(ArrayList<observationDetails> newObservationArray) {
+        globalObservationArray = newObservationArray;
+    }
+
+    public ArrayList<accountDetails> getGlobalAccountDetails() {
+        return globalAccountDetails;
+    }
+
+    public void setGlobalAccountDetails(ArrayList<accountDetails> newAccountDetails) {
+        globalAccountDetails = newAccountDetails;
     }
 
 }

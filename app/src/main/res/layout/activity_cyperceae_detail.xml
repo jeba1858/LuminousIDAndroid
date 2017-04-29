@@ -8,11 +8,24 @@
     android:background="#384452"
     tools:context="com.luminousid.luminousid.plantDetailActivity">
 
+    <Button
+        android:id="@+id/addObsButton"
+        fontPath="fonts/Snippet.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD OBSERVATION"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
+        android:layout_below="@+id/addObsButton">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,39 +35,14 @@
             android:dividerPadding="5dp"
             android:showDividers="middle">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/addObsButton"
-                    android:layout_width="196dp"
-                    android:layout_height="wrap_content"
-                    android:text="ADD OBSERVATION"
-                    fontPath="fonts/Snippet.ttf"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/transparent"/>
-
-                <Button
-                    android:id="@+id/mapButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="FIND PLANT"
-                    fontPath="fonts/Snippet.ttf"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/transparent"/>
-            </LinearLayout>
-
             <ImageView
                 android:id="@+id/cyperPlantImage"
                 android:layout_width="match_parent"
-                android:layout_height="238dp"
+                android:layout_height="350sp"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <TextView
-                android:id="@+id/cyperSpeciesName"
+                android:id="@+id/SpeciesName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

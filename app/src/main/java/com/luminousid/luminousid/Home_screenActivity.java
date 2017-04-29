@@ -1,35 +1,14 @@
 package com.luminousid.luminousid;
 
-import android.*;
-import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResult;
-import com.google.android.gms.location.LocationSettingsStates;
-import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,14 +20,9 @@ import java.util.ArrayList;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-import static com.luminousid.luminousid.AddObs.ALLOW_KEY;
 import static com.luminousid.luminousid.R.id.logoutButton;
 
 public class Home_screenActivity extends AppCompatActivity implements View.OnClickListener {
-
-    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 100;
-    public static final String ALLOW_KEY = "ALLOWED";
-    public static final String LOCATION_PREF = "location_pref";
 
     // Get Snippet Font for page. Check FontHelper class for more info.
     @Override
@@ -58,32 +32,11 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-        //Get Location Premissions
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if (getFromPref(this, ALLOW_KEY)) {
-                showAlert();
-            } else if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)
-
-                    != PackageManager.PERMISSION_GRANTED) {
-
-                // Should we show an explanation?
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                        Manifest.permission.ACCESS_FINE_LOCATION)) {
-                    showAlert();
-                } else {
-                    // No explanation needed, we can request the permission.
-                    ActivityCompat.requestPermissions(this,
-                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                            MY_PERMISSIONS_REQUEST_LOCATION);
-                }
-            }
-        }
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        // Set lock to portrait mode.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // Get snapshot of Field Guide database
         System.out.println("Attempting to take snapshot");
@@ -94,13 +47,16 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         // Make all the glossary entries
         makeGlossaryEntries();
 
+        // Take dummy observation data
+        takeDummyObservations();
+
         // Buttons on screen
         Button logoutButton = (Button) findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(this);
 
         findViewById(R.id.fieldguideButton).setOnClickListener(this);
         findViewById(R.id.observationsButton).setOnClickListener(this);
-        findViewById(R.id.settingsButton).setOnClickListener(this);
+        findViewById(R.id.aboutButton).setOnClickListener(this);
         findViewById(R.id.glossaryButton).setOnClickListener(this);
         findViewById(R.id.aboutButton).setOnClickListener(this);
 
@@ -108,6 +64,10 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         TextView loginStatus = (TextView) findViewById(R.id.loginStatus);
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
             loginStatus.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
+            // Take snapshot of the account
+            takeAccountSnapshot();
+
         }
         else{
             loginStatus.setText("Guest");
@@ -120,14 +80,12 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-
     public void onStart(){
         super.onStart();
+    }
 
-        // Get snapshot of Field Guide database
-        System.out.println("Attempting to take snapshot");
-        takeFieldGuideSnapshot();
-        System.out.println("Snapshot taken");
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -161,6 +119,10 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             gotoGlossary();
         }
 
+        else if(i == R.id.observationsButton) {
+            gotoMyObservations();
+        }
+
 
     }
 
@@ -185,6 +147,63 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         startActivity(intent);
     }
 
+    public void gotoMyObservations() {
+        Intent intent = new Intent(Home_screenActivity.this, MyObservationsActivity.class);
+        startActivity(intent);
+    }
+
+    public void takeDummyObservations() {
+        ArrayList<observationDetails> dummyObsDetails = new ArrayList<>();
+
+        observationDetails obs1 = new observationDetails("1491771303667_XIVsvZvLUZhj4IhxthqHonqfY4O2",
+                "This is the first observation!", "04/25/2017 2:24:56 pm", 40.032577, -105.5364028,
+                false, 0, "PICO", "Pinus contorta", "Okabomb");
+
+        observationDetails obs2 = new observationDetails("1491771303534_XIVsvZvLUZhj4IhxthqHonqfY4O2",
+                "This is the second observation!", "04/26/2017 3:24:56 pm", 40.032577, -105.5364028,
+                false, 0, "ABLA", "Abies lasiocarpa", "Okabomb");
+
+        observationDetails obs3 = new observationDetails("1491771303759_XIVsvZvLUZhj4IhxthqHonqfY4O2",
+                "This is the third observation!", "04/27/2017 3:24:56 pm", 40.032577, -105.5364028,
+                true, 0, "ABLA", "Abies lasiocarpa", "Okabomb");
+
+        dummyObsDetails.add(obs1);
+        dummyObsDetails.add(obs2);
+        dummyObsDetails.add(obs3);
+
+        PlantArrayManager.getInstance().setGlobalObservationArray(dummyObsDetails);
+
+    }
+
+    public void takeAccountSnapshot() {
+        DatabaseReference accountRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/accounts");
+
+        accountRef.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                ArrayList<accountDetails> newAccountDetails = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+
+                    if(snapshot.getKey().equalsIgnoreCase(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+                        newAccountDetails.add(snapshot.getValue(accountDetails.class));
+                        System.out.println("UID Added: " + FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        System.out.println("With email: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                    }
+
+                }
+
+                PlantArrayManager.getInstance().setGlobalAccountDetails(newAccountDetails);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 
     public void takeFieldGuideSnapshot(){
 
@@ -202,7 +221,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<forbsDetails> newForbArray = new ArrayList<forbsDetails>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newForbArray.add(snapshot.getValue(forbsDetails.class));
                 }
 
@@ -221,7 +239,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<cyperaceaeDetails> newCyperArray = new ArrayList<>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newCyperArray.add(snapshot.getValue(cyperaceaeDetails.class));
                 }
 
@@ -240,7 +257,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<juncaceaeDetails> newJuncaArray = new ArrayList<juncaceaeDetails>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newJuncaArray.add(snapshot.getValue(juncaceaeDetails.class));
                 }
 
@@ -259,7 +275,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<poaceaeDetails> newPoaArray = new ArrayList<poaceaeDetails>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newPoaArray.add(snapshot.getValue(poaceaeDetails.class));
                 }
 
@@ -278,7 +293,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<deciduousDetails> newDeciArray = new ArrayList<deciduousDetails>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newDeciArray.add(snapshot.getValue(deciduousDetails.class));
                 }
 
@@ -297,7 +311,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                 ArrayList<needleDetails> newNeedleArray = new ArrayList<needleDetails>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Snapshot: " + snapshot);
                     newNeedleArray.add(snapshot.getValue(needleDetails.class));
                 }
 
@@ -315,6 +328,10 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
     public void makeGlossaryEntries() {
         ArrayList<glossaryDetails> newGlossaryForbsArray = new ArrayList<>();
         ArrayList<glossaryDetails> newGlossaryGraminoidsArray = new ArrayList<>();
+
+        glossaryDetails leafArrangementCategory = new glossaryDetails("- Leaf Arrangements -" , "");
+        glossaryDetails flowerShapeCategory = new glossaryDetails("- Flower Shapes -", "");
+        glossaryDetails leafShapeCategory = new glossaryDetails("- Leaf Shapes -", "");
 
         glossaryDetails alternate = new glossaryDetails("Alternate", "alternate");
         glossaryDetails basal = new glossaryDetails("Basal", "basal");
@@ -334,31 +351,41 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         glossaryDetails urceolate = new glossaryDetails("Urceolate", "urceolate");
         glossaryDetails whorled = new glossaryDetails("Whorled", "whorled");
 
-        newGlossaryForbsArray.add(alternate);
-        newGlossaryForbsArray.add(basal);
+        newGlossaryForbsArray.add(flowerShapeCategory);
         newGlossaryForbsArray.add(campanulate);
         newGlossaryForbsArray.add(composite);
-        newGlossaryForbsArray.add(cushion);
         newGlossaryForbsArray.add(funnelform);
         newGlossaryForbsArray.add(labiate);
-        newGlossaryForbsArray.add(oblong);
-        newGlossaryForbsArray.add(opposite);
-        newGlossaryForbsArray.add(palmate);
         newGlossaryForbsArray.add(papilionaceous);
         newGlossaryForbsArray.add(radial);
         newGlossaryForbsArray.add(reflexed);
+        newGlossaryForbsArray.add(urceolate);
+
+        newGlossaryForbsArray.add(leafArrangementCategory);
+        newGlossaryForbsArray.add(alternate);
+        newGlossaryForbsArray.add(basal);
+        newGlossaryForbsArray.add(cushion);
+        newGlossaryForbsArray.add(opposite);
+        newGlossaryForbsArray.add(whorled);
+
+        newGlossaryForbsArray.add(leafShapeCategory);
+        newGlossaryForbsArray.add(oblong);
+        newGlossaryForbsArray.add(palmate);
         newGlossaryForbsArray.add(round);
         newGlossaryForbsArray.add(ternate);
-        newGlossaryForbsArray.add(urceolate);
-        newGlossaryForbsArray.add(whorled);
 
         PlantArrayManager.getInstance().setGlobalGlossaryForbsArray(newGlossaryForbsArray);
 
-        glossaryDetails awn = new glossaryDetails("Awn", "awn");
-        glossaryDetails awn_absent = new glossaryDetails("Awn Absent", "awn_absent");
-        glossaryDetails awn_bent = new glossaryDetails("Awn Bent", "awn_bent");
-        glossaryDetails awn_straight = new glossaryDetails("Awn Straight", "awn_straight");
-        glossaryDetails awn_twisted = new glossaryDetails("Awn Twisted", "awn_twisted");
+        glossaryDetails leafBladeCategory = new glossaryDetails("- Leaf Blades -", "");
+        glossaryDetails pinflorescenceCategory = new glossaryDetails("-Grasses Inflorescence-", "");
+        glossaryDetails cinflorescenceCategory = new glossaryDetails("-Sedges Inflorescence-", "");
+        glossaryDetails allCategories = new glossaryDetails("- Parts of Plant -", "awn");
+
+        glossaryDetails awn = new glossaryDetails("- Awn Types -", "");
+        glossaryDetails awn_absent = new glossaryDetails("Absent", "absent");
+        glossaryDetails awn_bent = new glossaryDetails("Bent", "bent");
+        glossaryDetails awn_straight = new glossaryDetails("Straight", "straight");
+        glossaryDetails awn_twisted = new glossaryDetails("Twisted", "twisted");
         glossaryDetails contracted = new glossaryDetails("Contracted", "contracted");
         glossaryDetails flat = new glossaryDetails("Flat", "flat");
         glossaryDetails floret = new glossaryDetails("Floret", "floret");
@@ -366,132 +393,33 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         glossaryDetails keeled = new glossaryDetails("Keeled", "keeled");
         glossaryDetails open = new glossaryDetails("Open", "open");
         glossaryDetails spikelet = new glossaryDetails("Spikelet", "spikelet");
-        glossaryDetails spikes_globose = new glossaryDetails("Spikes Globose", "spikes_globose");
-        glossaryDetails spikes_one = new glossaryDetails("Spikes One", "spikes_one");
-        glossaryDetails spikes_twoormore = new glossaryDetails("Spikes Two or More", "spikes_twoormore");
+        glossaryDetails spikes_globose = new glossaryDetails("Globose", "globose");
+        glossaryDetails spikes_one = new glossaryDetails("One", "one");
+        glossaryDetails spikes_twoormore = new glossaryDetails("Two or More", "twoormore");
+
+        newGlossaryGraminoidsArray.add(allCategories);
+
+        newGlossaryGraminoidsArray.add(leafBladeCategory);
+        newGlossaryGraminoidsArray.add(flat);
+        newGlossaryGraminoidsArray.add(involute);
+        newGlossaryGraminoidsArray.add(keeled);
 
         newGlossaryGraminoidsArray.add(awn);
         newGlossaryGraminoidsArray.add(awn_absent);
         newGlossaryGraminoidsArray.add(awn_bent);
         newGlossaryGraminoidsArray.add(awn_straight);
         newGlossaryGraminoidsArray.add(awn_twisted);
+
+        newGlossaryGraminoidsArray.add(pinflorescenceCategory);
         newGlossaryGraminoidsArray.add(contracted);
-        newGlossaryGraminoidsArray.add(flat);
-        newGlossaryGraminoidsArray.add(floret);
-        newGlossaryGraminoidsArray.add(involute);
-        newGlossaryGraminoidsArray.add(keeled);
         newGlossaryGraminoidsArray.add(open);
-        newGlossaryGraminoidsArray.add(spikelet);
+
+        newGlossaryGraminoidsArray.add(cinflorescenceCategory);
         newGlossaryGraminoidsArray.add(spikes_globose);
         newGlossaryGraminoidsArray.add(spikes_one);
         newGlossaryGraminoidsArray.add(spikes_twoormore);
 
         PlantArrayManager.getInstance().setGlobalGlossaryGraminoidsArray(newGlossaryGraminoidsArray);
     }
-
-    //More location check
-    public static void saveToPreferences(Context context, String key, Boolean allowed) {
-        SharedPreferences myPrefs = context.getSharedPreferences(LOCATION_PREF,
-                Context.MODE_PRIVATE);
-        SharedPreferences.Editor prefsEditor = myPrefs.edit();
-        prefsEditor.putBoolean(key, allowed);
-        prefsEditor.commit();
-    }
-
-    public static Boolean getFromPref(Context context, String key) {
-        SharedPreferences myPrefs = context.getSharedPreferences(LOCATION_PREF,
-                Context.MODE_PRIVATE);
-        return (myPrefs.getBoolean(key, false));
-    }
-
-    private void showAlert() {
-        AlertDialog alertDialog = new AlertDialog.Builder(Home_screenActivity.this).create();
-        alertDialog.setTitle("Alert");
-        alertDialog.setMessage("App needs to access your GPS Location.");
-
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "DONT ALLOW",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        finish();
-                    }
-                });
-
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "ALLOW",
-                new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        ActivityCompat.requestPermissions(Home_screenActivity.this,
-                                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                                MY_PERMISSIONS_REQUEST_LOCATION);
-                    }
-                });
-        alertDialog.show();
-    }
-
-    private void showSettingsAlert() {
-        AlertDialog alertDialog = new AlertDialog.Builder(Home_screenActivity.this).create();
-        alertDialog.setTitle("Alert");
-        alertDialog.setMessage("App needs to access your GPS location.");
-
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "DONT ALLOW",
-                new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        //finish();
-                    }
-                });
-
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "SETTINGS",
-                new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        startInstalledAppDetailsActivity(Home_screenActivity.this);
-                    }
-                });
-
-        alertDialog.show();
-    }
-    public static void startInstalledAppDetailsActivity(final Activity context) {
-        if (context == null) {
-            return;
-        }
-
-        final Intent i = new Intent();
-        i.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        i.addCategory(Intent.CATEGORY_DEFAULT);
-        i.setData(Uri.parse("package:" + context.getPackageName()));
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-        context.startActivity(i);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-
-                } else {
-
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
-        }
-    }
-
 
 }

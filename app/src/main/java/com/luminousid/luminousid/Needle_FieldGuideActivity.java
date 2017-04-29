@@ -2,6 +2,7 @@ package com.luminousid.luminousid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -19,6 +19,16 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static com.luminousid.luminousid.R.id.filterButton;
 import static com.luminousid.luminousid.R.layout.speciesnamelist;
+
+/*
+* Creates a listview of all needles from the Firebase server
+* First gets all filter choices from the Filter page, if that was the last page.
+* If the filter was chosen, we use FilterPopulate() to loop through all the entries from our global array.
+*   We add all the ones that passed the filter to a new array, and return that to populate our list.
+* Else, just populate our list view with the global array.
+* The adapter is used to get our desired appearance with image, species name, and common name.
+*   The adapter will also send us to a details page when a plant is clicked.
+*/
 
 public class Needle_FieldGuideActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -40,6 +50,9 @@ public class Needle_FieldGuideActivity extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_needle_field_guide);
 
+        // Set lock to portrait mode.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         // For closing this later
         needleFGObj = this;
 
@@ -57,8 +70,7 @@ public class Needle_FieldGuideActivity extends AppCompatActivity implements View
         Button filterButton = (Button) findViewById(R.id.filterButton);
         filterButton.setOnClickListener(this);
 
-        // Get firebase reference for just needles.
-        DatabaseReference needleRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/woody/needle");
+        // Get reference to our RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.fieldguideListView);
         mRecyclerView.setHasFixedSize(true);
 
