@@ -294,9 +294,9 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         ArrayList<glossaryDetails> newGlossaryForbsArray = new ArrayList<>();
         ArrayList<glossaryDetails> newGlossaryGraminoidsArray = new ArrayList<>();
 
-        glossaryDetails leafArrangementCategory = new glossaryDetails("Leaf Arrangements" , "");
-        glossaryDetails flowerShapeCategory = new glossaryDetails("Flower Shapes", "");
-        glossaryDetails leafShapeCategory = new glossaryDetails("Leaf Shapes", "");
+        glossaryDetails leafArrangementCategory = new glossaryDetails("- Leaf Arrangements -" , "");
+        glossaryDetails flowerShapeCategory = new glossaryDetails("- Flower Shapes -", "");
+        glossaryDetails leafShapeCategory = new glossaryDetails("- Leaf Shapes -", "");
 
         glossaryDetails alternate = new glossaryDetails("Alternate", "alternate");
         glossaryDetails basal = new glossaryDetails("Basal", "basal");
@@ -341,10 +341,12 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
         PlantArrayManager.getInstance().setGlobalGlossaryForbsArray(newGlossaryForbsArray);
 
-        glossaryDetails leafBladeCategory = new glossaryDetails("Leaf Blades", "awn");
-        glossaryDetails inflorescenceCategory = new glossaryDetails("Inflorescence Types", "awn");
+        glossaryDetails leafBladeCategory = new glossaryDetails("- Leaf Blades -", "");
+        glossaryDetails pinflorescenceCategory = new glossaryDetails("-Grasses Inflorescence-", "");
+        glossaryDetails cinflorescenceCategory = new glossaryDetails("-Sedges Inflorescence-", "");
+        glossaryDetails allCategories = new glossaryDetails("- Parts of Plant -", "awn");
 
-        glossaryDetails awn = new glossaryDetails("Awn Types ", "awn");
+        glossaryDetails awn = new glossaryDetails("- Awn Types -", "");
         glossaryDetails awn_absent = new glossaryDetails("Absent", "absent");
         glossaryDetails awn_bent = new glossaryDetails("Bent", "bent");
         glossaryDetails awn_straight = new glossaryDetails("Straight", "straight");
@@ -355,10 +357,17 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         glossaryDetails involute = new glossaryDetails("Involute", "involute");
         glossaryDetails keeled = new glossaryDetails("Keeled", "keeled");
         glossaryDetails open = new glossaryDetails("Open", "open");
-        glossaryDetails spikelet = new glossaryDetails("Spikelet Types ", "spikelet");
+        glossaryDetails spikelet = new glossaryDetails("Spikelet", "spikelet");
         glossaryDetails spikes_globose = new glossaryDetails("Globose", "globose");
         glossaryDetails spikes_one = new glossaryDetails("One", "one");
         glossaryDetails spikes_twoormore = new glossaryDetails("Two or More", "twoormore");
+
+        newGlossaryGraminoidsArray.add(allCategories);
+
+        newGlossaryGraminoidsArray.add(leafBladeCategory);
+        newGlossaryGraminoidsArray.add(flat);
+        newGlossaryGraminoidsArray.add(involute);
+        newGlossaryGraminoidsArray.add(keeled);
 
         newGlossaryGraminoidsArray.add(awn);
         newGlossaryGraminoidsArray.add(awn_absent);
@@ -366,17 +375,11 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         newGlossaryGraminoidsArray.add(awn_straight);
         newGlossaryGraminoidsArray.add(awn_twisted);
 
-        newGlossaryGraminoidsArray.add(inflorescenceCategory);
+        newGlossaryGraminoidsArray.add(pinflorescenceCategory);
         newGlossaryGraminoidsArray.add(contracted);
         newGlossaryGraminoidsArray.add(open);
 
-        newGlossaryGraminoidsArray.add(leafBladeCategory);
-        newGlossaryGraminoidsArray.add(flat);
-        newGlossaryGraminoidsArray.add(floret);
-        newGlossaryGraminoidsArray.add(involute);
-        newGlossaryGraminoidsArray.add(keeled);
-
-        newGlossaryGraminoidsArray.add(spikelet);
+        newGlossaryGraminoidsArray.add(cinflorescenceCategory);
         newGlossaryGraminoidsArray.add(spikes_globose);
         newGlossaryGraminoidsArray.add(spikes_one);
         newGlossaryGraminoidsArray.add(spikes_twoormore);
