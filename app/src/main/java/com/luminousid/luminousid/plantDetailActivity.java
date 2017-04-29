@@ -18,6 +18,8 @@ import org.parceler.Parcels;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class plantDetailActivity extends AppCompatActivity implements View.OnClickListener {
+    String plantName;
+    String plantCode;
 
     // Get Calibri Font for page. Check FontHelper class for more info.
     @Override
@@ -29,8 +31,9 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         int i = v.getId();
 
-        if(i == R.id.observationsButton) {
-            // Do nothing for now
+        if(i == R.id.addObsButton) {
+            // add an observation
+            gotoAddObs();
         }
     }
 
@@ -48,6 +51,9 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         if(plantType.equalsIgnoreCase("forbs")){
             setContentView(R.layout.activity_forbs_detail);
+            Button addobsButton = (Button) findViewById(R.id.addObsButton);
+            addobsButton.setOnClickListener(this);
+
 
             // Plant info unwrapped using Parcel library.
             forbsDetails forbPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
@@ -65,6 +71,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
             String leaf_shape_filter = changeIfNA(forbPlant.getLeaf_shape_filter());
             String notes = changeIfNA(forbPlant.getNotes());
             String photo_credit = changeIfNA(forbPlant.getPhoto_credit());
+            plantCode = plant_code;
+            plantName = species_name;
 
             // Find all text views and the image view.
             ImageView plantPicture = (ImageView) findViewById(R.id.forbsPlantImage);
@@ -104,6 +112,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         else if(plantType.equalsIgnoreCase("cyperaceae")){
             setContentView(R.layout.activity_cyperceae_detail);
+            Button addobsButton = (Button) findViewById(R.id.addObsButton);
+            addobsButton.setOnClickListener(this);
 
             // Plant detail unwrapped using Parcel Library
             cyperaceaeDetails cyperPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
@@ -121,6 +131,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
             String leaf_blade = changeIfNA(cyperPlant.getLeaf_blade());
             String spike_color = changeIfNA(cyperPlant.getSpike_color());
             String stem_cross_section = changeIfNA(cyperPlant.getStem_cross_section());
+            plantCode = plant_code;
+            plantName = species_name;
 
             // Find all text views and the image view.
             ImageView plantPicture = (ImageView) findViewById(R.id.cyperPlantImage);
@@ -159,6 +171,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         else if(plantType.equalsIgnoreCase("juncaceae")) {
             setContentView(R.layout.activity_juncaceae_detail);
+            Button addobsButton = (Button) findViewById(R.id.addObsButton);
+            addobsButton.setOnClickListener(this);
 
             // Plant detail unwrapped using Parcel Library
             juncaceaeDetails juncaPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
@@ -174,6 +188,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
             String leaf_blade = changeIfNA(juncaPlant.getLeaf_blade());
             String stem_cross_section = changeIfNA(juncaPlant.getStem_cross_section());
+            plantCode = plant_code;
+            plantName = species_name;
 
             // Find all text views and the image view.
             ImageView plantPicture = (ImageView) findViewById(R.id.PlantImage);
@@ -207,6 +223,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         else if(plantType.equalsIgnoreCase("poaceae")) {
             setContentView(R.layout.activity_poaceae_detail);
+            Button addobsButton = (Button) findViewById(R.id.addObsButton);
+            addobsButton.setOnClickListener(this);
 
             // Plant detail unwrapped using Parcel Library
             poaceaeDetails poaPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
@@ -225,6 +243,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
             String awns = changeIfNA(poaPlant.getAwns());
             String florets_per_spikelet = changeIfNA(poaPlant.getFlorets_per_spikelet());
             String stem_cross_section = changeIfNA(poaPlant.getStem_cross_section());
+            plantCode = plant_code;
+            plantName = species_name;
 
             // Find all text views and the image view.
             ImageView plantPicture = (ImageView) findViewById(R.id.PlantImage);
@@ -265,6 +285,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         else if(plantType.equalsIgnoreCase("deciduous")){
             setContentView(R.layout.activity_deciduous_detail);
+            Button addobsButton = (Button) findViewById(R.id.addObsButton);
+            addobsButton.setOnClickListener(this);
 
             // Plant detail unwrapped using Parcel Library
             deciduousDetails deciPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
@@ -281,6 +303,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
             String leaf_margin = changeIfNA(deciPlant.getLeaf_margin());
             String leaf_shape = changeIfNA(deciPlant.getLeaf_shape());
             String leaf_type = changeIfNA(deciPlant.getLeaf_type());
+            plantCode = plant_code;
+            plantName = species_name;
 
             // Find all text views and the image view.
             ImageView plantPicture = (ImageView) findViewById(R.id.PlantImage);
@@ -317,6 +341,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         else if(plantType.equalsIgnoreCase("needle")){
             setContentView(R.layout.activity_needle_detail);
+            Button addobsButton = (Button) findViewById(R.id.addObsButton);
+            addobsButton.setOnClickListener(this);
 
             // Plant detail unwrapped using Parcel Library
             needleDetails needlePlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
@@ -334,6 +360,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
             String needle_arrangement = changeIfNA(needlePlant.getNeedle_arrangement());
             String needle_per_fascile = changeIfNA(needlePlant.getNeedle_per_fascile());
             String leaf_type = changeIfNA(needlePlant.getLeaf_type());
+            plantCode = plant_code;
+            plantName = species_name;
 
             // Find all text views and the image view.
             ImageView plantPicture = (ImageView) findViewById(R.id.PlantImage);
@@ -387,5 +415,12 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
         }
 
         return testString;
+    }
+
+    public void gotoAddObs(){
+        Intent intent = new Intent(plantDetailActivity.this, AddObs.class);
+        intent.putExtra("PlantName", plantName);
+        intent.putExtra("PlantCode", plantCode);
+        startActivity(intent);
     }
 }

@@ -61,8 +61,6 @@
         <activity android:name=".glossaryDetailActivity" />
         <activity android:name=".Glossary_ListActivity" />
         <activity android:name=".MyObservationsActivity"></activity>
-        <activity android:name=".glossaryDetailActivity"/>
-        <activity android:name=".Glossary_ListActivity"></activity>
         <activity android:name=".AddObs">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

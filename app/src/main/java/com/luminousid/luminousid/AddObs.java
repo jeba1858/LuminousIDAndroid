@@ -28,6 +28,9 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,27 +41,36 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import static android.location.Location.convert;
 
 
-public class AddObs extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class AddObs extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 100;
     public static final String ALLOW_KEY = "ALLOWED";
     public static final String CAMERA_PREF = "camera_pref";
     protected static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 0;
-    //Info for the observation databae
+    //Info for the observation database
     String gps_lat;
     String gps_long;
     String time_date;
     String comment;
     Double d_gps_lat;
     Double d_gps_long;
+    String speciesName;
+    String speciesCode;
+    String username;
+    String userID;
+    String key;
+
 
     @Override
     public void onConnected(Bundle connectionHint) {
@@ -118,6 +130,15 @@ public class AddObs extends AppCompatActivity implements GoogleApiClient.Connect
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        speciesName = intent.getStringExtra("PlantName");
+        speciesCode = intent.getStringExtra("PlantCode");
+
+
+        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        ArrayList<accountDetails> accountDets =  PlantArrayManager.getInstance().getGlobalAccountDetails();
+        username = accountDets.get(0).getUsername();
+
         // Create an instance of GoogleAPIClient.
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -281,8 +302,9 @@ public class AddObs extends AppCompatActivity implements GoogleApiClient.Connect
 
     private File createImageFile() throws IOException {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
+        String timestamp = String.valueOf(System.currentTimeMillis());
+        String imageFileName = timestamp +"_"+userID;
+        key = timestamp +"_"+userID;
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
@@ -323,13 +345,15 @@ public class AddObs extends AppCompatActivity implements GoogleApiClient.Connect
     }
 
    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+       Button submit = (Button) findViewById(R.id.submit);
+       submit.setOnClickListener(this);
        String message= "Add a comment (optional)";
        TextView tv2 = (TextView) findViewById(R.id.textView2);
        tv2.setText(message);
        ImageView obs = (ImageView) findViewById(R.id.imageView3);
        obs.setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath));
        obs.setRotation(90);
-       TextView speciesName = (TextView) findViewById(R.id.obsSpeciesName);
+       TextView SpeciesName = (TextView) findViewById(R.id.obsSpeciesName);
        TextView GPSlat = (TextView) findViewById(R.id.GPSlat);
        TextView GPSlong = (TextView) findViewById(R.id.GPSlong);
        TextView TimeandDate = (TextView) findViewById(R.id.TimeDate);
@@ -337,6 +361,7 @@ public class AddObs extends AppCompatActivity implements GoogleApiClient.Connect
        TimeandDate.setText(time_date);
        GPSlat.setText(gps_lat);
        GPSlong.setText(gps_long);
+       SpeciesName.setText(speciesName);
 
 
     }
@@ -344,5 +369,33 @@ public class AddObs extends AppCompatActivity implements GoogleApiClient.Connect
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    ArrayList<observationDetails> tempObsArray = PlantArrayManager.getInstance().globalObservationArray;
+
+    public void gotoMyObs(){
+        EditText editText = (EditText) findViewById(R.id.editText2);
+        comment = editText.getText().toString();
+        Boolean synced = false;
+        int verified = 0;
+        observationDetails ObsDet = new observationDetails(key,comment,time_date,d_gps_lat,d_gps_long,synced,verified,speciesCode,speciesName,username);
+        tempObsArray.add(ObsDet);
+        PlantArrayManager.getInstance().setGlobalObservationArray(tempObsArray);
+        Intent intent = new Intent(AddObs.this, MyObservationsActivity.class);
+        startActivity(intent);
+        super.finish();
+
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+
+        if(i == R.id.submit) {
+            // add an observation
+            gotoMyObs();
+        }
     }
 }

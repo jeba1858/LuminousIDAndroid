@@ -36,12 +36,12 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:layout_above="@+id/button2"
+        android:layout_above="@+id/submit"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="43dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
