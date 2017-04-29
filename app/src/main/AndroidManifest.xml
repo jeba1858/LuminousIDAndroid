@@ -49,6 +49,7 @@
         <activity android:name=".Glossary_IntroActivity" />
         <activity android:name=".glossaryDetailActivity" />
         <activity android:name=".Glossary_ListActivity" />
+        <activity android:name=".MyObservationsActivity"></activity>
     </application>
 
 </manifest>

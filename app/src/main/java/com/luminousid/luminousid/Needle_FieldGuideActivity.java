@@ -70,8 +70,7 @@ public class Needle_FieldGuideActivity extends AppCompatActivity implements View
         Button filterButton = (Button) findViewById(R.id.filterButton);
         filterButton.setOnClickListener(this);
 
-        // Get firebase reference for just needles.
-        DatabaseReference needleRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/woody/needle");
+        // Get reference to our RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.fieldguideListView);
         mRecyclerView.setHasFixedSize(true);
 

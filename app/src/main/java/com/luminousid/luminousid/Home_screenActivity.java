@@ -47,6 +47,9 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         // Make all the glossary entries
         makeGlossaryEntries();
 
+        // Take dummy observation data
+        takeDummyObservations();
+
         // Buttons on screen
         Button logoutButton = (Button) findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(this);
@@ -116,6 +119,10 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             gotoGlossary();
         }
 
+        else if(i == R.id.observationsButton) {
+            gotoMyObservations();
+        }
+
 
     }
 
@@ -138,6 +145,34 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
     public void gotoGlossary(){
         Intent intent = new Intent(Home_screenActivity.this, Glossary_IntroActivity.class);
         startActivity(intent);
+    }
+
+    public void gotoMyObservations() {
+        Intent intent = new Intent(Home_screenActivity.this, MyObservationsActivity.class);
+        startActivity(intent);
+    }
+
+    public void takeDummyObservations() {
+        ArrayList<observationDetails> dummyObsDetails = new ArrayList<>();
+
+        observationDetails obs1 = new observationDetails("1491771303667_XIVsvZvLUZhj4IhxthqHonqfY4O2",
+                "This is the first observation!", "04/25/2017 2:24:56 pm", 40.032577, -105.5364028,
+                false, 0, "PICO", "Pinus contorta", "Okabomb");
+
+        observationDetails obs2 = new observationDetails("1491771303534_XIVsvZvLUZhj4IhxthqHonqfY4O2",
+                "This is the second observation!", "04/26/2017 3:24:56 pm", 40.032577, -105.5364028,
+                false, 0, "ABLA", "Abies lasiocarpa", "Okabomb");
+
+        observationDetails obs3 = new observationDetails("1491771303759_XIVsvZvLUZhj4IhxthqHonqfY4O2",
+                "This is the third observation!", "04/27/2017 3:24:56 pm", 40.032577, -105.5364028,
+                true, 0, "ABLA", "Abies lasiocarpa", "Okabomb");
+
+        dummyObsDetails.add(obs1);
+        dummyObsDetails.add(obs2);
+        dummyObsDetails.add(obs3);
+
+        PlantArrayManager.getInstance().setGlobalObservationArray(dummyObsDetails);
+
     }
 
     public void takeAccountSnapshot() {

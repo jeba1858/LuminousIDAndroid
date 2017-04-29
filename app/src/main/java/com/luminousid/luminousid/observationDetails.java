@@ -11,6 +11,7 @@ import org.parceler.Parcel;
 public class observationDetails {
 
     private String key = null;
+    private String comments = null;
     private String datetime = null;
     private double gps_lat = 0.0;
     private double gps_long = 0.0;
@@ -24,10 +25,11 @@ public class observationDetails {
 
     }
 
-    public observationDetails(String key, String datetime, double gps_lat, double gps_long, boolean is_synced,
+    public observationDetails(String key, String comments, String datetime, double gps_lat, double gps_long, boolean is_synced,
                               int is_verified, String plant_code, String species_name, String username){
 
         this.key = key;
+        this.comments = comments;
         this.datetime = datetime;
         this.gps_lat = gps_lat;
         this.gps_long = gps_long;
@@ -45,6 +47,10 @@ public class observationDetails {
     public void setKey(String key) {
         this.key = key;
     }
+
+    public String getComments() { return comments; }
+
+    public void setComments(String comments) { this.comments = comments; }
 
     public String getDatetime() {
         return datetime;
@@ -70,7 +76,7 @@ public class observationDetails {
         this.gps_long = gps_long;
     }
 
-    public boolean is_synced() {
+    public boolean getIs_synced() {
         return is_synced;
     }
 
