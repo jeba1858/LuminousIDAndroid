@@ -38,7 +38,7 @@
             <ImageView
                 android:id="@+id/PlantImage"
                 android:layout_width="match_parent"
-                android:layout_height="238dp"
+                android:layout_height="350sp"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <TextView
