@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -24,8 +23,6 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
-    private static final String TAG = "ResetPasswordActivity";
 
     private EditText mEmailField;
 
@@ -59,11 +56,9 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 }
                 else {
                     // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
             }
         };
@@ -86,18 +81,15 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
 
     // Send the password reset email using Firebase.
     private void resetEmail(String useremail){
-        Log.d(TAG, "resetEmail:" + useremail);
 
         if(!validateForm()){
             return;
         }
 
         if (mAuth != null){
-            Log.w(" if Email authenticated", "Recovery Email has been sent to " + mEmailField.getText().toString());
             mAuth.sendPasswordResetEmail(mEmailField.getText().toString());
         }
         else{
-            Log.w(" error ", "bad entry ");
         }
 
     }

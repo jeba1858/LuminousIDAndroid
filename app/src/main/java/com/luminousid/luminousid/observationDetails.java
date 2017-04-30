@@ -15,29 +15,34 @@ public class observationDetails {
     private String datetime = null;
     private double gps_lat = 0.0;
     private double gps_long = 0.0;
+    private float gps_accuracy;
     private boolean is_synced = false;
     private int is_verified = 0;
     private String plant_code = null;
     private String species_name = null;
     private String username = null;
+    private String imagePath = null;
 
     public observationDetails(){
 
     }
 
-    public observationDetails(String key, String comments, String datetime, double gps_lat, double gps_long, boolean is_synced,
-                              int is_verified, String plant_code, String species_name, String username){
+    public observationDetails(String key, String comments, String datetime, double gps_lat, double gps_long, float gps_accuracy,
+                              boolean is_synced, int is_verified, String plant_code, String species_name,
+                              String username, String imagePath){
 
         this.key = key;
         this.comments = comments;
         this.datetime = datetime;
         this.gps_lat = gps_lat;
         this.gps_long = gps_long;
+        this.gps_accuracy = gps_accuracy;
         this.is_synced = is_synced;
         this.is_verified = is_verified;
         this.plant_code = plant_code;
         this.species_name = species_name;
         this.username = username;
+        this.imagePath = imagePath;
     }
 
     public String getKey() {
@@ -75,6 +80,10 @@ public class observationDetails {
     public void setGps_long(double gps_long) {
         this.gps_long = gps_long;
     }
+
+    public float getGps_accuracy() { return gps_accuracy; }
+
+    public void setGps_accuracy(float gps_accuracy) { this.gps_accuracy = gps_accuracy; }
 
     public boolean getIs_synced() {
         return is_synced;
@@ -115,5 +124,9 @@ public class observationDetails {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public String getImagePath() { return imagePath; }
+
+    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
 
 }

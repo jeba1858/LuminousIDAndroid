@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 
 import org.parceler.Parcels;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -137,6 +139,8 @@ public class observationAdapter extends RecyclerView.Adapter<observationAdapter.
         TextView syncstatusText = mobsHolder.syncstatusText;
 
         // Find a way to get picture saved on phone
+        String imagePath = thisObs.getImagePath();
+        Glide.with(mContext).load(imagePath).into(observationThumbnail);
 
         speciesnameText.setText(thisObs.getSpecies_name());
         commentsText.setText(thisObs.getComments());

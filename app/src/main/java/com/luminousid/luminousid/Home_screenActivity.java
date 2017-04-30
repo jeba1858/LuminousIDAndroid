@@ -28,7 +28,6 @@ import java.util.ArrayList;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-import static com.luminousid.luminousid.AddObs.startInstalledAppDetailsActivity;
 import static com.luminousid.luminousid.R.id.logoutButton;
 
 public class Home_screenActivity extends AppCompatActivity implements View.OnClickListener {
@@ -177,7 +176,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        startInstalledAppDetailsActivity(Home_screenActivity.this);
                     }
                 });
 
@@ -282,16 +280,17 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
     public void takeDummyObservations() {
         ArrayList<observationDetails> dummyObsDetails = new ArrayList<>();
 
+        /*
         observationDetails obs1 = new observationDetails("1491771303667_XIVsvZvLUZhj4IhxthqHonqfY4O2",
-                "This is the first observation!", "04/25/2017 2:24:56 pm", 40.032577, -105.5364028,
+                "This is the first observation!", "04/25/2017 2:24:56 pm", 40.032577, -105.5364028, 10,
                 false, 0, "PICO", "Pinus contorta", "Okabomb");
 
         observationDetails obs2 = new observationDetails("1491771303534_XIVsvZvLUZhj4IhxthqHonqfY4O2",
-                "This is the second observation!", "04/26/2017 3:24:56 pm", 40.032577, -105.5364028,
+                "This is the second observation!", "04/26/2017 3:24:56 pm", 40.032577, -105.5364028, 10,
                 false, 0, "ABLA", "Abies lasiocarpa", "Okabomb");
 
         observationDetails obs3 = new observationDetails("1491771303759_XIVsvZvLUZhj4IhxthqHonqfY4O2",
-                "This is the third observation!", "04/27/2017 3:24:56 pm", 40.032577, -105.5364028,
+                "This is the third observation!", "04/27/2017 3:24:56 pm", 40.032577, -105.5364028, 10,
                 true, 0, "ABLA", "Abies lasiocarpa", "Okabomb");
 
         dummyObsDetails.add(obs1);
@@ -299,6 +298,7 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         dummyObsDetails.add(obs3);
 
         PlantArrayManager.getInstance().setGlobalObservationArray(dummyObsDetails);
+        */
 
     }
 

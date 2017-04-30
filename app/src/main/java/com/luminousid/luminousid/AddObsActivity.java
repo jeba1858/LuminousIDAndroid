@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,7 +15,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
-import android.net.LocalSocket;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -26,26 +26,22 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,23 +49,26 @@ import java.util.Date;
 import static android.location.Location.convert;
 
 
-public class AddObs extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class AddObsActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 100;
     public static final String ALLOW_KEY = "ALLOWED";
     public static final String CAMERA_PREF = "camera_pref";
     protected static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 0;
+
     //Info for the observation database
     String gps_lat;
     String gps_long;
     String time_date;
     String comment;
-    Double d_gps_lat;
-    Double d_gps_long;
+    double d_gps_lat;
+    double d_gps_long;
+    float gps_accuracy;
     String speciesName;
     String speciesCode;
     String username;
     String userID;
     String key;
+    String imagePath;
 
 
     @Override
@@ -86,8 +85,9 @@ public class AddObs extends AppCompatActivity implements View.OnClickListener, G
         }
         Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (mLastLocation != null) {
-           d_gps_lat = ((mLastLocation.getLatitude()));
+            d_gps_lat = ((mLastLocation.getLatitude()));
             d_gps_long = ((mLastLocation.getLongitude()));
+            gps_accuracy = ( mLastLocation.getAccuracy() );
 
             gps_lat = convert(d_gps_lat, Location.FORMAT_SECONDS);
             gps_lat = replaceDelimiters(gps_lat);
@@ -192,7 +192,7 @@ public class AddObs extends AppCompatActivity implements View.OnClickListener, G
     }
 
     private void showAlert() {
-        AlertDialog alertDialog = new AlertDialog.Builder(AddObs.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(AddObsActivity.this).create();
         alertDialog.setTitle("Alert");
         alertDialog.setMessage("App needs to access the Camera.");
 
@@ -209,7 +209,7 @@ public class AddObs extends AppCompatActivity implements View.OnClickListener, G
 
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        ActivityCompat.requestPermissions(AddObs.this,
+                        ActivityCompat.requestPermissions(AddObsActivity.this,
                                 new String[]{Manifest.permission.CAMERA},
                                 MY_PERMISSIONS_REQUEST_CAMERA);
                     }
@@ -218,7 +218,7 @@ public class AddObs extends AppCompatActivity implements View.OnClickListener, G
     }
 
     private void showSettingsAlert() {
-        AlertDialog alertDialog = new AlertDialog.Builder(AddObs.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(AddObsActivity.this).create();
         alertDialog.setTitle("Alert");
         alertDialog.setMessage("App needs to access the Camera.");
 
@@ -236,7 +236,7 @@ public class AddObs extends AppCompatActivity implements View.OnClickListener, G
 
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        startInstalledAppDetailsActivity(AddObs.this);
+                        startInstalledAppDetailsActivity(AddObsActivity.this);
                     }
                 });
 
@@ -303,8 +303,9 @@ public class AddObs extends AppCompatActivity implements View.OnClickListener, G
     private File createImageFile() throws IOException {
         // Create an image file name
         String timestamp = String.valueOf(System.currentTimeMillis());
-        String imageFileName = timestamp +"_"+userID;
-        key = timestamp +"_"+userID;
+        String imageFileName = timestamp + "_" + userID;
+        key = timestamp + "_" + userID;
+
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
@@ -314,6 +315,8 @@ public class AddObs extends AppCompatActivity implements View.OnClickListener, G
 
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
+        imagePath = image.getAbsolutePath();
+
         time_date = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a").format(new Date());
 
         return image;
@@ -322,6 +325,7 @@ public class AddObs extends AppCompatActivity implements View.OnClickListener, G
 
     private void openCamera() {
         Intent takePictureIntent = new Intent("android.media.action.IMAGE_CAPTURE");
+
         // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
@@ -330,7 +334,7 @@ public class AddObs extends AppCompatActivity implements View.OnClickListener, G
                 photoFile = createImageFile();
             } catch (IOException ex) {
                 // Error occurred while creating the File
-                AlertDialog cameraDialog = new AlertDialog.Builder(AddObs.this).create();
+                AlertDialog cameraDialog = new AlertDialog.Builder(AddObsActivity.this).create();
                 cameraDialog.setTitle("Alert");
             }
             // Continue only if the File was successfully created
@@ -351,6 +355,7 @@ public class AddObs extends AppCompatActivity implements View.OnClickListener, G
        TextView tv2 = (TextView) findViewById(R.id.textView2);
        tv2.setText(message);
        ImageView obs = (ImageView) findViewById(R.id.imageView3);
+
        obs.setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath));
        obs.setRotation(90);
        TextView SpeciesName = (TextView) findViewById(R.id.obsSpeciesName);
@@ -374,14 +379,18 @@ public class AddObs extends AppCompatActivity implements View.OnClickListener, G
     ArrayList<observationDetails> tempObsArray = PlantArrayManager.getInstance().globalObservationArray;
 
     public void gotoMyObs(){
+
         EditText editText = (EditText) findViewById(R.id.editText2);
         comment = editText.getText().toString();
+
         Boolean synced = false;
         int verified = 0;
-        observationDetails ObsDet = new observationDetails(key,comment,time_date,d_gps_lat,d_gps_long,synced,verified,speciesCode,speciesName,username);
+        observationDetails ObsDet = new observationDetails(key, comment, time_date, d_gps_lat, d_gps_long, gps_accuracy,
+                synced, verified, speciesCode, speciesName, username, imagePath);
         tempObsArray.add(ObsDet);
         PlantArrayManager.getInstance().setGlobalObservationArray(tempObsArray);
-        Intent intent = new Intent(AddObs.this, MyObservationsActivity.class);
+
+        Intent intent = new Intent(AddObsActivity.this, MyObservationsActivity.class);
         startActivity(intent);
         super.finish();
 

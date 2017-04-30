@@ -6,7 +6,6 @@ import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.view.View;
@@ -73,11 +72,9 @@ public class SignUpActivity extends AppCompatActivity
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 }
                 else {
                     // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
 
                 // Go to home screen afterwards
@@ -96,7 +93,6 @@ public class SignUpActivity extends AppCompatActivity
         // Validates and creates the new user.
 
         private void createAccount(String email, String password){
-            Log.d(TAG, "createAccount:" + email);
 
             final String userEmail = email;
 
@@ -107,13 +103,11 @@ public class SignUpActivity extends AppCompatActivity
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                   Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
                   // If sign in fails, display a message to the user.
                     // If sign in succeeds, the auth state listener will be notified and logic
                     // to handle the signed in user can be handled in the listener.
                     if (!task.isSuccessful()) {
-                        Log.i("Reponse", "Failed to create user: " + task.getException().getMessage());
                         mEmailField.setError(task.getException().getMessage());
                     }
                     else {

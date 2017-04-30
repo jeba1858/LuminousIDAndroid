@@ -5,9 +5,6 @@ import android.view.View;
 
 import org.parceler.Parcel;
 
-import static com.luminousid.luminousid.R.id.addObsButton;
-import static com.luminousid.luminousid.R.id.logoutButton;
-
 /**
  * Created by chase on 3/18/2017.
  * A class to help with the Firebase UI library to populate a listview.

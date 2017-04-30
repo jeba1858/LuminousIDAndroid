@@ -51,6 +51,8 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         if(plantType.equalsIgnoreCase("forbs")){
             setContentView(R.layout.activity_forbs_detail);
+
+            // Set button
             Button addobsButton = (Button) findViewById(R.id.addObsButton);
             addobsButton.setOnClickListener(this);
 
@@ -418,7 +420,7 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void gotoAddObs(){
-        Intent intent = new Intent(plantDetailActivity.this, AddObs.class);
+        Intent intent = new Intent(plantDetailActivity.this, AddObsActivity.class);
         intent.putExtra("PlantName", plantName);
         intent.putExtra("PlantCode", plantCode);
         startActivity(intent);
