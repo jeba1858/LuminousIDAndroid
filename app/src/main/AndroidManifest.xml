@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--- Permission to allow app to get best location services -->
+    <!-- - Permission to allow app to get best location services -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <!-- Says that the app  uses a camera and writes to external storage -->
@@ -19,8 +19,7 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".FontHelper"
@@ -60,7 +59,7 @@
         <activity android:name=".Glossary_IntroActivity" />
         <activity android:name=".glossaryDetailActivity" />
         <activity android:name=".Glossary_ListActivity" />
-        <activity android:name=".MyObservationsActivity"></activity>
+        <activity android:name=".MyObservationsActivity" />
         <activity android:name=".AddObsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -79,6 +78,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <activity android:name=".HowToActivity"></activity>
     </application>
 
 </manifest>

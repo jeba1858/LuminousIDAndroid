@@ -1,6 +1,5 @@
 package com.luminousid.luminousid;
 
-import android.*;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -43,7 +43,7 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Location Permmisions
+        // Get Location Permissions from the user
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (getFromPref(this, ALLOW_KEY)) {
                 showAlert();
@@ -63,9 +63,10 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
                             MY_PERMISSIONS_REQUEST_LOCATION);
                 }
             }
-        } else {
         }
-
+        else {
+            // Do nothing
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
@@ -82,18 +83,15 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         // Make all the glossary entries
         makeGlossaryEntries();
 
-        // Take dummy observation data
-        takeDummyObservations();
-
         // Buttons on screen
         Button logoutButton = (Button) findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(this);
 
         findViewById(R.id.fieldguideButton).setOnClickListener(this);
         findViewById(R.id.observationsButton).setOnClickListener(this);
-        findViewById(R.id.aboutButton).setOnClickListener(this);
+        findViewById(R.id.howtoButton).setOnClickListener(this);
         findViewById(R.id.glossaryButton).setOnClickListener(this);
-        findViewById(R.id.aboutButton).setOnClickListener(this);
+        findViewById(R.id.howtoButton).setOnClickListener(this);
 
         //Textview for Login Status
         TextView loginStatus = (TextView) findViewById(R.id.loginStatus);
@@ -232,8 +230,8 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
         }
 
-        else if(i == R.id.aboutButton){
-            gotoAbout();
+        else if(i == R.id.howtoButton){
+            gotoHowTo();
         }
 
         else if(i == R.id.fieldguideButton){
@@ -257,8 +255,8 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
         super.finish();
     }
 
-    public void gotoAbout(){
-        Intent intent = new Intent(Home_screenActivity.this, AboutActivity.class);
+    public void gotoHowTo(){
+        Intent intent = new Intent(Home_screenActivity.this, HowToActivity.class);
         startActivity(intent);
     }
 
@@ -275,31 +273,6 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
     public void gotoMyObservations() {
         Intent intent = new Intent(Home_screenActivity.this, MyObservationsActivity.class);
         startActivity(intent);
-    }
-
-    public void takeDummyObservations() {
-        ArrayList<observationDetails> dummyObsDetails = new ArrayList<>();
-
-        /*
-        observationDetails obs1 = new observationDetails("1491771303667_XIVsvZvLUZhj4IhxthqHonqfY4O2",
-                "This is the first observation!", "04/25/2017 2:24:56 pm", 40.032577, -105.5364028, 10,
-                false, 0, "PICO", "Pinus contorta", "Okabomb");
-
-        observationDetails obs2 = new observationDetails("1491771303534_XIVsvZvLUZhj4IhxthqHonqfY4O2",
-                "This is the second observation!", "04/26/2017 3:24:56 pm", 40.032577, -105.5364028, 10,
-                false, 0, "ABLA", "Abies lasiocarpa", "Okabomb");
-
-        observationDetails obs3 = new observationDetails("1491771303759_XIVsvZvLUZhj4IhxthqHonqfY4O2",
-                "This is the third observation!", "04/27/2017 3:24:56 pm", 40.032577, -105.5364028, 10,
-                true, 0, "ABLA", "Abies lasiocarpa", "Okabomb");
-
-        dummyObsDetails.add(obs1);
-        dummyObsDetails.add(obs2);
-        dummyObsDetails.add(obs3);
-
-        PlantArrayManager.getInstance().setGlobalObservationArray(dummyObsDetails);
-        */
-
     }
 
     public void takeAccountSnapshot() {
@@ -333,6 +306,8 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
 
     public void takeFieldGuideSnapshot(){
+
+        Toast.makeText(this, "Attempting to read Field Guide from server...", Toast.LENGTH_SHORT).show();
 
         DatabaseReference forbsRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/forbs");
         DatabaseReference cyperRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://speciesid-ca814.firebaseio.com/speciesid/field_guide/graminoids/cyperaceae");
@@ -449,6 +424,8 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
 
             }
         });
+
+        Toast.makeText(this, "Field Guide can now be accessed!", Toast.LENGTH_SHORT).show();
 
     }
 
