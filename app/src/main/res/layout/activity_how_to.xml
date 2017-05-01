@@ -92,7 +92,7 @@
                 android:id="@+id/ShareTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Record the plants you observe with the app, and once you are back with cell reception or wifi your observations will get uploaded to this website. The more observations we get from you, the better Niwot Ridge scientists will be able to carry out their research on how species are responding to climate change!"
+                android:text="Record the plants you observe with the app, and once you are back with cell reception or wifi your observations can be uploaded to the website from the 'My Observations' page. The more observations we get from you, the better Niwot Ridge scientists will be able to carry out their research on how species are responding to climate change!"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="20dp" />
 
