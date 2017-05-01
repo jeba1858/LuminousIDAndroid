@@ -10,11 +10,14 @@ import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.location.Location;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -46,6 +49,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 import static android.location.Location.convert;
 
 
@@ -54,6 +59,8 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
     public static final String ALLOW_KEY = "ALLOWED";
     public static final String CAMERA_PREF = "camera_pref";
     protected static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 0;
+
+    ExifInterface ei;
 
     //Info for the observation database
     String gps_lat;
@@ -70,19 +77,20 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
     String key;
     String imagePath;
 
+    // Get Calibri Font for page. Check FontHelper class for more info.
+    @Override
+    protected void attachBaseContext(Context newbase){
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newbase));
+    }
+
 
     @Override
     public void onConnected(Bundle connectionHint) {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
+
+        // Get information from Google Location Services and format it correctly
         Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (mLastLocation != null) {
             d_gps_lat = ((mLastLocation.getLatitude()));
@@ -98,6 +106,7 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
             gps_long = gps_long + " W";
         }
     }
+
     @NonNull
     private static String replaceDelimiters(String str) {
         str = str.replaceFirst(":", "°");
@@ -130,10 +139,13 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Set lock to portrait mode.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         Intent intent = getIntent();
         speciesName = intent.getStringExtra("PlantName");
         speciesCode = intent.getStringExtra("PlantCode");
-
 
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         ArrayList<accountDetails> accountDets =  PlantArrayManager.getInstance().getGlobalAccountDetails();
@@ -147,8 +159,10 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
                     .addApi(LocationServices.API)
                     .build();
         }
+        // Once we have our picture, we can put it to the correct layout
         setContentView(R.layout.activity_add_obs);
 
+        // Check user permissions
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             if (getFromPref(this, ALLOW_KEY)) {
                 showAlert();
@@ -191,6 +205,7 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
         return (myPrefs.getBoolean(key, false));
     }
 
+    // Showing alert for accessing the camera.
     private void showAlert() {
         AlertDialog alertDialog = new AlertDialog.Builder(AddObsActivity.this).create();
         alertDialog.setTitle("Alert");
@@ -306,6 +321,7 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
         String imageFileName = timestamp + "_" + userID;
         key = timestamp + "_" + userID;
 
+        // Create temporary picture file, so we can save the file path with the observational data
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
@@ -356,8 +372,49 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
        tv2.setText(message);
        ImageView obs = (ImageView) findViewById(R.id.imageView3);
 
-       obs.setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath));
-       obs.setRotation(90);
+       //obs.setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath));
+       //obs.setRotation(90);
+
+       // Let's attempt to fix the rotation of the picture...
+       BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+       Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+       bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);
+
+       try {
+           ei = new ExifInterface(mCurrentPhotoPath);
+       } catch (IOException e) {
+           System.out.println("Failed to get ExifInterface");
+       }
+       int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_UNDEFINED);
+       switch(orientation) {
+
+           case ExifInterface.ORIENTATION_ROTATE_90:
+               bitmap = rotateImage(bitmap, 90);
+               obs.setImageBitmap(bitmap);
+               break;
+
+           case ExifInterface.ORIENTATION_ROTATE_180:
+               bitmap = rotateImage(bitmap, 180);
+               obs.setImageBitmap(bitmap);
+               break;
+
+           case ExifInterface.ORIENTATION_ROTATE_270:
+               bitmap = rotateImage(bitmap, 270);
+               obs.setImageBitmap(bitmap);
+               break;
+
+           case ExifInterface.ORIENTATION_NORMAL:
+               bitmap = rotateImage(bitmap, 270);
+               obs.setImageBitmap(bitmap);
+               break;
+
+           default:
+               bitmap = rotateImage(bitmap, 270);
+               obs.setImageBitmap(bitmap);
+               break;
+       }
+
+
        TextView SpeciesName = (TextView) findViewById(R.id.obsSpeciesName);
        TextView GPSlat = (TextView) findViewById(R.id.GPSlat);
        TextView GPSlong = (TextView) findViewById(R.id.GPSlong);
@@ -374,6 +431,13 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public static Bitmap rotateImage(Bitmap source, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
+                matrix, true);
     }
 
     ArrayList<observationDetails> tempObsArray = PlantArrayManager.getInstance().globalObservationArray;
