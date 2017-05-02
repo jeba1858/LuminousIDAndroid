@@ -30,6 +30,10 @@ Apply Font to all Classes
     - Can be changed on a case-by-case basis using fontPath="fonts/fontfile.ttf" in a TextView.
     - More info can be found in this class and in the Calligraphy library.
 
+All Global Arrays:
+- PlantArrayManager.java
+    - Stores all global arrays: User account info, Field Guide, Glossary, and User Observations
+
 Open screen (For Login and Signup)
 - open_screenActivity.java
     - Nothing much here but leading to three different activities: Login, Signup, and HomeScreen
@@ -105,4 +109,20 @@ Glossary Detail
     - Goal: Display a bigger picture of the selected glossary entry.
     - Uses passed in glossaryDetails.java class to set the name text and image.
         Image pulled from assets > glossaryphotos using the Glide library.
+
+Add Observations
+- AddObsActivity.java
+    - Uses activity_add_obs.xml
+    - Goal: Allow user to take a picture. The GPS location and accuracy are saved. The user can enter comments.
+        The user submits to the My Observations page.
+    - Uses camera intent to take a picture. The GPS location / accuracy / timestamp are handled by Google Location Services.
+        User enters their own comment. The observation is saved to a global array in PlantArrayManager to be pulled later.
+
+My Observations
+- MyObservationsActivity.java
+    - Uses activity_my_observations.xml
+    - Goal: Show the observations that the user has taken. Allow user to send to the server.
+    - We populate the list using the global observations array. The send to website button sends it to Firebase.
+        Firebase takes care of if it can't communicate w the server. Will send when next connected.
+
 

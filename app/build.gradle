@@ -3,9 +3,9 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            keyAlias 'luminousidkey2'
+            keyAlias 'luminous'
             keyPassword 'Silene2015'
-            storeFile file('C:/Users/chase/keystores/luminousid.jks')
+            storeFile file('C:/Users/chase/keystores/keystore.jks')
             storePassword 'Silene2015'
         }
     }
@@ -15,8 +15,8 @@ android {
         applicationId 'com.luminousmossboss.luminous'
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 3
-        versionName "2.0"
+        versionCode 4
+        versionName "2.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     defaultConfig {
