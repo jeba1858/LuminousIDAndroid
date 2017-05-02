@@ -61,6 +61,7 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
     protected static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 0;
 
     ExifInterface ei;
+    Bitmap bitmap;
 
     //Info for the observation database
     String gps_lat;
@@ -378,7 +379,10 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
        // Let's attempt to fix the rotation of the picture...
        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
        Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-       bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);
+       if(bitmap != null) {
+           bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);
+       }
+
 
        try {
            ei = new ExifInterface(mCurrentPhotoPath);
@@ -386,34 +390,35 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
            System.out.println("Failed to get ExifInterface");
        }
        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_UNDEFINED);
-       switch(orientation) {
+       if(bitmap != null) {
+           switch(orientation) {
 
-           case ExifInterface.ORIENTATION_ROTATE_90:
-               bitmap = rotateImage(bitmap, 90);
-               obs.setImageBitmap(bitmap);
-               break;
+               case ExifInterface.ORIENTATION_ROTATE_90:
+                   bitmap = rotateImage(bitmap, 90);
+                   obs.setImageBitmap(bitmap);
+                   break;
 
-           case ExifInterface.ORIENTATION_ROTATE_180:
-               bitmap = rotateImage(bitmap, 180);
-               obs.setImageBitmap(bitmap);
-               break;
+               case ExifInterface.ORIENTATION_ROTATE_180:
+                   bitmap = rotateImage(bitmap, 180);
+                   obs.setImageBitmap(bitmap);
+                   break;
 
-           case ExifInterface.ORIENTATION_ROTATE_270:
-               bitmap = rotateImage(bitmap, 270);
-               obs.setImageBitmap(bitmap);
-               break;
+               case ExifInterface.ORIENTATION_ROTATE_270:
+                   bitmap = rotateImage(bitmap, 270);
+                   obs.setImageBitmap(bitmap);
+                   break;
 
-           case ExifInterface.ORIENTATION_NORMAL:
-               bitmap = rotateImage(bitmap, 270);
-               obs.setImageBitmap(bitmap);
-               break;
+               case ExifInterface.ORIENTATION_NORMAL:
+                   bitmap = rotateImage(bitmap, 270);
+                   obs.setImageBitmap(bitmap);
+                   break;
 
-           default:
-               bitmap = rotateImage(bitmap, 270);
-               obs.setImageBitmap(bitmap);
-               break;
+               default:
+                   bitmap = rotateImage(bitmap, 270);
+                   obs.setImageBitmap(bitmap);
+                   break;
+           }
        }
-
 
        TextView SpeciesName = (TextView) findViewById(R.id.obsSpeciesName);
        TextView GPSlat = (TextView) findViewById(R.id.GPSlat);

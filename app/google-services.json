@@ -30,6 +30,9 @@
       "api_key": [
         {
           "current_key": "AIzaSyCn5cmonFcxRxqknTRbMuR4JuehAY5Z3ZU"
+        },
+        {
+          "current_key": "AIzaSyCppUmZykYgv6NalROkPg9MEi3e8GzSXGw"
         }
       ],
       "services": {
@@ -40,10 +43,51 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
+              "client_id": "794603922973-ke3tkr7elaqvlpflnsegbu8n3q7l3h60.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "Garden-Club.LuminousID"
+              }
+            },
+            {
               "client_id": "794603922973-1p21it3toe1dcvm28nshbmiard8hsvq5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794603922973:android:6ad881ee1ca14b3a",
+        "android_client_info": {
+          "package_name": "com.luminousmossboss.luminous"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794603922973-1p21it3toe1dcvm28nshbmiard8hsvq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn5cmonFcxRxqknTRbMuR4JuehAY5Z3ZU"
+        },
+        {
+          "current_key": "AIzaSyCppUmZykYgv6NalROkPg9MEi3e8GzSXGw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
