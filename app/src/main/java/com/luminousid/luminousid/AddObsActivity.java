@@ -382,6 +382,9 @@ public class AddObsActivity extends AppCompatActivity implements View.OnClickLis
        if(bitmap != null) {
            bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);
        }
+       else {
+           super.finish();
+       }
 
 
        try {
