@@ -6,8 +6,12 @@ import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,6 +60,10 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
             Button addobsButton = (Button) findViewById(R.id.addObsButton);
             addobsButton.setOnClickListener(this);
 
+            // Check if not logged in
+            if(PlantArrayManager.getInstance().getGlobalAccountDetails().size() == 0) {
+                ((ViewGroup) addobsButton.getParent()).removeView(addobsButton);
+            }
 
             // Plant info unwrapped using Parcel library.
             forbsDetails forbPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
@@ -114,8 +122,15 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         else if(plantType.equalsIgnoreCase("cyperaceae")){
             setContentView(R.layout.activity_cyperceae_detail);
+
+            // Add observation button
             Button addobsButton = (Button) findViewById(R.id.addObsButton);
             addobsButton.setOnClickListener(this);
+
+            // Check if not logged in
+            if(PlantArrayManager.getInstance().getGlobalAccountDetails().size() == 0) {
+                ((ViewGroup) addobsButton.getParent()).removeView(addobsButton);
+            }
 
             // Plant detail unwrapped using Parcel Library
             cyperaceaeDetails cyperPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
@@ -173,8 +188,15 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         else if(plantType.equalsIgnoreCase("juncaceae")) {
             setContentView(R.layout.activity_juncaceae_detail);
+
+            // Add observation button
             Button addobsButton = (Button) findViewById(R.id.addObsButton);
             addobsButton.setOnClickListener(this);
+
+            // Check if not logged in
+            if(PlantArrayManager.getInstance().getGlobalAccountDetails().size() == 0) {
+                ((ViewGroup) addobsButton.getParent()).removeView(addobsButton);
+            }
 
             // Plant detail unwrapped using Parcel Library
             juncaceaeDetails juncaPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
@@ -225,8 +247,15 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         else if(plantType.equalsIgnoreCase("poaceae")) {
             setContentView(R.layout.activity_poaceae_detail);
+
+            // Add observation button
             Button addobsButton = (Button) findViewById(R.id.addObsButton);
             addobsButton.setOnClickListener(this);
+
+            // Check if not logged in
+            if(PlantArrayManager.getInstance().getGlobalAccountDetails().size() == 0) {
+                ((ViewGroup) addobsButton.getParent()).removeView(addobsButton);
+            }
 
             // Plant detail unwrapped using Parcel Library
             poaceaeDetails poaPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
@@ -287,8 +316,15 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         else if(plantType.equalsIgnoreCase("deciduous")){
             setContentView(R.layout.activity_deciduous_detail);
+
+            // Add observation button
             Button addobsButton = (Button) findViewById(R.id.addObsButton);
             addobsButton.setOnClickListener(this);
+
+            // Check if not logged in
+            if(PlantArrayManager.getInstance().getGlobalAccountDetails().size() == 0) {
+                ((ViewGroup) addobsButton.getParent()).removeView(addobsButton);
+            }
 
             // Plant detail unwrapped using Parcel Library
             deciduousDetails deciPlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));
@@ -343,8 +379,15 @@ public class plantDetailActivity extends AppCompatActivity implements View.OnCli
 
         else if(plantType.equalsIgnoreCase("needle")){
             setContentView(R.layout.activity_needle_detail);
+
+            // Add observation button
             Button addobsButton = (Button) findViewById(R.id.addObsButton);
             addobsButton.setOnClickListener(this);
+
+            // Check if not logged in
+            if(PlantArrayManager.getInstance().getGlobalAccountDetails().size() == 0) {
+                ((ViewGroup) addobsButton.getParent()).removeView(addobsButton);
+            }
 
             // Plant detail unwrapped using Parcel Library
             needleDetails needlePlant = Parcels.unwrap(previousIntent.getParcelableExtra("plantInfo"));

@@ -222,7 +222,9 @@ public class Home_screenActivity extends AppCompatActivity implements View.OnCli
             if(FirebaseAuth.getInstance().getCurrentUser() != null){
                 FirebaseAuth.getInstance().signOut();
                 System.out.println("Previous user signed out.");
+                PlantArrayManager.getInstance().setGlobalAccountDetails(new ArrayList<accountDetails>());
                 gotoOpen();
+                super.finish();
             }
             else{
                 gotoOpen();
