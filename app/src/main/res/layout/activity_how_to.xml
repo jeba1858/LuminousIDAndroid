@@ -114,7 +114,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:autoLink="web"
-                android:text="Go to https://luminousid.org to see observations from other users."
+                android:text="Search for a variety of different species using the field guide as a reference, then go to https://luminousid.org to see observations from other users."
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/PrivacyHead"
+                fontPath="fonts/Snippet.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="Privacy Policy"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@android:color/black"
+                android:textSize="30dp"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/PrivacyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:text="The Luminous ID mobile app uses your phone's camera and GPS services to upload your plant observations. This gives scientists the most accurate data for their research. If you submit observations through the mobile device, you acknowledge that Luminous ID will have access to your phone’s camera and GPS data."
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="20dp" />
 

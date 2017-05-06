@@ -144,22 +144,9 @@
                 android:id="@+id/SupportTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="This project has been made possible with support from the National Science Foundation via a Long Term Research in Environmental Biology grant to DF Doak and WF Morris and the Long Term Ecological Research (LTER) program at Niwot Ridge. The United States Geological Survey provided the topographical maps."
+                android:text="This project has been made possible with support from the National Science Foundation via a Long Term Research in Environmental Biology grant to DF Doak and WF Morris and the Long Term Ecological Research (LTER) program at Niwot Ridge."
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/Images"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Images"
-                android:textSize="30dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
-                android:textColor="@android:color/black"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:layout_gravity="center"
-                fontPath="fonts/Snippet.ttf" />
 
             <TextView
                 android:id="@+id/ImageUseHead"
